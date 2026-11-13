@@ -25,6 +25,7 @@ Añade más alimentos a [url=https://steamcommunity.com/sharedfiles/filedetails/
 [tr][td][b]Salar marisco[/b][/td][td]Gamba, calamar, cangrejo de río u ostras, 5 usos de sal[/td][td]Marisco salado, luego secado en el secadero como el pescado salado (meses)[/td][/tr]
 [tr][td][b]Secar plantas silvestres[/b][/td][td]En el secadero de hierbas: de 1 a 20 plantas silvestres[/td][td]Plantas secas tras 1 día (jengibre, citronela y ginseng siguen sirviendo para infusiones)[/td][/tr]
 [tr][td][b]Moler como especia[/b][/td][td]Mortero y maja, 4 hierbas secas: albahaca, cebollino, cilantro, orégano, perejil, romero, salvia o tomillo[/td][td]1 bote de la especia correspondiente[/td][/tr]
+[tr][td][b]Preparar pemmican[/b][/td][td]Mortero y maja, de 1 a 4 trozos de carne seca, 6 usos de manteca o mantequilla, opcional de 1 a 4 bayas secas[/td][td]Barritas de pemmican según la cantidad de carne (1 ternera seca da 4); dura 1 año[/td][/tr]
 [/table]
 
 [h2]Notas[/h2]

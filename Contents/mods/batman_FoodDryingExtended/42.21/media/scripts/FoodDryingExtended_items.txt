@@ -963,6 +963,28 @@ module FoodDryingExtended
         Tags = base:hideuncooked;base:hidecooked;fooddrying:driedfruit,
     }
 
+    /* Pemmican (nutrition shared from the meat, fat and berries used, FoodDryingExtended.onPemmicanMade) */
+
+    item Pemmican
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 365,
+        DaysTotallyRotten = 730,
+        Icon = FDX_Pemmican,
+        EvolvedRecipe = Soup:10;Stew:10,
+        FoodType = NoExplicit,
+        HungerChange = -20.0,
+        Calories = 360.0,
+        Carbohydrates = 4.0,
+        Lipids = 30.0,
+        Proteins = 18.0,
+        StaticModel = FoodDryingExtended.FDX_Pemmican,
+        WorldStaticModel = FoodDryingExtended.FDX_Pemmican,
+        Tags = base:hideuncooked;base:hidecooked,
+    }
+
     /* Roasted insects (nutrition copied from the raw insect) */
 
     item RoastedCricket

@@ -28,6 +28,7 @@ description=[tr][td][b]Empty the Baking Tray[/b][/td][td]A tray of this mod, aft
 description=[tr][td][b]Salt Seafood[/b][/td][td]Shrimp, squid, crayfish or oysters, 5 uses of salt[/td][td]Salted seafood, then dried on the drying rack like salted fish (months)[/td][/tr]
 description=[tr][td][b]Dry Wild Plants[/b][/td][td]On the herb drying rack: 1 to 20 wild plants[/td][td]Dried wild plants after 1 day (ginger, lemongrass and ginseng still make tea)[/td][/tr]
 description=[tr][td][b]Grind into Seasoning[/b][/td][td]Mortar and pestle, 4 dried basil, chives, cilantro, oregano, parsley, rosemary, sage or thyme[/td][td]1 jar of the matching seasoning[/td][/tr]
+description=[tr][td][b]Make Pemmican[/b][/td][td]Mortar and pestle, 1 to 4 pieces of dried meat, 6 uses of lard or butter, optionally 1 to 4 dried berries[/td][td]Pemmican bars by quantity of meat (1 dried beef gives 4); keeps 1 year[/td][/tr]
 description=[/table]
 description=
 description=[h2]Notes[/h2]

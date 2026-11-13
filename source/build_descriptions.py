@@ -17,10 +17,13 @@ GITHUB = "[url=https://github.com/cyberbobjr/FoodDryingExtended]GitHub[/url]"
 
 # Table rows, in order: recipe key of Recipes.json (GrindBasilSeasoning stands for the 8 grinding recipes).
 ROWS = ["SliceLargeFruit", "PrepareHomemadeCrispsTray", "PrepareHomemadeCrispsTrayOil", "BagHomemadeCrisps", "PrepareFruitLeatherTray",
-        "PrepareRoastedInsectsTray", "EmptyExtendedTray", "SaltSeafood", "DryWildPlants", "GrindBasilSeasoning"]
+        "PrepareRoastedInsectsTray", "EmptyExtendedTray", "SaltSeafood", "DryWildPlants", "GrindBasilSeasoning",
+        "MakePemmican"]
 
 L = {
-    "": dict(slice_row=('Knife, 1 pineapple, mango or grapefruit', '4 slices (nutrition split in 4), ready to dry'), lang="EN", players="Singleplayer & Multiplayer",
+    "": dict(slice_row=('Knife, 1 pineapple, mango or grapefruit', '4 slices (nutrition split in 4), ready to dry'),
+        pem_row=("Mortar and pestle, 1 to 4 pieces of dried meat, 6 uses of lard or butter, optionally 1 to 4 dried berries",
+                 "Pemmican bars by quantity of meat (1 dried beef gives 4); keeps 1 year"), lang="EN", players="Singleplayer & Multiplayer",
         intro=f"Adds more food to {FOOD_DRYING} by Corvus, using its own trays, skewers and drying rack.",
         h_more="More food in Food Drying's recipes",
         more=["Vegetables: Brussels sprouts, cucumber, pumpkin slices, sweet potato, turnip, zucchini, cabbage, sugar beet, garlic, green onions.",
@@ -53,7 +56,9 @@ L = {
         discord="Questions, bug reports or ideas? Join the Discord:", h_credits="Credits",
         credits=["Food Drying is made by Corvus. All rights to the original mod belong to its author. The poster is the original Food Drying artwork with a ribbon added.",
                  f"Source on {GITHUB}."]),
-    "fr": dict(slice_row=('Couteau, 1 ananas, mangue ou pamplemousse', '4 tranches (valeurs divisées par 4), prêtes à sécher'), lang="FR", players="Solo et multijoueur",
+    "fr": dict(slice_row=('Couteau, 1 ananas, mangue ou pamplemousse', '4 tranches (valeurs divisées par 4), prêtes à sécher'),
+        pem_row=("Mortier et pilon, 1 à 4 morceaux de viande séchée, 6 doses de saindoux ou de beurre, au choix 1 à 4 baies séchées",
+                 "Barres de pemmican selon la quantité de viande (1 bœuf séché en donne 4) ; se garde 1 an"), lang="FR", players="Solo et multijoueur",
         intro=f"Ajoute des aliments à {FOOD_DRYING} de Corvus, avec ses plaques, ses brochettes et son séchoir.",
         h_more="Plus d'aliments dans les recettes de Food Drying",
         more=["Légumes : choux de Bruxelles, concombre, tranches de citrouille, patate douce, navet, courgette, chou, betterave sucrière, ail, cébettes.",
@@ -86,7 +91,9 @@ L = {
         discord="Questions, bugs ou idées ? Rejoignez le Discord :", h_credits="Crédits",
         credits=["Food Drying est créé par Corvus. Tous les droits sur le mod d'origine appartiennent à son auteur. Le poster est l'illustration originale de Food Drying, avec un bandeau ajouté.",
                  f"Sources sur {GITHUB}."]),
-    "de": dict(slice_row=('Messer, 1 Ananas, Mango oder Grapefruit', '4 Scheiben (Nährwerte durch 4 geteilt), bereit zum Trocknen'), lang="DE", players="Einzelspieler & Mehrspieler",
+    "de": dict(slice_row=('Messer, 1 Ananas, Mango oder Grapefruit', '4 Scheiben (Nährwerte durch 4 geteilt), bereit zum Trocknen'),
+        pem_row=("Mörser und Stößel, 1 bis 4 Stück Trockenfleisch, 6 Portionen Schmalz oder Butter, wahlweise 1 bis 4 getrocknete Beeren",
+                 "Pemmikan-Riegel je nach Fleischmenge (1 getrocknetes Rindfleisch ergibt 4); hält 1 Jahr"), lang="DE", players="Einzelspieler & Mehrspieler",
         intro=f"Fügt {FOOD_DRYING} von Corvus weitere Lebensmittel hinzu und nutzt dessen Backbleche, Spieße und Trockengestell.",
         h_more="Mehr Lebensmittel in den Rezepten von Food Drying",
         more=["Gemüse: Rosenkohl, Gurke, Kürbisscheiben, Süßkartoffel, Rübe, Zucchini, Kohlkopf, Zuckerrübe, Knoblauch, grüne Zwiebeln.",
@@ -119,7 +126,9 @@ L = {
         discord="Fragen, Fehlerberichte oder Ideen? Komm auf den Discord:", h_credits="Credits",
         credits=["Food Drying stammt von Corvus. Alle Rechte am Original-Mod liegen bei seinem Autor. Das Poster ist das Originalbild von Food Drying mit einem hinzugefügten Banner.",
                  f"Quellcode auf {GITHUB}."]),
-    "es": dict(slice_row=('Cuchillo, 1 piña, mango o pomelo', '4 rodajas (valores divididos entre 4), listas para secar'), lang="ES", players="Un jugador y multijugador",
+    "es": dict(slice_row=('Cuchillo, 1 piña, mango o pomelo', '4 rodajas (valores divididos entre 4), listas para secar'),
+        pem_row=("Mortero y maja, de 1 a 4 trozos de carne seca, 6 usos de manteca o mantequilla, opcional de 1 a 4 bayas secas",
+                 "Barritas de pemmican según la cantidad de carne (1 ternera seca da 4); dura 1 año"), lang="ES", players="Un jugador y multijugador",
         intro=f"Añade más alimentos a {FOOD_DRYING} de Corvus, usando sus bandejas, brochetas y secadero.",
         h_more="Más alimentos en las recetas de Food Drying",
         more=["Verduras: coles de Bruselas, pepino, calabaza cortada, boniato, nabo, calabacín, col, remolacha azucarera, ajo, cebollines.",
@@ -152,7 +161,9 @@ L = {
         discord="¿Preguntas, errores o ideas? Únete al Discord:", h_credits="Créditos",
         credits=["Food Drying es obra de Corvus. Todos los derechos del mod original pertenecen a su autor. El póster es la ilustración original de Food Drying con una banda añadida.",
                  f"Código fuente en {GITHUB}."]),
-    "pt": dict(slice_row=('Faca, 1 ananás, manga ou toranja', '4 fatias (valores divididos por 4), prontas para secar'), lang="PT", players="Um jogador e multijogador",
+    "pt": dict(slice_row=('Faca, 1 ananás, manga ou toranja', '4 fatias (valores divididos por 4), prontas para secar'),
+        pem_row=("Almofariz e pilão, 1 a 4 pedaços de carne seca, 6 doses de banha ou manteiga, opcional 1 a 4 bagas secas",
+                 "Barras de pemmican conforme a quantidade de carne (1 vaca seca dá 4); dura 1 ano"), lang="PT", players="Um jogador e multijogador",
         intro=f"Acrescenta mais alimentos ao {FOOD_DRYING} de Corvus, usando os seus tabuleiros, espetos e secador.",
         h_more="Mais alimentos nas receitas do Food Drying",
         more=["Legumes: couves-de-bruxelas, pepino, fatias de abóbora, batata-doce, nabo, curgete, couve, beterraba, alho, cebolinha.",
@@ -185,7 +196,9 @@ L = {
         discord="Perguntas, erros ou ideias? Junte-se ao Discord:", h_credits="Créditos",
         credits=["O Food Drying é obra de Corvus. Todos os direitos do mod original pertencem ao seu autor. O póster é a ilustração original do Food Drying com uma faixa acrescentada.",
                  f"Código-fonte no {GITHUB}."]),
-    "ptbr": dict(slice_row=('Faca, 1 abacaxi, manga ou toranja', '4 fatias (valores divididos por 4), prontas para secar'), lang="PTBR", players="Um jogador e multijogador",
+    "ptbr": dict(slice_row=('Faca, 1 abacaxi, manga ou toranja', '4 fatias (valores divididos por 4), prontas para secar'),
+        pem_row=("Almofariz e pilão, de 1 a 4 pedaços de carne seca, 6 usos de banha ou manteiga, opcional de 1 a 4 frutinhas secas",
+                 "Barras de pemmican conforme a quantidade de carne (1 carne bovina seca rende 4); dura 1 ano"), lang="PTBR", players="Um jogador e multijogador",
         intro=f"Adiciona mais alimentos ao {FOOD_DRYING} de Corvus, usando suas assadeiras, espetos e secador.",
         h_more="Mais alimentos nas receitas do Food Drying",
         more=["Legumes: couve-de-bruxelas, pepino, fatias de abóbora, batata-doce, nabo, abobrinha, repolho, beterraba doce, alho, cebolinha verde.",
@@ -218,7 +231,9 @@ L = {
         discord="Dúvidas, bugs ou ideias? Entre no Discord:", h_credits="Créditos",
         credits=["O Food Drying foi criado por Corvus. Todos os direitos do mod original pertencem ao seu autor. O pôster é a ilustração original do Food Drying com uma faixa adicionada.",
                  f"Código-fonte no {GITHUB}."]),
-    "ru": dict(slice_row=('Нож, 1 ананас, манго или грейпфрут', '4 ломтика (питательность делится на 4), готовы к сушке'), lang="RU", players="Одиночная и сетевая игра",
+    "ru": dict(slice_row=('Нож, 1 ананас, манго или грейпфрут', '4 ломтика (питательность делится на 4), готовы к сушке'),
+        pem_row=("Ступка и пестик, от 1 до 4 кусков сушёного мяса, 6 порций сала или сливочного масла, по желанию от 1 до 4 сушёных ягод",
+                 "Батончики пеммикана по количеству мяса (1 сушёная говядина даёт 4); хранится 1 год"), lang="RU", players="Одиночная и сетевая игра",
         intro=f"Добавляет новые продукты в {FOOD_DRYING} от Corvus, используя его противни, шампуры и сушилку.",
         h_more="Больше продуктов в рецептах Food Drying",
         more=["Овощи: брюссельская капуста, огурец, ломтики тыквы, батат, репа, цуккини, капуста, сахарная свёкла, чеснок, зелёный лук.",
@@ -251,7 +266,9 @@ L = {
         discord="Вопросы, ошибки или идеи? Заходите в Discord:", h_credits="Авторы",
         credits=["Food Drying создан Corvus. Все права на оригинальный мод принадлежат его автору. Постер — оригинальная иллюстрация Food Drying с добавленной лентой.",
                  f"Исходный код на {GITHUB}."]),
-    "cn": dict(slice_row=('刀，1 个菠萝、芒果或西柚', '4 片（营养均分为 4 份），可以晾干'), lang="CN", players="单人与多人",
+    "cn": dict(slice_row=('刀，1 个菠萝、芒果或西柚', '4 片（营养均分为 4 份），可以晾干'),
+        pem_row=("研钵和研杵，1 到 4 块肉干，6 份猪油或黄油，可选 1 到 4 份干浆果",
+                 "按肉量得到干肉饼（1 块牛肉干得 4 块）；可保存 1 年"), lang="CN", players="单人与多人",
         intro=f"为 Corvus 的 {FOOD_DRYING} 增加更多食物，沿用它的烘烤板、串签和晾干架。",
         h_more="Food Drying 配方中的新增食物",
         more=["蔬菜：孢子甘蓝、黄瓜、南瓜片、红薯、芜菁、西葫芦、卷心菜、甜菜、大蒜、青葱。",
@@ -284,7 +301,9 @@ L = {
         discord="有问题、错误报告或想法？欢迎加入 Discord：", h_credits="致谢",
         credits=["Food Drying 由 Corvus 制作，原模组的所有权利归其作者所有。海报是 Food Drying 的原始插画，加上了一条横幅。",
                  f"源代码见 {GITHUB}。"]),
-    "jp": dict(slice_row=('ナイフ、パイナップル・マンゴー・グレープフルーツのいずれか 1 個', 'カット 4 つ（栄養価は 4 等分）。乾燥できる'), lang="JP", players="シングルプレイ & マルチプレイ",
+    "jp": dict(slice_row=('ナイフ、パイナップル・マンゴー・グレープフルーツのいずれか 1 個', 'カット 4 つ（栄養価は 4 等分）。乾燥できる'),
+        pem_row=("すり鉢とすりこぎ棒、干し肉 1〜4 切れ、ラードかバター 6 回分、お好みで乾燥ベリー 1〜4 個",
+                 "肉の量に応じたペミカンのバー（乾燥牛肉 1 つで 4 本）。1 年もつ"), lang="JP", players="シングルプレイ & マルチプレイ",
         intro=f"Corvus 氏の {FOOD_DRYING} に食材を追加します。トレイ、串、乾燥ラックはそのまま使います。",
         h_more="Food Drying のレシピに食材を追加",
         more=["野菜：メキャベツ、キュウリ、カボチャのカット、サツマイモ、カブ、ズッキーニ、キャベツ、テンサイ、ニンニク、ネギ。",
@@ -317,7 +336,9 @@ L = {
         discord="質問、バグ報告、アイデアは Discord へどうぞ：", h_credits="クレジット",
         credits=["Food Drying の作者は Corvus 氏です。元の MOD のすべての権利は作者に帰属します。ポスターは Food Drying のオリジナルイラストに帯を加えたものです。",
                  f"ソースは {GITHUB} にあります。"]),
-    "ko": dict(slice_row=('칼, 파인애플·망고·자몽 중 1개', '조각 4개 (영양가 4등분), 말릴 수 있음'), lang="KO", players="싱글플레이 및 멀티플레이",
+    "ko": dict(slice_row=('칼, 파인애플·망고·자몽 중 1개', '조각 4개 (영양가 4등분), 말릴 수 있음'),
+        pem_row=("막자사발과 막자, 말린 고기 1~4조각, 라드 또는 버터 6회분, 선택으로 말린 베리 1~4개",
+                 "고기 양에 따른 페미컨 바 (말린 소고기 1개는 4개); 1년 보관"), lang="KO", players="싱글플레이 및 멀티플레이",
         intro=f"Corvus의 {FOOD_DRYING}에 음식을 더 추가합니다. 쟁반, 꼬치, 건조대는 그대로 사용합니다.",
         h_more="Food Drying 레시피에 추가된 음식",
         more=["채소: 방울양배추, 오이, 호박 조각, 고구마, 순무, 애호박, 양배추, 사탕무, 마늘, 파.",
@@ -350,7 +371,9 @@ L = {
         discord="질문, 버그 제보, 아이디어가 있다면 Discord로 오세요:", h_credits="제작",
         credits=["Food Drying은 Corvus가 만들었습니다. 원본 모드의 모든 권리는 제작자에게 있습니다. 포스터는 Food Drying의 원본 일러스트에 띠를 추가한 것입니다.",
                  f"소스 코드는 {GITHUB}에 있습니다."]),
-    "tr": dict(slice_row=('Bıçak, 1 ananas, mango veya greyfurt', "4 dilim (besin değeri 4'e bölünür), kurutmaya hazır"), lang="TR", players="Tek oyunculu ve çok oyunculu",
+    "tr": dict(slice_row=('Bıçak, 1 ananas, mango veya greyfurt', "4 dilim (besin değeri 4'e bölünür), kurutmaya hazır"),
+        pem_row=("Havan ve tokmak, 1 ila 4 parça kurutulmuş et, 6 kullanım domuz yağı veya tereyağı, isteğe bağlı 1 ila 4 kurutulmuş orman meyvesi",
+                 "Et miktarına göre pemikan çubukları (1 kurutulmuş sığır eti 4 verir); 1 yıl dayanır"), lang="TR", players="Tek oyunculu ve çok oyunculu",
         intro=f"Corvus'un {FOOD_DRYING} modunun tepsilerini, şişlerini ve kurutma rafını kullanarak ona yeni yiyecekler ekler.",
         h_more="Food Drying tariflerinde daha fazla yiyecek",
         more=["Sebzeler: Brüksel lahanası, salatalık, balkabağı dilimleri, tatlı patates, şalgam, kabak, lahana, şeker pancarı, sarımsak, taze soğan.",
@@ -394,8 +417,8 @@ def build(d):
     out += [f"[*]{m}" for m in d["more"]]
     out += ["[/list]", "", f"[h2]{d['h_recipes']}[/h2]", "[table]",
             "[tr]" + "".join(f"[th]{h}[/th]" for h in d["th"]) + "[/tr]"]
-    rows = [d["slice_row"][0]] + d["rows"]
-    results = [d["slice_row"][1]] + d["res"]
+    rows = [d["slice_row"][0]] + d["rows"] + [d["pem_row"][0]]
+    results = [d["slice_row"][1]] + d["res"] + [d["pem_row"][1]]
     for key, ingredients, result in zip(ROWS, rows, results):
         out.append(f"[tr][td][b]{names[key]}[/b][/td][td]{ingredients}[/td][td]{result}[/td][/tr]")
     out += ["[/table]", "", f"[h2]{d['h_notes']}[/h2]", "[list]"]
@@ -407,7 +430,7 @@ def build(d):
 
 def main():
     for suffix, d in L.items():
-        assert len(d["rows"]) + 1 == len(ROWS) == len(d["res"]) + 1, suffix
+        assert len(d["rows"]) + 2 == len(ROWS) == len(d["res"]) + 2, suffix
         text = build(d)
         size = len(text.encode("utf-8"))
         assert size < 7800, (suffix, size)

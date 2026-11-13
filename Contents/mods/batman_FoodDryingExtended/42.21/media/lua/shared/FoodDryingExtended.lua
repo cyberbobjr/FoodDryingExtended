@@ -239,7 +239,13 @@ function FoodDryingExtended.onTrayEmptied(craftRecipeData, character)
     local tray = findTray(consumed)
     local config = tray and FoodDryingExtended.TRAYS[tray:getFullType()]
     if not config then return end
-    local char = character or getPlayer()
+    -- EmptyExtendedTray is a hand craft: ISHandcraftAction:performRecipe always passes the character
+    -- (also on a server). No getPlayer() fallback: it returns nil on a dedicated server.
+    local char = character
+    if not char then
+        print("FOODDRYINGEXTENDED WARNING: onTrayEmptied called without a character, tray content not given back")
+        return
+    end
     local entries = tray:getModData().fdxEntries or {}
     if not tray:isCooked() then
         for _, e in ipairs(entries) do giveRaw(char, e) end
@@ -257,6 +263,75 @@ function FoodDryingExtended.onTrayCooked(item)
     if config and config.cookedModel then
         item:setStaticModel(config.cookedModel)
         item:setWorldStaticModel(config.cookedModel)
+    end
+end
+
+-- Pemmican (MakePemmican, MakePemmicanWithBerries): pounded dried meat bound with
+-- fat. One bar per PEMMICAN_HUNGER_PER_BAR points of hunger of meat, berries and
+-- fat (at least one), so the number of bars follows the quantity of meat, not the
+-- number of pieces. The bars share the nutrition of everything used.
+FoodDryingExtended.PEMMICAN_HUNGER_PER_BAR = 20
+-- uses of fat consumed by the recipes (item 6 [Base.Lard;Base.Butter])
+FoodDryingExtended.PEMMICAN_FAT_USES = 6
+FoodDryingExtended.PEMMICAN_FATS = { ["Base.Lard"] = true, ["Base.Butter"] = true }
+
+-- Nutrition of the fat consumed: PEMMICAN_FAT_USES uses of a fresh block of that fat.
+local function addFat(sum, fatType)
+    local ref = instanceItem(fatType)
+    local uses = ref and -ref:getHungerChange() * 100 or 0
+    if uses <= 0 then
+        print("FOODDRYINGEXTENDED WARNING: unknown pemmican fat " .. tostring(fatType))
+        return
+    end
+    local share = FoodDryingExtended.PEMMICAN_FAT_USES / uses
+    sum.hunger = sum.hunger + ref:getHungerChange() * share
+    sum.calories = sum.calories + ref:getCalories() * share
+    sum.carbohydrates = sum.carbohydrates + ref:getCarbohydrates() * share
+    sum.lipids = sum.lipids + ref:getLipids() * share
+    sum.proteins = sum.proteins + ref:getProteins() * share
+end
+
+-- OnCreate of MakePemmican and MakePemmicanWithBerries.
+function FoodDryingExtended.onPemmicanMade(craftRecipeData, character)
+    local consumed = craftRecipeData:getAllConsumedItems()
+    local createdItems = craftRecipeData:getAllCreatedItems()
+    if not consumed or not createdItems or createdItems:size() == 0 then return end
+    local bar = createdItems:get(0)
+    local sum = { hunger = 0, calories = 0, carbohydrates = 0, lipids = 0, proteins = 0 }
+    local poison, detection = 0, 0
+    local fatType = "Base.Lard"
+    for i = 0, consumed:size() - 1 do
+        local item = consumed:get(i)
+        if instanceof(item, "Food") then
+            if FoodDryingExtended.PEMMICAN_FATS[item:getFullType()] then
+                fatType = item:getFullType()
+            else
+                sum.hunger = sum.hunger + item:getHungerChange()
+                sum.calories = sum.calories + item:getCalories()
+                sum.carbohydrates = sum.carbohydrates + item:getCarbohydrates()
+                sum.lipids = sum.lipids + item:getLipids()
+                sum.proteins = sum.proteins + item:getProteins()
+                if item:getPoisonPower() > poison then
+                    poison, detection = item:getPoisonPower(), item:getPoisonDetectionLevel()
+                end
+            end
+        end
+    end
+    addFat(sum, fatType)
+    local points = -sum.hunger * 100
+    local n = math.max(1, math.floor(points / FoodDryingExtended.PEMMICAN_HUNGER_PER_BAR + 0.5))
+    if n > 1 and not character then
+        -- hand craft: ISHandcraftAction:performRecipe always passes the character
+        print("FOODDRYINGEXTENDED WARNING: onPemmicanMade called without a character, one bar made")
+        n = 1
+    end
+    for i = 1, n do
+        local item = i == 1 and bar or instanceItem(bar:getFullType())
+        if item then
+            setNutrition(item, sum.hunger / n, sum.calories / n, sum.carbohydrates / n, sum.lipids / n, sum.proteins / n)
+            setPoison(item, poison, detection)
+            if i == 1 then item:syncItemFields() else give(character, item) end
+        end
     end
 end
 

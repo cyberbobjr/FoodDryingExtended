@@ -239,6 +239,22 @@ SLICE_T = {
 }
 
 
+# Pemmican: the item, then the recipes without and with dried berries.
+PEMMICAN_T = {
+    "EN": ("Pemmican", "Make Pemmican", "Make Pemmican with Berries"),
+    "FR": ("Pemmican", "Préparer du pemmican", "Préparer du pemmican aux baies"),
+    "DE": ("Pemmikan", "Pemmikan herstellen", "Pemmikan mit Beeren herstellen"),
+    "ES": ("Pemmican", "Preparar pemmican", "Preparar pemmican con bayas"),
+    "PT": ("Pemmican", "Preparar pemmican", "Preparar pemmican com bagas"),
+    "PTBR": ("Pemmican", "Preparar Pemmican", "Preparar Pemmican com Frutas Silvestres"),
+    "RU": ("Пеммикан", "Приготовить пеммикан", "Приготовить пеммикан с ягодами"),
+    "CN": ("干肉饼", "制作干肉饼", "制作浆果干肉饼"),
+    "JP": ("ペミカン", "ペミカンを作る", "ベリー入りペミカンを作る"),
+    "KO": ("페미컨", "페미컨 만들기", "베리 페미컨 만들기"),
+    "TR": ("Pemikan", "Pemikan Yap", "Meyveli Pemikan Yap"),
+}
+
+
 def main():
     for lang, (items, recipes) in T.items():
         assert len(items) == len(ITEMS), (lang, len(items))
@@ -247,14 +263,16 @@ def main():
         assert len(wild_items) == len(WILD_ITEMS), lang
         slice_items, slice_label = SLICE_T[lang]
         assert len(slice_items) == len(SLICE_ITEMS), lang
-        items = items + wild_items + slice_items
-        recipes = recipes + [dry_label] + [grind_label] * len(HERBS) + [slice_label]
+        pem_item, pem_recipe, pem_berries = PEMMICAN_T[lang]
+        items = items + wild_items + slice_items + [pem_item]
+        recipes = recipes + [dry_label] + [grind_label] * len(HERBS) + [slice_label, pem_recipe, pem_berries]
         folder = os.path.join(ROOT, lang)
         os.makedirs(folder, exist_ok=True)
-        names = {"FoodDryingExtended." + k: v for k, v in zip(ITEMS + WILD_ITEMS + SLICE_ITEMS, items)}
+        names = {"FoodDryingExtended." + k: v for k, v in zip(ITEMS + WILD_ITEMS + SLICE_ITEMS + ["Pemmican"], items)}
         with open(os.path.join(folder, "ItemName.json"), "w", encoding="utf-8", newline="\n") as fh:
             fh.write(json.dumps(names, ensure_ascii=False, indent=2) + "\n")
-        keys = RECIPES + ["DryWildPlants"] + ["Grind" + h + "Seasoning" for h in HERBS] + ["SliceLargeFruit"]
+        keys = RECIPES + ["DryWildPlants"] + ["Grind" + h + "Seasoning" for h in HERBS] + ["SliceLargeFruit", "MakePemmican",
+                                                                                     "MakePemmicanWithBerries"]
         with open(os.path.join(folder, "Recipes.json"), "w", encoding="utf-8", newline="\n") as fh:
             fh.write(json.dumps(dict(zip(keys, recipes)), ensure_ascii=False, indent=2) + "\n")
     print(len(T), "languages written")

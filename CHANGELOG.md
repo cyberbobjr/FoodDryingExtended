@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.0 — 2026-11-13
+
+### New
+- Pemmican: pound 1 to 4 pieces of dried meat with lard or butter (mortar and pestle), with or without dried berries. One bar per 20 points of hunger (1 dried beef gives 4 bars), the bars share the nutrition of everything used and keep for a year. Own look: a pressed brown bar with flecks of fat and berries.
+
+### Fixed
+- Rare error when emptying a tray on a dedicated server.
+
 ## 1.3.0 — 2026-11-13
 
 ### Improved

@@ -108,4 +108,16 @@ module FoodDryingExtended
         }
     }
 
+    model FDX_Pemmican
+    {
+        mesh = WorldItems/FDX_Pemmican,
+        texture = WorldItems/FDX_Pemmican,
+        scale = 0.01,
+        attachment Bip01_Prop2
+        {
+            offset = -0.0296 0.025 -0.0197,
+            rotate = 174.9855 57.2405 -82.3148,
+        }
+    }
+
 }

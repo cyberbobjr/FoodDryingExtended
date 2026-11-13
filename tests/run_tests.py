@@ -63,7 +63,7 @@ def references():
         folder, name = os.path.split(os.path.join(MEDIA, rel))
         if not os.path.isdir(folder) or name not in os.listdir(folder):
             absent.append(rel)
-    check(f"{len(assets)} model, texture and icon files exist with exact case", not absent and len(assets) == 18, absent)
+    check(f"{len(assets)} model, texture and icon files exist with exact case", not absent and len(assets) == 21, absent)
     sources = glob.glob(os.path.join(MEDIA, "scripts", "**", "*.txt"), recursive=True)
     sources.append(os.path.join(MEDIA, "lua", "shared", "FoodDryingExtended.lua"))
     fd_lua = "".join(read(f) for f in glob.glob(os.path.join(FOOD_DRYING, "lua", "shared", "*.lua")))
@@ -128,6 +128,8 @@ end
 RAW = {
     ["Base.Pineapple"] = { -0.24, 452 }, ["Base.Cherry"] = { -0.03, 5 }, ["Base.Apple"] = { -0.16, 95 },
     ["Base.Peach"] = { -0.12, 58 }, ["Base.Potato"] = { -0.18, 70, 0.15 }, ["Base.Kale"] = { -0.16, 178, 0.71 },
+    ["Base.Lard"] = { -0.24, 4095, 454 }, ["FoodDrying.BeefDried"] = { -0.80, 440, 18.7 },
+    ["FoodDrying.SmallbirdmeatDried"] = { -0.10, 60, 2 }, ["FoodDrying.BerryBlueDried"] = { -0.05, 30 },
 }
 function newFood(t) local r = RAW[t] or { -0.10, 10 }; return food(t, r[1], r[2], r[3]) end
 function newTray(t) return food(t, 0, 0, 0) end
@@ -191,6 +193,42 @@ def tray_logic():
 
     out = list(cycle(leather, lua.table_from(["Base.Pineapple", "Base.Cherry"]), False).values())
     check("uncooked leather tray gives the fruit back", sorted(o._type for o in out) == ["Base.Cherry", "Base.Pineapple"])
+
+    lua.execute("""
+        getPlayer = function() return nil end  -- dedicated server
+        local tray = newTray("FoodDryingExtended.BakingTrayCrisps")
+        FoodDryingExtended.onTrayFilled(data({ newFood("Base.Potato") }, { tray }), player)
+        tray._cooked = true
+        noCharacterOk = pcall(FoodDryingExtended.onTrayEmptied, data({ tray }, {}), nil)
+    """)
+    check("emptying without a character (dedicated server) does not raise an error", g.noCharacterOk is True)
+
+    lua.execute("""
+        function pemmican(types, character)
+            given = {}
+            local consumed = {}
+            for _, t in ipairs(types) do consumed[#consumed + 1] = newFood(t) end
+            local bar = newFood("FoodDryingExtended.Pemmican")
+            FoodDryingExtended.onPemmicanMade(data(consumed, { bar }), character)
+            local bars = { bar }
+            for _, it in ipairs(given) do bars[#bars + 1] = it end
+            return bars
+        end
+    """)
+    fat = 4095 * 6 / 24  # 6 uses of a 24-use block of lard
+    for label, types, bars, kcal in [
+        ("1 dried beef (80 pts) + lard -> 4 bars", ["FoodDrying.BeefDried", "Base.Lard"], 4, 440 + fat),
+        ("1 dried small bird (10 pts) + lard -> 1 bar", ["FoodDrying.SmallbirdmeatDried", "Base.Lard"], 1, 60 + fat),
+        ("beef + small bird + blueberries + lard -> 5 bars",
+         ["FoodDrying.BeefDried", "FoodDrying.SmallbirdmeatDried", "FoodDrying.BerryBlueDried", "Base.Lard"], 5,
+         440 + 60 + 30 + fat),
+    ]:
+        out = list(g.pemmican(lua.table_from(types), g.player).values())
+        ok = (len(out) == bars and all(o._type == "FoodDryingExtended.Pemmican" for o in out)
+              and abs(sum(o._cal for o in out) - kcal) < 0.01)
+        check("pemmican: " + label + ", calories of meat, fat and berries kept", ok, [(o._type, o._cal) for o in out])
+    out = list(g.pemmican(lua.table_from(["FoodDrying.BeefDried", "Base.Lard"]), None).values())
+    check("pemmican without a character: one bar, no error", len(out) == 1, len(out))
 
     out = list(cycle("FoodDryingExtended.BakingTrayCrisps", lua.table_from(["Base.Potato", "Base.Kale"]), True).values())
     check("crisps: one portion per vegetable with its calories",

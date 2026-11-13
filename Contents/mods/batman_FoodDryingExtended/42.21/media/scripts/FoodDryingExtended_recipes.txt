@@ -175,6 +175,48 @@ module FoodDryingExtended
         }
     }
 
+    /* Pemmican: 1 to 4 pieces of dried meat pounded with a quarter block of lard or butter (6 uses), with or
+       without dried berries. FoodDryingExtended.onPemmicanMade makes one bar per 20 points of hunger. */
+
+    craftRecipe MakePemmican
+    {
+        timedAction = MixingMortarPestle,
+        time = 120,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        OnCreate = FoodDryingExtended.onPemmicanMade,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item variable[1:4] [FoodDrying.BeefDried;FoodDrying.SteakDried;FoodDrying.VenisonDried;FoodDrying.PorkDried;FoodDrying.PorkChopDried;FoodDrying.MuttonChopDried;FoodDrying.ChickenDried;FoodDrying.ChickenFilletDried;FoodDrying.ChickenWingsDried;FoodDrying.TurkeyFilletDried;FoodDrying.TurkeyLegsDried;FoodDrying.TurkeyWingsDried;FoodDrying.RabbitmeatDried;FoodDrying.SmallanimalmeatDried;FoodDrying.SmallbirdmeatDried;FoodDrying.FrogMeatDried;FoodDrying.BaconDried;FoodDrying.BaconRashersDried;FoodDrying.BaconBitsDried;FoodDrying.FishFilletDried] flags[ItemCount] mode:destroy,
+            item 6 [Base.Lard;Base.Butter],
+        }
+        outputs
+        {
+            item 1 FoodDryingExtended.Pemmican,
+        }
+    }
+
+    craftRecipe MakePemmicanWithBerries
+    {
+        timedAction = MixingMortarPestle,
+        time = 140,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        OnCreate = FoodDryingExtended.onPemmicanMade,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item variable[1:4] [FoodDrying.BeefDried;FoodDrying.SteakDried;FoodDrying.VenisonDried;FoodDrying.PorkDried;FoodDrying.PorkChopDried;FoodDrying.MuttonChopDried;FoodDrying.ChickenDried;FoodDrying.ChickenFilletDried;FoodDrying.ChickenWingsDried;FoodDrying.TurkeyFilletDried;FoodDrying.TurkeyLegsDried;FoodDrying.TurkeyWingsDried;FoodDrying.RabbitmeatDried;FoodDrying.SmallanimalmeatDried;FoodDrying.SmallbirdmeatDried;FoodDrying.FrogMeatDried;FoodDrying.BaconDried;FoodDrying.BaconRashersDried;FoodDrying.BaconBitsDried;FoodDrying.FishFilletDried] flags[ItemCount] mode:destroy,
+            item 6 [Base.Lard;Base.Butter],
+            item variable[1:4] [FoodDrying.BerryBlackDried;FoodDrying.BerryBlueDried;FoodDrying.BerryGeneric1Dried;FoodDrying.BerryGeneric2Dried;FoodDrying.BerryGeneric3Dried;FoodDrying.BerryGeneric4Dried;FoodDrying.BerryGeneric5Dried;FoodDrying.StrewberrieDried;FoodDrying.WinterBerryDried;FoodDrying.BeautyBerryDried;FoodDrying.HollyBerryDried;FoodDryingExtended.RosehipsDried] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 FoodDryingExtended.Pemmican,
+        }
+    }
+
     /* Wild plants on the vanilla herb drying rack (also oven, skewer and Food Drying rack through the tag). */
 
     craftRecipe DryWildPlants

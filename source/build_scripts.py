@@ -201,6 +201,14 @@ def main():
          [("UnhappyChange", "-10"), ("CustomEatSound", "EatingFruit"), ("StaticModel", "DriedApricot_Hand"),
           ("WorldStaticModel", "DriedApricots"), ("Tags", "base:hideuncooked;base:hidecooked;fooddrying:driedfruit")])
 
+    comment("Pemmican (nutrition shared from the meat, fat and berries used, FoodDryingExtended.onPemmicanMade)")
+    item("Pemmican", [("DisplayCategory", "Food"), ("ItemType", "base:food"), ("Weight", "0.1"),
+                      ("DaysFresh", "365"), ("DaysTotallyRotten", "730"), ("Icon", "FDX_Pemmican"),
+                      ("EvolvedRecipe", "Soup:10;Stew:10"), ("FoodType", "NoExplicit")]
+         + nut(-20, 360, 4.0, 30.0, 18.0) +
+         [("StaticModel", "FoodDryingExtended.FDX_Pemmican"), ("WorldStaticModel", "FoodDryingExtended.FDX_Pemmican"),
+          ("Tags", "base:hideuncooked;base:hidecooked")])
+
     comment("Roasted insects (nutrition copied from the raw insect)")
     for n, icon, model, c, cb, l, p in INSECTS:
         item(n, [("DisplayCategory", "Food"), ("ItemType", "base:food"), ("Weight", "0.05"), ("DaysFresh", "180"),
@@ -240,10 +248,15 @@ def write_models():
               f"        texture = WorldItems/FDX_{n}Slice,", "        scale = 0.4,"] + WORLD + ["    }", ""]
         m += [f"    model FDX_{n}SliceDried", "    {", "        mesh = WorldItems/FDX_FruitSliceDried,",
               f"        texture = WorldItems/FDX_{n}SliceDried,", "        scale = 0.4,"] + WORLD + ["    }", ""]
+    # pemmican bar (source/pemmican): exported in metres, so scale 0.01; attachment of the game's GranolaBar_Ground
+    m += ["    model FDX_Pemmican", "    {", "        mesh = WorldItems/FDX_Pemmican,",
+          "        texture = WorldItems/FDX_Pemmican,", "        scale = 0.01,",
+          "        attachment Bip01_Prop2", "        {", "            offset = -0.0296 0.025 -0.0197,",
+          "            rotate = 174.9855 57.2405 -82.3148,", "        }", "    }", ""]
     m += ["}", ""]
     with open(os.path.join(ROOT, "FoodDryingExtended_models.txt"), "w", encoding="utf-8", newline="\n") as fh:
         fh.write("\n".join(m))
-    print(len(SLICES) * 3, "models written")
+    print(len(SLICES) * 3 + 1, "models written")
 
 
 main()
