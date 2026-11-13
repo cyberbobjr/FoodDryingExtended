@@ -47,4 +47,4 @@ description=[h2]Credits[/h2]
 description=Food Drying is made by Corvus. All rights to the original mod belong to its author. The poster is the original Food Drying artwork with a ribbon added.
 description=Source on [url=https://github.com/cyberbobjr/FoodDryingExtended]GitHub[/url].
 tags=Build 42;Food;Farming;Multiplayer
-visibility=private
+visibility=public
