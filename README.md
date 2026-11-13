@@ -3,22 +3,32 @@
 Extension of [Food Drying [B42]](https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551) by Corvus, for Project Zomboid Build 42.21.
 
 - Mod id: `batman_FoodDryingExtended` (requires `FoodDrying`, loads after `FoodDrying_VFEPatch` when present)
-- New dried vegetables: Brussels sprouts, cucumber, pumpkin, sweet potato, turnip, zucchini (oven tray, skewer, drying rack)
-- Homemade crisps: potato tray baked in the oven, one portion per potato, optional paper bag
+- More food to dry (oven tray, skewer, drying rack): Brussels sprouts, cucumber, pumpkin, sweet potato, turnip, zucchini, cabbage, sugar beet, garlic, green onions, watermelon slices, rose hips; jalapeño and habanero in the oven and on skewers
+- Seafood: Salt Seafood (shrimp, squid, crayfish, oysters), then the drying rack
+- Wild plants (herb drying rack, oven, skewer): dandelions, ginger root, grape leaves, violets, thistles, nettles, lemongrass, ginseng; grinding of 8 vanilla dried herbs into vanilla seasonings (mortar and pestle)
+- Own oven trays: homemade crisps (5 vegetables, with or without oil, optional paper bag), fruit leather, roasted insects
+- Languages: EN, FR, DE, ES, PT, PTBR, RU, CN, JP, KO, TR
 
 ## How it plugs into Food Drying
 
 | Part | Mechanism | File |
 |---|---|---|
-| Trays and skewers | vanilla vegetables get the `fooddrying:dryablevegetable` tag (tags add up, other mods' tags stay) | `media/scripts/FoodDryingExtended_vanilla_overrides.txt` |
+| Trays and skewers of Food Drying | vanilla items get the `fooddrying:dryable*` tags (tags add up, other mods' tags stay) | `media/scripts/FoodDryingExtended_vanilla_overrides.txt` |
 | Raw to dried item | entries added to `OvenDrying.dryableTypes` (public table of Food Drying) | `media/lua/shared/FoodDryingExtended.lua` |
-| Drying rack | copy of Food Drying's rack recipes file, same relative path, with 6 more lines in the `DryVegetables` mapper | `media/scripts/generated/entities/agricultural/workstations/entity_Food_Drying_Rack_craftRecipe.txt` |
-| Shelf life option | dried vegetables carry `fooddrying:driedvegetables`, so Food Drying's multiplier applies | `media/scripts/FoodDryingExtended_items.txt` |
-| Crisps | own tray, empty and bag recipes, reusing `OvenDrying.onContainerFilled` / `onContainerEmptied` | `media/scripts/FoodDryingExtended_recipes.txt` |
+| Drying rack | copy of Food Drying's rack recipes file, same relative path, with 26 more mapper lines (fruit, berries, vegetables, fish) | `media/scripts/generated/entities/agricultural/workstations/entity_Food_Drying_Rack_craftRecipe.txt` |
+| Shelf life option | dried items carry `fooddrying:dried*`, so Food Drying's multiplier applies | `media/scripts/FoodDryingExtended_items.txt` |
+| Own trays | `FoodDryingExtended.onTrayFilled` stores one entry per food in the tray's ModData, `onTrayEmptied` gives the cooked (or raw) food back | `media/scripts/FoodDryingExtended_recipes.txt`, `FoodDryingExtended.lua` |
+| Seafood salting | own `SaltSeafood` recipe (not Food Drying's `SaltMeatAndFish`, whose mapper would accept the tag but give nothing) | `FoodDryingExtended_recipes.txt` |
+
+Items, translations and Steam descriptions are generated: edit `source/build_scripts.py`, `source/build_translations.py` or `source/build_descriptions.py` (11 languages, recipe table with names read from `Recipes.json`), then run them.
+
+## Tests
+
+In-game automated test with PZDevKit: `python PZDevKit/pzdev.py sp FoodDryingExtended --wait-idle 3600` (from the Workshop folder; hooks in `autotest/fdx_hooks.lua`).
 
 ## Updating after a Food Drying update
 
-The rack recipes file replaces Food Drying's own. When Food Drying changes `entity_Food_Drying_Rack_craftRecipe.txt`, copy the new file and add the six `FoodDryingExtended.*Dried` lines back at the end of the `itemMapper vegetables` block.
+The rack recipes file replaces Food Drying's own. When Food Drying changes `entity_Food_Drying_Rack_craftRecipe.txt`, copy the new file and add back the `FoodDryingExtended.*` and `Base.Pepper*Dried` lines at the end of the `fruit`, `berries`, `fish` and `vegetables` item mappers, then run the in-game test.
 
 `source/make_poster.py` rebuilds the poster from the original Food Drying artwork (Pillow); `preview.png` is the poster resized to 256 px.
 

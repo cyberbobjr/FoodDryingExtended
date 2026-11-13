@@ -1,5 +1,18 @@
 {
   "PrepareHomemadeCrispsTray": "Prepare a Tray of Homemade Crisps",
-  "EmptyHomemadeCrispsTray": "Empty Tray of Homemade Crisps",
-  "BagHomemadeCrisps": "Put Homemade Crisps in a Paper Bag"
+  "PrepareHomemadeCrispsTrayOil": "Prepare a Tray of Crisps with Oil",
+  "PrepareFruitLeatherTray": "Prepare a Tray of Fruit Leather",
+  "PrepareRoastedInsectsTray": "Prepare a Tray of Insects to Roast",
+  "EmptyExtendedTray": "Empty the Baking Tray",
+  "BagHomemadeCrisps": "Put Homemade Crisps in a Paper Bag",
+  "SaltSeafood": "Salt Seafood",
+  "DryWildPlants": "Dry Wild Plants",
+  "GrindBasilSeasoning": "Grind into Seasoning",
+  "GrindChivesSeasoning": "Grind into Seasoning",
+  "GrindCilantroSeasoning": "Grind into Seasoning",
+  "GrindOreganoSeasoning": "Grind into Seasoning",
+  "GrindParsleySeasoning": "Grind into Seasoning",
+  "GrindRosemarySeasoning": "Grind into Seasoning",
+  "GrindSageSeasoning": "Grind into Seasoning",
+  "GrindThymeSeasoning": "Grind into Seasoning"
 }

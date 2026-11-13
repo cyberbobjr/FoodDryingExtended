@@ -57,6 +57,7 @@ module FoodDrying
             FoodDrying.BerryGeneric5Dried = Base.BerryGeneric5,
             FoodDrying.BerryPoisonIvyDried = Base.BerryPoisonIvy,
             FoodDrying.StrewberrieDried = Base.Strewberrie,
+            FoodDryingExtended.RosehipsDried = Base.Rosehips,
         }
     }
 
@@ -89,6 +90,7 @@ module FoodDrying
             FoodDrying.PeachDried = Base.Peach,
             FoodDrying.PearDried = Base.Pear,
             FoodDrying.PineappleDried = Base.Pineapple,
+            FoodDryingExtended.WatermelonDried = Base.WatermelonSliced,
         }
     }
 
@@ -131,6 +133,10 @@ module FoodDrying
             FoodDrying.FreshwaterDrumDried = FoodDrying.FreshwaterDrumSalted,
             FoodDrying.AligatorGarDried = FoodDrying.AligatorGarSalted,
             FoodDrying.PaddlefishDried = FoodDrying.PaddlefishSalted,
+            FoodDryingExtended.ShrimpDried = FoodDryingExtended.ShrimpSalted,
+            FoodDryingExtended.SquidDried = FoodDryingExtended.SquidSalted,
+            FoodDryingExtended.CrayfishDried = FoodDryingExtended.CrayfishSalted,
+            FoodDryingExtended.OystersDried = FoodDryingExtended.OystersSalted,
         }
     }
 
@@ -211,6 +217,20 @@ module FoodDrying
             FoodDryingExtended.SweetPotatoDried = Base.SweetPotato,
             FoodDryingExtended.TurnipDried = Base.Turnip,
             FoodDryingExtended.ZucchiniDried = Base.Zucchini,
+            FoodDryingExtended.CabbageDried = Base.Cabbage,
+            FoodDryingExtended.SugarBeetDried = Base.SugarBeet,
+            FoodDryingExtended.GarlicDried = Base.Garlic,
+            FoodDryingExtended.GreenOnionsDried = Base.GreenOnions,
+            Base.PepperJalapenoDried = Base.PepperJalapeno,
+            Base.PepperHabaneroDried = Base.PepperHabanero,
+            FoodDryingExtended.DandelionsDried = Base.Dandelions,
+            FoodDryingExtended.GingerRootDried = Base.GingerRoot,
+            FoodDryingExtended.GrapeLeavesDried = Base.GrapeLeaves,
+            FoodDryingExtended.VioletsDried = Base.Violets,
+            FoodDryingExtended.ThistleDried = Base.Thistle,
+            FoodDryingExtended.NettlesDried = Base.Nettles,
+            FoodDryingExtended.LemonGrassDried = Base.LemonGrass,
+            FoodDryingExtended.GinsengDried = Base.Ginseng,
         }
     }
 }

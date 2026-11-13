@@ -5,20 +5,22 @@ module FoodDryingExtended
         Base,
     }
 
+    /* Oven trays: filled by FoodDryingExtended.onTrayFilled, emptied by onTrayEmptied. */
+
     craftRecipe PrepareHomemadeCrispsTray
     {
         timedAction = SliceFood_Surface,
         time = 50,
         category = Cooking,
         Tags = AnySurfaceCraft;Cooking,
-        OnCreate = OvenDrying.onContainerFilled,
+        OnCreate = FoodDryingExtended.onTrayFilled,
         OnTest = FoodDrying.OvenDryingTest,
         inputs
         {
             item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[MayDegradeLight;IsNotDull],
             item 1 [Base.BakingTray] mode:destroy flags[IsEmpty],
             item 1 [Base.Salt;Base.SeasoningSalt],
-            item variable[1:8] [Base.Potato] flags[ItemCount] mode:destroy,
+            item variable[1:8] [Base.Potato;Base.SweetPotato;Base.SugarBeet;Base.Zucchini;Base.Kale] flags[ItemCount] mode:destroy,
         }
         outputs
         {
@@ -26,16 +28,77 @@ module FoodDryingExtended
         }
     }
 
-    craftRecipe EmptyHomemadeCrispsTray
+    craftRecipe PrepareHomemadeCrispsTrayOil
+    {
+        timedAction = SliceFood_Surface,
+        time = 50,
+        category = Cooking,
+        Tags = AnySurfaceCraft;Cooking,
+        OnCreate = FoodDryingExtended.onTrayFilled,
+        OnTest = FoodDrying.OvenDryingTest,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[MayDegradeLight;IsNotDull],
+            item 1 [Base.BakingTray] mode:destroy flags[IsEmpty],
+            item 1 [Base.Salt;Base.SeasoningSalt],
+            item 8 tags[base:oil],
+            item variable[1:8] [Base.Potato;Base.SweetPotato;Base.SugarBeet;Base.Zucchini;Base.Kale] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 FoodDryingExtended.BakingTrayCrispsOil,
+        }
+    }
+
+    craftRecipe PrepareFruitLeatherTray
+    {
+        timedAction = Making,
+        time = 80,
+        category = Cooking,
+        Tags = AnySurfaceCraft;Cooking,
+        OnCreate = FoodDryingExtended.onTrayFilled,
+        OnTest = FoodDrying.OvenDryingTest,
+        inputs
+        {
+            item 1 tags[base:fork;base:mixingutensil;base:spoon] mode:keep flags[MayDegradeVeryLight],
+            item 1 [Base.BakingTray] mode:destroy flags[IsEmpty],
+            item 4 tags[fooddrying:dryablefruit;fooddrying:dryableberries] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 FoodDryingExtended.BakingTrayFruitLeather,
+        }
+    }
+
+    craftRecipe PrepareRoastedInsectsTray
+    {
+        timedAction = Making,
+        time = 30,
+        category = Cooking,
+        Tags = AnySurfaceCraft;Cooking,
+        OnCreate = FoodDryingExtended.onTrayFilled,
+        OnTest = FoodDrying.OvenDryingTest,
+        inputs
+        {
+            item 1 [Base.BakingTray] mode:destroy flags[IsEmpty],
+            item variable[1:20] [Base.Cricket;Base.Grasshopper;Base.SawflyLarva;Base.AmericanLadyCaterpillar;Base.BandedWoolyBearCaterpillar;Base.MonarchCaterpillar;Base.SilkMothCaterpillar;Base.SwallowtailCaterpillar] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 FoodDryingExtended.BakingTrayInsects,
+        }
+    }
+
+    craftRecipe EmptyExtendedTray
     {
         timedAction = EmptyPan,
         time = 10,
         Tags = InHandCraft;Cooking,
         category = Cooking,
-        OnCreate = OvenDrying.onContainerEmptied,
+        OnCreate = FoodDryingExtended.onTrayEmptied,
         inputs
         {
-            item 1 [FoodDryingExtended.BakingTrayCrisps] flags[AllowRottenItem] mode:destroy,
+            item 1 [FoodDryingExtended.BakingTrayCrisps;FoodDryingExtended.BakingTrayCrispsOil;FoodDryingExtended.BakingTrayFruitLeather;FoodDryingExtended.BakingTrayInsects] flags[AllowRottenItem] mode:destroy,
         }
         outputs
         {
@@ -50,14 +113,208 @@ module FoodDryingExtended
         Tags = InHandCraft;Cooking,
         category = Cooking,
         OnTest = FoodDryingExtended.isEmptyPaperBag,
+        OnCreate = FoodDryingExtended.onCrispsBagged,
         inputs
         {
-            item 1 [FoodDryingExtended.HomemadeCrisps] flags[InheritFood] mode:destroy,
+            item 1 [FoodDryingExtended.HomemadeCrisps;FoodDryingExtended.SweetPotatoCrisps;FoodDryingExtended.SugarBeetCrisps;FoodDryingExtended.ZucchiniCrisps;FoodDryingExtended.KaleCrisps] flags[InheritFood] mode:destroy,
             item 1 [Base.PaperBag] mode:destroy,
         }
         outputs
         {
             item 1 FoodDryingExtended.HomemadeCrispsBag,
+        }
+    }
+
+    /* Seafood: salted like Food Drying's meat and fish (5 uses of salt), dried on its drying rack. */
+
+    craftRecipe SaltSeafood
+    {
+        time = 10,
+        category = Cooking,
+        Tags = AnySurfaceCraft;Cooking,
+        inputs
+        {
+            item 1 [Base.Shrimp;Base.Squid;Base.Crayfish;Base.Oysters] mode:destroy flags[InheritFood] mappers[salted],
+            item 5 [Base.Salt;Base.SeasoningSalt],
+        }
+        outputs
+        {
+            item 1 mapper:salted,
+        }
+        itemMapper salted
+        {
+            FoodDryingExtended.ShrimpSalted = Base.Shrimp,
+            FoodDryingExtended.SquidSalted = Base.Squid,
+            FoodDryingExtended.CrayfishSalted = Base.Crayfish,
+            FoodDryingExtended.OystersSalted = Base.Oysters,
+        }
+    }
+
+    /* Wild plants on the vanilla herb drying rack (also oven, skewer and Food Drying rack through the tag). */
+
+    craftRecipe DryWildPlants
+    {
+        time = 86400,
+        Tags = DryingRackHerb,
+        category = Farming,
+        overlayStyle = Herb,
+        OnCreate = FoodDrying.DryingRack_OnCreate,
+        inputs
+        {
+            item variable[1:20] [Base.Dandelions;Base.GingerRoot;Base.GrapeLeaves;Base.Violets;Base.Thistle;Base.Nettles;Base.LemonGrass;Base.Ginseng] flags[InheritFood;ItemCount] mappers[wild],
+        }
+        outputs
+        {
+            item variable[1:20] mapper:wild,
+        }
+        itemMapper wild
+        {
+            FoodDryingExtended.DandelionsDried = Base.Dandelions,
+            FoodDryingExtended.GingerRootDried = Base.GingerRoot,
+            FoodDryingExtended.GrapeLeavesDried = Base.GrapeLeaves,
+            FoodDryingExtended.VioletsDried = Base.Violets,
+            FoodDryingExtended.ThistleDried = Base.Thistle,
+            FoodDryingExtended.NettlesDried = Base.Nettles,
+            FoodDryingExtended.LemonGrassDried = Base.LemonGrass,
+            FoodDryingExtended.GinsengDried = Base.Ginseng,
+        }
+    }
+
+    /* Grinding: 4 dried herbs (4 x 5 uses) give one vanilla seasoning (20 uses). */
+
+    craftRecipe GrindBasilSeasoning
+    {
+        timedAction = MixingMortarPestle,
+        time = 60,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item 4 [Base.BasilDried] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Seasoning_Basil,
+        }
+    }
+
+    craftRecipe GrindChivesSeasoning
+    {
+        timedAction = MixingMortarPestle,
+        time = 60,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item 4 [Base.ChivesDried] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Seasoning_Chives,
+        }
+    }
+
+    craftRecipe GrindCilantroSeasoning
+    {
+        timedAction = MixingMortarPestle,
+        time = 60,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item 4 [Base.CilantroDried] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Seasoning_Cilantro,
+        }
+    }
+
+    craftRecipe GrindOreganoSeasoning
+    {
+        timedAction = MixingMortarPestle,
+        time = 60,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item 4 [Base.OreganoDried] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Seasoning_Oregano,
+        }
+    }
+
+    craftRecipe GrindParsleySeasoning
+    {
+        timedAction = MixingMortarPestle,
+        time = 60,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item 4 [Base.ParsleyDried] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Seasoning_Parsley,
+        }
+    }
+
+    craftRecipe GrindRosemarySeasoning
+    {
+        timedAction = MixingMortarPestle,
+        time = 60,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item 4 [Base.RosemaryDried] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Seasoning_Rosemary,
+        }
+    }
+
+    craftRecipe GrindSageSeasoning
+    {
+        timedAction = MixingMortarPestle,
+        time = 60,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item 4 [Base.SageDried] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Seasoning_Sage,
+        }
+    }
+
+    craftRecipe GrindThymeSeasoning
+    {
+        timedAction = MixingMortarPestle,
+        time = 60,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:mortarpestle] mode:keep flags[MayDegradeLight],
+            item 4 [Base.ThymeDried] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.Seasoning_Thyme,
         }
     }
 }

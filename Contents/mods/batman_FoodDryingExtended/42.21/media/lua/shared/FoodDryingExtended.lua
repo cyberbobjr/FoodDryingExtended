@@ -1,14 +1,17 @@
--- Food Drying Extended: adds vegetables and homemade crisps to Food Drying.
+-- Food Drying Extended: more food for Food Drying.
 --
--- Oven and skewer drying: Food Drying fills trays and skewers from the
--- fooddrying:dryablevegetable tag (added to the vanilla vegetables in
--- FoodDryingExtended_vanilla_overrides.txt) and turns each raw item into its
--- dried type through OvenDrying.dryableTypes, a table Food Drying keeps public
--- for compatibility patches. Each entry is only added when both item scripts
--- exist.
+-- Oven trays and skewers of Food Drying: vanilla items get the Food Drying
+-- tags (FoodDryingExtended_vanilla_overrides.txt) and their dried type is
+-- added to OvenDrying.dryableTypes, a table Food Drying keeps public for
+-- compatibility patches. Each entry is only added when both item scripts exist.
 --
--- Drying rack: the rack recipe file of Food Drying is replaced by a copy whose
--- DryVegetables mapper also lists these vegetables (same relative path).
+-- Drying rack: the rack recipes file of Food Drying is replaced by a copy whose
+-- mappers also list the items of this mod (same relative path).
+--
+-- Own oven trays (crisps, crisps with oil, fruit leather, roasted insects):
+-- onTrayFilled stores one entry per food put in the tray (type, nutrition,
+-- freshness, poison) in the tray's ModData; onTrayEmptied gives the cooked food
+-- back (or the raw food when the tray was not cooked).
 
 require "OvenDrying"
 
@@ -21,8 +24,23 @@ local rawToDried = {
     ["Base.SweetPotato"] = "FoodDryingExtended.SweetPotatoDried",
     ["Base.Turnip"] = "FoodDryingExtended.TurnipDried",
     ["Base.Zucchini"] = "FoodDryingExtended.ZucchiniDried",
-    -- Homemade crisps tray: one potato gives one portion of crisps.
-    ["Base.Potato"] = "FoodDryingExtended.HomemadeCrisps",
+    ["Base.Cabbage"] = "FoodDryingExtended.CabbageDried",
+    ["Base.SugarBeet"] = "FoodDryingExtended.SugarBeetDried",
+    ["Base.Garlic"] = "FoodDryingExtended.GarlicDried",
+    ["Base.GreenOnions"] = "FoodDryingExtended.GreenOnionsDried",
+    ["Base.WatermelonSliced"] = "FoodDryingExtended.WatermelonDried",
+    ["Base.Rosehips"] = "FoodDryingExtended.RosehipsDried",
+    ["Base.Dandelions"] = "FoodDryingExtended.DandelionsDried",
+    ["Base.GingerRoot"] = "FoodDryingExtended.GingerRootDried",
+    ["Base.GrapeLeaves"] = "FoodDryingExtended.GrapeLeavesDried",
+    ["Base.Violets"] = "FoodDryingExtended.VioletsDried",
+    ["Base.Thistle"] = "FoodDryingExtended.ThistleDried",
+    ["Base.Nettles"] = "FoodDryingExtended.NettlesDried",
+    ["Base.LemonGrass"] = "FoodDryingExtended.LemonGrassDried",
+    ["Base.Ginseng"] = "FoodDryingExtended.GinsengDried",
+    -- the game already has dried chili peppers (herb drying rack)
+    ["Base.PepperJalapeno"] = "Base.PepperJalapenoDried",
+    ["Base.PepperHabanero"] = "Base.PepperHabaneroDried",
 }
 
 local scriptManager = getScriptManager()
@@ -34,11 +52,201 @@ for rawType, driedType in pairs(rawToDried) do
     end
 end
 
--- OnCooked of the crisps tray: show the dried tray model. The name keeps the
--- vanilla cooked prefix, translated on each client.
-function FoodDryingExtended.onCrispsTrayCooked(item)
-    item:setStaticModel("FoodDrying.BakingTrayVegetablesDried")
-    item:setWorldStaticModel("FoodDrying.BakingTrayVegetablesDried")
+-- Oil absorbed by one portion of crisps fried with oil. The recipe uses 8 uses
+-- of oil (8 % of a bottle, about 560 kcal of vegetable oil) for at most 8
+-- portions, so the bonus never exceeds the oil consumed.
+FoodDryingExtended.OIL_CALORIES = 70
+FoodDryingExtended.OIL_LIPIDS = 8
+FoodDryingExtended.OIL_UNHAPPY = -10
+
+local CRISPS = {
+    ["Base.Potato"] = "FoodDryingExtended.HomemadeCrisps",
+    ["Base.SweetPotato"] = "FoodDryingExtended.SweetPotatoCrisps",
+    ["Base.SugarBeet"] = "FoodDryingExtended.SugarBeetCrisps",
+    ["Base.Zucchini"] = "FoodDryingExtended.ZucchiniCrisps",
+    ["Base.Kale"] = "FoodDryingExtended.KaleCrisps",
+}
+
+local INSECTS = {
+    ["Base.Cricket"] = "FoodDryingExtended.RoastedCricket",
+    ["Base.Grasshopper"] = "FoodDryingExtended.RoastedGrasshopper",
+    ["Base.SawflyLarva"] = "FoodDryingExtended.RoastedSawflyLarva",
+    ["Base.AmericanLadyCaterpillar"] = "FoodDryingExtended.RoastedCaterpillar",
+    ["Base.BandedWoolyBearCaterpillar"] = "FoodDryingExtended.RoastedCaterpillar",
+    ["Base.MonarchCaterpillar"] = "FoodDryingExtended.RoastedCaterpillar",
+    ["Base.SilkMothCaterpillar"] = "FoodDryingExtended.RoastedCaterpillar",
+    ["Base.SwallowtailCaterpillar"] = "FoodDryingExtended.RoastedCaterpillar",
+}
+
+local FRUIT_TAGS = { "fooddrying:dryablefruit", "fooddrying:dryableberries" }
+
+-- Tray type -> how its content is turned into food.
+--   map: raw type -> cooked type (one output per input)
+--   pooled: every input becomes one portion of `pooled`, with the average nutrition
+--   oil: oil bonus added to each portion
+--   cookedModel: model shown once cooked
+FoodDryingExtended.TRAYS = {
+    ["FoodDryingExtended.BakingTrayCrisps"] = { map = CRISPS, cookedModel = "FoodDrying.BakingTrayVegetablesDried" },
+    ["FoodDryingExtended.BakingTrayCrispsOil"] = { map = CRISPS, oil = true, cookedModel = "FoodDrying.BakingTrayVegetablesDried" },
+    ["FoodDryingExtended.BakingTrayFruitLeather"] = { pooled = "FoodDryingExtended.FruitLeather", tags = FRUIT_TAGS, cookedModel = "FoodDrying.BakingTrayFruitDried" },
+    ["FoodDryingExtended.BakingTrayInsects"] = { map = INSECTS, cookedModel = "FoodDrying.BakingTrayMushroomsDried" },
+}
+
+local function hasAnyTag(item, tagNames)
+    for _, name in ipairs(tagNames) do
+        local tag = ItemTag.get(ResourceLocation.of(name))
+        if tag and item:hasTag(tag) then return true end
+    end
+    return false
+end
+
+local function accepts(config, item)
+    if not instanceof(item, "Food") then return false end
+    if config.map then return config.map[item:getFullType()] ~= nil end
+    return config.tags ~= nil and hasAnyTag(item, config.tags)
+end
+
+local function findTray(items)
+    for i = 0, items:size() - 1 do
+        local it = items:get(i)
+        if FoodDryingExtended.TRAYS[it:getFullType()] then return it end
+    end
+    return nil
+end
+
+-- OnCreate of the Prepare...Tray recipes.
+function FoodDryingExtended.onTrayFilled(craftRecipeData, character)
+    local consumed = craftRecipeData:getAllConsumedItems()
+    local createdItems = craftRecipeData:getAllCreatedItems()
+    if not consumed or not createdItems or createdItems:size() == 0 then return end
+    local tray = findTray(createdItems)
+    local config = tray and FoodDryingExtended.TRAYS[tray:getFullType()]
+    if not config then return end
+
+    local entries = {}
+    for i = 0, consumed:size() - 1 do
+        local item = consumed:get(i)
+        if accepts(config, item) then
+            local offAgeMax = item:getOffAgeMax()
+            entries[#entries + 1] = {
+                rawType = item:getFullType(),
+                hunger = item:getHungerChange(),
+                calories = item:getCalories(),
+                carbohydrates = item:getCarbohydrates(),
+                lipids = item:getLipids(),
+                proteins = item:getProteins(),
+                unhappy = item:getUnhappyChange(),
+                agedRatio = (offAgeMax and offAgeMax > 0) and (item:getAge() / offAgeMax) or 0,
+                poisonPower = item:getPoisonPower(),
+                poisonDetection = item:getPoisonDetectionLevel(),
+            }
+        end
+    end
+    tray:getModData().fdxEntries = entries
+    tray:syncItemFields()
+end
+
+local function setNutrition(food, hunger, calories, carbohydrates, lipids, proteins)
+    food:setHungChange(hunger)
+    food:setCalories(calories)
+    food:setCarbohydrates(carbohydrates)
+    food:setLipids(lipids)
+    food:setProteins(proteins)
+end
+
+local function setPoison(food, power, detection)
+    if power and power > 0 then
+        food:setPoisonPower(power)
+        food:setPoisonDetectionLevel(detection or 0)
+    end
+end
+
+local function give(character, item)
+    local inv = character:getInventory()
+    inv:AddItem(item)
+    sendAddItemToContainer(inv, item)
+end
+
+-- Raw food back from an uncooked tray, with its freshness and nutrition.
+local function giveRaw(character, entry)
+    local item = instanceItem(entry.rawType)
+    if not item then
+        print("FOODDRYINGEXTENDED ERROR: cannot create " .. tostring(entry.rawType))
+        return
+    end
+    setNutrition(item, entry.hunger, entry.calories, entry.carbohydrates, entry.lipids, entry.proteins)
+    item:setAge(item:getOffAgeMax() * (entry.agedRatio or 0))
+    setPoison(item, entry.poisonPower, entry.poisonDetection)
+    give(character, item)
+end
+
+local function giveCooked(character, config, entry)
+    local outType = config.map[entry.rawType]
+    local item = outType and instanceItem(outType)
+    if not item then
+        print("FOODDRYINGEXTENDED ERROR: no cooked type for " .. tostring(entry.rawType))
+        return
+    end
+    local calories, lipids = entry.calories, entry.lipids
+    if config.oil then
+        calories = calories + FoodDryingExtended.OIL_CALORIES
+        lipids = lipids + FoodDryingExtended.OIL_LIPIDS
+        item:setUnhappyChange(item:getUnhappyChange() + FoodDryingExtended.OIL_UNHAPPY)
+    elseif entry.unhappy and config.map == INSECTS then
+        item:setUnhappyChange(entry.unhappy)
+    end
+    setNutrition(item, entry.hunger, calories, entry.carbohydrates, lipids, entry.proteins)
+    setPoison(item, entry.poisonPower, entry.poisonDetection)
+    give(character, item)
+end
+
+local function givePooled(character, config, entries)
+    local n = #entries
+    local sum = { hunger = 0, calories = 0, carbohydrates = 0, lipids = 0, proteins = 0 }
+    local poison, detection = 0, 0
+    for _, e in ipairs(entries) do
+        for k in pairs(sum) do sum[k] = sum[k] + (e[k] or 0) end
+        if (e.poisonPower or 0) > poison then
+            poison, detection = e.poisonPower, e.poisonDetection or 0
+        end
+    end
+    for _ = 1, n do
+        local item = instanceItem(config.pooled)
+        if item then
+            setNutrition(item, sum.hunger / n, sum.calories / n, sum.carbohydrates / n, sum.lipids / n, sum.proteins / n)
+            -- poison of one bad fruit spreads into the whole batch
+            setPoison(item, poison, detection)
+            give(character, item)
+        end
+    end
+end
+
+-- OnCreate of EmptyExtendedTray.
+function FoodDryingExtended.onTrayEmptied(craftRecipeData, character)
+    local consumed = craftRecipeData:getAllConsumedItems()
+    if not consumed or consumed:size() == 0 then return end
+    local tray = findTray(consumed)
+    local config = tray and FoodDryingExtended.TRAYS[tray:getFullType()]
+    if not config then return end
+    local char = character or getPlayer()
+    local entries = tray:getModData().fdxEntries or {}
+    if not tray:isCooked() then
+        for _, e in ipairs(entries) do giveRaw(char, e) end
+    elseif config.pooled then
+        givePooled(char, config, entries)
+    else
+        for _, e in ipairs(entries) do giveCooked(char, config, e) end
+    end
+end
+
+-- OnCooked of the trays of this mod: show the dried tray model. The name keeps
+-- the vanilla cooked prefix, translated on each client.
+function FoodDryingExtended.onTrayCooked(item)
+    local config = FoodDryingExtended.TRAYS[item:getFullType()]
+    if config and config.cookedModel then
+        item:setStaticModel(config.cookedModel)
+        item:setWorldStaticModel(config.cookedModel)
+    end
 end
 
 -- OnTest of BagHomemadeCrisps: only an empty paper bag can become a crisps
@@ -49,4 +257,21 @@ function FoodDryingExtended.isEmptyPaperBag(item, character)
         return inventory == nil or inventory:isEmpty()
     end
     return true
+end
+
+-- OnCreate of BagHomemadeCrisps: InheritFood copies the nutrition; the mood
+-- effect of crisps fried with oil is copied here.
+function FoodDryingExtended.onCrispsBagged(craftRecipeData, character)
+    local consumed = craftRecipeData:getAllConsumedItems()
+    local createdItems = craftRecipeData:getAllCreatedItems()
+    if not consumed or not createdItems or createdItems:size() == 0 then return end
+    local bag = createdItems:get(0)
+    for i = 0, consumed:size() - 1 do
+        local item = consumed:get(i)
+        if instanceof(item, "Food") and item:getFullType() ~= "Base.PaperBag" then
+            bag:setUnhappyChange(item:getUnhappyChange())
+            bag:syncItemFields()
+            return
+        end
+    end
 end

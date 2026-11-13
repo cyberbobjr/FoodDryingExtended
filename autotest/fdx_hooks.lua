@@ -1,24 +1,20 @@
 -- Food Drying Extended in-game test (pzdev, single player client), nominal path:
---   1. item scripts of the mod exist, the six vanilla vegetables carry the
---      fooddrying:dryablevegetable tag and keep their own tags;
---   2. OvenDrying.dryableTypes maps each vegetable and the potato;
---   3. Food Drying's rack recipe (file replaced by the mod) maps each new vegetable;
---   4. the three crisps recipes exist;
---   5. crisps tray cycle with Food Drying's OnCreate functions: 3 potatoes in the tray,
---      cooked tray emptied -> 3 homemade crisps; uncooked tray -> potatoes back;
---   6. paper bag test: empty bag accepted, bag holding an item refused.
+--   1. item scripts exist, vanilla items carry the Food Drying tags (and keep their own),
+--      OvenDrying.dryableTypes maps them;
+--   2. Food Drying's rack recipes (file replaced by the mod) map the new fruit, berries,
+--      vegetables and salted seafood; the mod's recipes exist; SaltSeafood maps each seafood;
+--   3. trays of the mod with the mod's own OnCreate functions:
+--      crisps (potato + kale), crisps with oil (bonus), fruit leather (average), insects,
+--      uncooked tray -> raw food back;
+--   4. paper bag: empty bag accepted, bag holding an item refused, mood copied to the bag;
+--   5. display names (Food Drying's names kept, the mod's names translated).
 -- Test items are removed at the end.
 local H = {}
 local lines, okAll, passed, failed = {}, true, 0, 0
-local created = {}
 
 local function rec(ok, name, detail)
     if ok then passed = passed + 1 else okAll = false; failed = failed + 1 end
     lines[#lines + 1] = (ok and "PASS " or "FAIL ") .. name .. (detail and (" - " .. tostring(detail)) or "")
-end
-
-local function info(msg)
-    lines[#lines + 1] = "INFO " .. msg
 end
 
 local function check(name, fn)
@@ -30,16 +26,8 @@ local function check(name, fn)
     rec(res == true, name, detail)
 end
 
-local VEG = { "BrusselSprouts", "Cucumber", "Pumpkin", "SweetPotato", "Turnip", "Zucchini" }
-
 local function tag(name)
     return ItemTag.get(ResourceLocation.of(name))
-end
-
-local function newItem(fullType)
-    local item = instanceItem(fullType)
-    created[#created + 1] = item
-    return item
 end
 
 local function list(items)
@@ -48,7 +36,7 @@ local function list(items)
     return a
 end
 
--- Minimal craftRecipeData for Food Drying's OnCreate functions (they only read these two lists).
+-- Minimal craftRecipeData for the OnCreate functions (they only read these two lists).
 local function fakeRecipeData(consumed, createdItems)
     local d = {}
     function d:getAllConsumedItems() return list(consumed) end
@@ -56,154 +44,287 @@ local function fakeRecipeData(consumed, createdItems)
     return d
 end
 
-local function countType(inv, fullType)
-    return inv:getCountTypeRecurse(fullType)
+local function near(a, b)
+    return a ~= nil and b ~= nil and math.abs(a - b) < 0.01
 end
 
-local function removeAll(inv, fullType)
-    local items = inv:getAllTypeRecurse(fullType)
-    for i = items:size() - 1, 0, -1 do
-        local it = items:get(i)
-        if it:getContainer() then it:getContainer():DoRemoveItem(it) end
+local TAGGED = {
+    ["fooddrying:dryablevegetable"] = { "BrusselSprouts", "Cucumber", "Pumpkin", "SweetPotato", "Turnip", "Zucchini",
+        "Cabbage", "SugarBeet", "Garlic", "GreenOnions", "PepperJalapeno", "PepperHabanero",
+        "Dandelions", "GingerRoot", "GrapeLeaves", "Violets", "Thistle", "Nettles", "LemonGrass", "Ginseng" },
+    ["fooddrying:dryablefruit"] = { "WatermelonSliced" },
+    ["fooddrying:dryableberries"] = { "Rosehips" },
+}
+
+local DRIED = {
+    BrusselSprouts = "FoodDryingExtended.BrusselSproutsDried", Cucumber = "FoodDryingExtended.CucumberDried",
+    Pumpkin = "FoodDryingExtended.PumpkinDried", SweetPotato = "FoodDryingExtended.SweetPotatoDried",
+    Turnip = "FoodDryingExtended.TurnipDried", Zucchini = "FoodDryingExtended.ZucchiniDried",
+    Cabbage = "FoodDryingExtended.CabbageDried", SugarBeet = "FoodDryingExtended.SugarBeetDried",
+    Garlic = "FoodDryingExtended.GarlicDried", GreenOnions = "FoodDryingExtended.GreenOnionsDried",
+    WatermelonSliced = "FoodDryingExtended.WatermelonDried", Rosehips = "FoodDryingExtended.RosehipsDried",
+    PepperJalapeno = "Base.PepperJalapenoDried", PepperHabanero = "Base.PepperHabaneroDried",
+    Dandelions = "FoodDryingExtended.DandelionsDried", GingerRoot = "FoodDryingExtended.GingerRootDried",
+    GrapeLeaves = "FoodDryingExtended.GrapeLeavesDried", Violets = "FoodDryingExtended.VioletsDried",
+    Thistle = "FoodDryingExtended.ThistleDried", Nettles = "FoodDryingExtended.NettlesDried",
+    LemonGrass = "FoodDryingExtended.LemonGrassDried", Ginseng = "FoodDryingExtended.GinsengDried",
+}
+
+local HERBS = { "Basil", "Chives", "Cilantro", "Oregano", "Parsley", "Rosemary", "Sage", "Thyme" }
+
+-- rack recipe -> { result, pattern } pairs added by the mod
+local RACK = {
+    ["FoodDrying.DryVegetables"] = {
+        { "FoodDryingExtended.CucumberDried", "Base.Cucumber" }, { "FoodDryingExtended.CabbageDried", "Base.Cabbage" },
+        { "FoodDryingExtended.GarlicDried", "Base.Garlic" }, { "Base.PepperJalapenoDried", "Base.PepperJalapeno" },
+        { "FoodDrying.TomatoDried", "Base.Tomato" } },
+    ["FoodDrying.DryFruit"] = { { "FoodDryingExtended.WatermelonDried", "Base.WatermelonSliced" },
+        { "FoodDrying.AppleDried", "Base.Apple" } },
+    ["FoodDrying.DryBerries"] = { { "FoodDryingExtended.RosehipsDried", "Base.Rosehips" } },
+    ["FoodDrying.DryFish"] = { { "FoodDryingExtended.ShrimpDried", "FoodDryingExtended.ShrimpSalted" },
+        { "FoodDryingExtended.OystersDried", "FoodDryingExtended.OystersSalted" },
+        { "FoodDrying.SalmonDried", "FoodDrying.SalmonSalted" } },
+    ["FoodDryingExtended.SaltSeafood"] = { { "FoodDryingExtended.SquidSalted", "Base.Squid" },
+        { "FoodDryingExtended.CrayfishSalted", "Base.Crayfish" } },
+    ["FoodDryingExtended.DryWildPlants"] = { { "FoodDryingExtended.GinsengDried", "Base.Ginseng" },
+        { "FoodDryingExtended.NettlesDried", "Base.Nettles" } },
+}
+table.insert(RACK["FoodDrying.DryVegetables"], { "FoodDryingExtended.DandelionsDried", "Base.Dandelions" })
+
+local function mapperHas(recipeName, resultType, rawType)
+    local sm = getScriptManager()
+    local recipe = sm:getCraftRecipe(recipeName)
+    if not recipe then return false, "recipe missing" end
+    local mapper = recipe:getOutputs():get(0):getOutputMapper()
+    local result = sm:FindItem(resultType)
+    if not result then return false, "result missing" end
+    local pattern = mapper:getPatternForResult(result)
+    for i = 0, pattern:size() - 1 do
+        if pattern:get(i):getFullName() == rawType then return true end
     end
+    return false, "pattern without " .. rawType
 end
 
 local function scriptChecks()
     local sm = getScriptManager()
-    for _, n in ipairs(VEG) do
-        check("item FoodDryingExtended." .. n .. "Dried", function()
-            return sm:FindItem("FoodDryingExtended." .. n .. "Dried") ~= nil
-        end)
-        check("tag fooddrying:dryablevegetable on Base." .. n, function()
-            return sm:FindItem("Base." .. n):hasTag(tag("fooddrying:dryablevegetable")) == true
-        end)
-        check("dryableTypes Base." .. n, function()
-            local v = OvenDrying.dryableTypes["Base." .. n]
-            return v == "FoodDryingExtended." .. n .. "Dried", tostring(v)
-        end)
+    for tagName, names in pairs(TAGGED) do
+        for _, n in ipairs(names) do
+            check("tag " .. tagName .. " on Base." .. n, function()
+                return sm:FindItem("Base." .. n):hasTag(tag(tagName)) == true
+            end)
+            check("dryableTypes Base." .. n, function()
+                local v = OvenDrying.dryableTypes["Base." .. n]
+                return v == DRIED[n] and sm:FindItem(v) ~= nil, tostring(v)
+            end)
+        end
     end
-    check("vanilla tags kept (SweetPotato base:isseed, Zucchini base:hideuncooked)", function()
+    check("vanilla tags kept (SweetPotato isseed, Rosehips herbaltea, Garlic isseed)", function()
         return sm:FindItem("Base.SweetPotato"):hasTag(tag("base:isseed"))
-            and sm:FindItem("Base.Zucchini"):hasTag(tag("base:hideuncooked"))
+            and sm:FindItem("Base.Rosehips"):hasTag(tag("base:herbaltea"))
+            and sm:FindItem("Base.Garlic"):hasTag(tag("base:isseed"))
     end)
-    check("dried vegetables carry fooddrying:driedvegetables", function()
-        return sm:FindItem("FoodDryingExtended.CucumberDried"):hasTag(tag("fooddrying:driedvegetables"))
+    check("dried rose hips still usable for tea", function()
+        return sm:FindItem("FoodDryingExtended.RosehipsDried"):hasTag(tag("base:herbaltea"))
     end)
-    -- Translation files of the same name are merged by key: Food Drying's names stay.
-    for _, t in ipairs({ "FoodDrying.AppleDried", "FoodDrying.TomatoDried", "FoodDryingExtended.CucumberDried",
-                         "FoodDryingExtended.HomemadeCrispsBag" }) do
-        check("display name of " .. t, function()
-            local name = instanceItem(t):getDisplayName()
-            local rawName = string.match(t, "%.(.+)$")
-            return name ~= nil and name ~= "" and name ~= rawName
-                and not string.find(name, "FoodDrying", 1, true), tostring(name)
-        end)
-    end
-    check("dryableTypes Base.Potato -> HomemadeCrisps", function()
-        return OvenDrying.dryableTypes["Base.Potato"] == "FoodDryingExtended.HomemadeCrisps"
+    check("shelf life tags (driedvegetables, driedfruit, driedfish)", function()
+        return sm:FindItem("FoodDryingExtended.CabbageDried"):hasTag(tag("fooddrying:driedvegetables"))
+            and sm:FindItem("FoodDryingExtended.FruitLeather"):hasTag(tag("fooddrying:driedfruit"))
+            and sm:FindItem("FoodDryingExtended.SquidDried"):hasTag(tag("fooddrying:driedfish"))
+            and sm:FindItem("FoodDryingExtended.SquidSalted"):hasTag(tag("fooddrying:saltedfish"))
     end)
-    for _, r in ipairs({ "PrepareHomemadeCrispsTray", "EmptyHomemadeCrispsTray", "BagHomemadeCrisps" }) do
+    check("potato no longer in Food Drying's oven table", function()
+        return OvenDrying.dryableTypes["Base.Potato"] == nil
+    end)
+    for _, r in ipairs({ "PrepareHomemadeCrispsTray", "PrepareHomemadeCrispsTrayOil", "PrepareFruitLeatherTray",
+                         "PrepareRoastedInsectsTray", "EmptyExtendedTray", "BagHomemadeCrisps", "SaltSeafood" }) do
         check("recipe FoodDryingExtended." .. r, function()
             return sm:getCraftRecipe("FoodDryingExtended." .. r) ~= nil
         end)
     end
-    check("rack recipe FoodDrying.DryVegetables maps the new vegetables", function()
-        local recipe = sm:getCraftRecipe("FoodDrying.DryVegetables")
-        if not recipe then return false, "recipe missing" end
-        local mapper = recipe:getOutputs():get(0):getOutputMapper()
-        local missing = {}
-        for _, n in ipairs(VEG) do
-            local result = sm:FindItem("FoodDryingExtended." .. n .. "Dried")
-            local pattern = result and mapper:getPatternForResult(result)
-            local found = false
-            if pattern then
-                for i = 0, pattern:size() - 1 do
-                    if pattern:get(i):getFullName() == "Base." .. n then found = true end
-                end
-            end
-            if not found then missing[#missing + 1] = n end
+    check("herb rack recipe DryWildPlants is tagged DryingRackHerb", function()
+        local r = sm:getCraftRecipe("FoodDryingExtended.DryWildPlants")
+        if not r then return false, "recipe missing" end
+        local tags = r:getTags()
+        for i = 0, tags:size() - 1 do
+            if string.lower(tostring(tags:get(i))) == "dryingrackherb" then return true end
         end
-        local tomato = sm:FindItem("FoodDrying.TomatoDried")
-        local tomatoOk = tomato and mapper:getPatternForResult(tomato):size() > 0
-        return #missing == 0 and tomatoOk == true,
-            "missing: " .. table.concat(missing, ",") .. " tomato kept: " .. tostring(tomatoOk)
+        return false, tostring(tags)
     end)
+    check("dried ginger, lemongrass and ginseng still make herbal tea", function()
+        local t = tag("base:herbaltea")
+        return sm:FindItem("FoodDryingExtended.GingerRootDried"):hasTag(t)
+            and sm:FindItem("FoodDryingExtended.LemonGrassDried"):hasTag(t)
+            and sm:FindItem("FoodDryingExtended.GinsengDried"):hasTag(t)
+    end)
+    for _, h in ipairs(HERBS) do
+        check("grind recipe: 4 Base." .. h .. "Dried -> Base.Seasoning_" .. h, function()
+            local r = sm:getCraftRecipe("FoodDryingExtended.Grind" .. h .. "Seasoning")
+            if not r then return false, "recipe missing" end
+            local out = r:getOutputs():get(0):getPossibleResultItems()
+            local ok = false
+            for i = 0, out:size() - 1 do
+                if out:get(i):getFullName() == "Base.Seasoning_" .. h then ok = true end
+            end
+            return ok and sm:FindItem("Base." .. h .. "Dried") ~= nil
+        end)
+    end
+    for recipeName, pairsList in pairs(RACK) do
+        for _, p in ipairs(pairsList) do
+            check(recipeName .. " maps " .. p[2] .. " -> " .. p[1], function()
+                return mapperHas(recipeName, p[1], p[2])
+            end)
+        end
+    end
 end
 
-local function crispsCycle(inv)
-    -- cooked tray
-    local potatoes = { newItem("Base.Potato"), newItem("Base.Potato"), newItem("Base.Potato") }
-    local salt = newItem("Base.Salt")
-    local tray = newItem("FoodDryingExtended.BakingTrayCrisps")
+local function fill(trayType, items)
+    local inv = getPlayer():getInventory()
+    local tray = instanceItem(trayType)
     inv:AddItem(tray)
-    OvenDrying.onContainerFilled(fakeRecipeData({ potatoes[1], potatoes[2], salt, potatoes[3] }, { tray }), getPlayer())
-    local data = tray:getModData().poisonData
-    check("tray filled: 3 potato entries (salt ignored)", function()
-        return data ~= nil and #data == 3, tostring(data and #data)
+    FoodDryingExtended.onTrayFilled(fakeRecipeData(items, { tray }), getPlayer())
+    return tray
+end
+
+-- Empties a tray and returns the new items of the inventory (type -> list).
+local function empty(tray)
+    local inv = getPlayer():getInventory()
+    local before = {}
+    local all = inv:getItems()
+    for i = 0, all:size() - 1 do before[all:get(i)] = true end
+    FoodDryingExtended.onTrayEmptied(fakeRecipeData({ tray }, {}), getPlayer())
+    inv:DoRemoveItem(tray)
+    local got = {}
+    all = inv:getItems()
+    for i = all:size() - 1, 0, -1 do
+        local it = all:get(i)
+        if not before[it] then
+            local t = it:getFullType()
+            got[t] = got[t] or {}
+            table.insert(got[t], it)
+            inv:DoRemoveItem(it)
+        end
+    end
+    return got
+end
+
+local function count(got, t)
+    return got[t] and #got[t] or 0
+end
+
+local function trayChecks()
+    -- crisps: potato + kale + potato, salt ignored
+    local tray = fill("FoodDryingExtended.BakingTrayCrisps",
+        { instanceItem("Base.Potato"), instanceItem("Base.Salt"), instanceItem("Base.Kale"), instanceItem("Base.Potato") })
+    check("crisps tray: 3 entries (salt ignored)", function()
+        local e = tray:getModData().fdxEntries
+        return e ~= nil and #e == 3, tostring(e and #e)
     end)
     tray:setCooked(true)
-    FoodDryingExtended.onCrispsTrayCooked(tray)
+    FoodDryingExtended.onTrayCooked(tray)
     check("cooked tray shows the dried tray model", function()
         return tray:getStaticModel() == "FoodDrying.BakingTrayVegetablesDried", tray:getStaticModel()
     end)
-    local before = countType(inv, "FoodDryingExtended.HomemadeCrisps")
-    OvenDrying.onContainerEmptied(fakeRecipeData({ tray }, {}), getPlayer())
-    local got = countType(inv, "FoodDryingExtended.HomemadeCrisps") - before
-    check("cooked tray emptied: 3 homemade crisps", function() return got == 3, tostring(got) end)
-    local crisps = inv:getFirstTypeRecurse("FoodDryingExtended.HomemadeCrisps")
-    check("crisps keep the potato hunger (-18) and 70 calories", function()
-        if not crisps then return false, "no crisps" end
-        local h = math.floor(crisps:getHungerChange() * 100 + 0.5)
-        return h == -18 and math.floor(crisps:getCalories() + 0.5) == 70,
-            "hunger " .. tostring(crisps:getHungerChange()) .. " calories " .. tostring(crisps:getCalories())
+    local got = empty(tray)
+    check("crisps: 2 potato crisps + 1 kale crisps", function()
+        return count(got, "FoodDryingExtended.HomemadeCrisps") == 2 and count(got, "FoodDryingExtended.KaleCrisps") == 1
     end)
-    inv:DoRemoveItem(tray)
+    check("kale crisps keep the kale calories (178)", function()
+        local k = got["FoodDryingExtended.KaleCrisps"] and got["FoodDryingExtended.KaleCrisps"][1]
+        return k ~= nil and near(k:getCalories(), 178), k and tostring(k:getCalories())
+    end)
 
-    -- uncooked tray gives the potatoes back
-    local raw = { newItem("Base.Potato"), newItem("Base.Potato") }
-    local tray2 = newItem("FoodDryingExtended.BakingTrayCrisps")
-    inv:AddItem(tray2)
-    OvenDrying.onContainerFilled(fakeRecipeData(raw, { tray2 }), getPlayer())
-    local potBefore = countType(inv, "Base.Potato")
-    OvenDrying.onContainerEmptied(fakeRecipeData({ tray2 }, {}), getPlayer())
-    local potGot = countType(inv, "Base.Potato") - potBefore
-    check("uncooked tray emptied: 2 potatoes back", function() return potGot == 2, tostring(potGot) end)
-    inv:DoRemoveItem(tray2)
+    -- crisps with oil
+    tray = fill("FoodDryingExtended.BakingTrayCrispsOil", { instanceItem("Base.Potato"), instanceItem("Base.OilVegetable") })
+    tray:setCooked(true)
+    got = empty(tray)
+    local c = got["FoodDryingExtended.HomemadeCrisps"] and got["FoodDryingExtended.HomemadeCrisps"][1]
+    check("oil crisps: +70 kcal, +8 g lipids, -10 unhappiness", function()
+        return c ~= nil and near(c:getCalories(), 140) and near(c:getLipids(), 8.15) and near(c:getUnhappyChange(), -10),
+            c and (tostring(c:getCalories()) .. " kcal, " .. tostring(c:getLipids()) .. " g, unhappy " .. tostring(c:getUnhappyChange()))
+    end)
+    check("oil itself is not turned into crisps", function()
+        return count(got, "FoodDryingExtended.HomemadeCrisps") == 1
+    end)
+
+    -- bag keeps the oil crisps mood
+    if c then
+        local bag = instanceItem("FoodDryingExtended.HomemadeCrispsBag")
+        FoodDryingExtended.onCrispsBagged(fakeRecipeData({ c, instanceItem("Base.PaperBag") }, { bag }), getPlayer())
+        check("bag of crisps keeps the mood of oil crisps", function()
+            return near(bag:getUnhappyChange(), -10), tostring(bag:getUnhappyChange())
+        end)
+    end
+
+    -- fruit leather: average of 2 apples + 2 bananas
+    local fruits = { instanceItem("Base.Apple"), instanceItem("Base.Apple"), instanceItem("Base.Banana"), instanceItem("Base.Banana") }
+    local total = 0
+    for _, f in ipairs(fruits) do total = total + f:getCalories() end
+    tray = fill("FoodDryingExtended.BakingTrayFruitLeather", fruits)
+    tray:setCooked(true)
+    got = empty(tray)
+    check("fruit leather: 4 portions with the average calories", function()
+        local l = got["FoodDryingExtended.FruitLeather"]
+        return l ~= nil and #l == 4 and near(l[1]:getCalories(), total / 4),
+            l and (tostring(#l) .. " x " .. tostring(l[1]:getCalories()) .. " (expected " .. tostring(total / 4) .. ")")
+    end)
+
+    -- insects
+    tray = fill("FoodDryingExtended.BakingTrayInsects",
+        { instanceItem("Base.Cricket"), instanceItem("Base.MonarchCaterpillar"), instanceItem("Base.SilkMothCaterpillar") })
+    tray:setCooked(true)
+    got = empty(tray)
+    check("insects: 1 roasted cricket + 2 roasted caterpillars", function()
+        return count(got, "FoodDryingExtended.RoastedCricket") == 1 and count(got, "FoodDryingExtended.RoastedCaterpillar") == 2
+    end)
+
+    -- uncooked tray gives the raw food back
+    tray = fill("FoodDryingExtended.BakingTrayInsects", { instanceItem("Base.Grasshopper"), instanceItem("Base.Grasshopper") })
+    got = empty(tray)
+    check("uncooked tray: 2 grasshoppers back", function()
+        return count(got, "Base.Grasshopper") == 2
+    end)
 end
 
 local function bagChecks()
-    local bag = newItem("Base.PaperBag")
+    local bag = instanceItem("Base.PaperBag")
     check("empty paper bag accepted", function()
         return FoodDryingExtended.isEmptyPaperBag(bag, getPlayer()) == true
     end)
-    bag:getItemContainer():AddItem(newItem("Base.Pencil"))
+    bag:getItemContainer():AddItem(instanceItem("Base.Pencil"))
     check("paper bag holding an item refused", function()
         return FoodDryingExtended.isEmptyPaperBag(bag, getPlayer()) == false
     end)
-    check("other inputs pass the bag test", function()
-        return FoodDryingExtended.isEmptyPaperBag(newItem("FoodDryingExtended.HomemadeCrisps"), getPlayer()) == true
-    end)
     check("bag of crisps gives the paper bag back once eaten", function()
         local s = getScriptManager():FindItem("FoodDryingExtended.HomemadeCrispsBag")
-        return s ~= nil and s:getReplaceOnUse() == "Base.PaperBag", s and tostring(s:getReplaceOnUse())
+        return s ~= nil and s:getReplaceOnUse() == "Base.PaperBag"
     end)
+end
+
+local function nameChecks()
+    for _, t in ipairs({ "FoodDrying.AppleDried", "FoodDryingExtended.CucumberDried", "FoodDryingExtended.FruitLeather",
+                         "FoodDryingExtended.RoastedCricket", "FoodDryingExtended.SquidSalted" }) do
+        check("display name of " .. t, function()
+            local name = instanceItem(t):getDisplayName()
+            local rawName = string.match(t, "%.(.+)$")
+            return name ~= nil and name ~= "" and name ~= rawName and not string.find(name, "FoodDrying", 1, true),
+                tostring(name)
+        end)
+    end
 end
 
 function H.start(ctx)
     local p = getPlayer()
     if not p then return false, "no player" end
     rec(OvenDrying ~= nil and OvenDrying.dryableTypes ~= nil, "Food Drying loaded (OvenDrying.dryableTypes)")
-    rec(FoodDryingExtended ~= nil and FoodDryingExtended.onCrispsTrayCooked ~= nil, "mod loaded (FoodDryingExtended)")
+    rec(FoodDryingExtended ~= nil and FoodDryingExtended.onTrayFilled ~= nil, "mod loaded (FoodDryingExtended)")
     if not OvenDrying or not FoodDryingExtended then return true end
-    local inv = p:getInventory()
     local ok, err = pcall(function()
         scriptChecks()
-        crispsCycle(inv)
+        trayChecks()
         bagChecks()
+        nameChecks()
     end)
     if not ok then rec(false, "test run", "error: " .. tostring(err)) end
-    removeAll(inv, "FoodDryingExtended.HomemadeCrisps")
-    removeAll(inv, "Base.Potato")
     return true
 end
 

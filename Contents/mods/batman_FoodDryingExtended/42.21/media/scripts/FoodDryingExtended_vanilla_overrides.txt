@@ -30,4 +30,84 @@ module Base
         Tags = fooddrying:dryablevegetable,
     }
 
+    item Cabbage
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item SugarBeet
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Garlic
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item GreenOnions
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item PepperJalapeno
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item PepperHabanero
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Dandelions
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item GingerRoot
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item GrapeLeaves
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Violets
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Thistle
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Nettles
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item LemonGrass
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Ginseng
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item WatermelonSliced
+    {
+        Tags = fooddrying:dryablefruit,
+    }
+
+    item Rosehips
+    {
+        Tags = fooddrying:dryableberries,
+    }
+
 }

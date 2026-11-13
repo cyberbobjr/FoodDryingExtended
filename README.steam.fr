@@ -2,27 +2,35 @@
 
 [b]Build 42.21 · Solo et multijoueur[/b]
 
-Ajoute des aliments à [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Food Drying [B42][/url] de Corvus, avec ses plaques, ses brochettes et son séchoir. Aucune entrée de menu en plus pour les légumes : ils passent par les mêmes recettes de plaque et de brochette de légumes.
+Ajoute des aliments à [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Food Drying [B42][/url] de Corvus, avec ses plaques, ses brochettes et son séchoir.
 
-[h2]Nouveaux légumes séchés[/h2]
+[h2]Plus d'aliments dans les recettes de Food Drying[/h2]
 [list]
-[*]Choux de Bruxelles, concombre, citrouille, patate douce, navet et courgette.
-[*]Au four (plaque de cuisson), en brochette et sur le séchoir, comme les autres légumes de Food Drying.
-[*]Un légume frais donne un légume séché aux mêmes valeurs nutritives, qui se garde des mois (l'option de conservation de Food Drying s'applique).
+[*]Légumes : choux de Bruxelles, concombre, citrouille, patate douce, navet, courgette, chou, betterave sucrière, ail, cébettes.
+[*]Fruits : tranches de pastèque, églantier. Piments jalapeño et habanero au four et en brochette.
+[*]Plantes sauvages : pissenlits, racine de gingembre, feuilles de vigne, violettes, chardon, orties, citronnelle, ginseng.
+[*]Ils passent par les recettes de plaque, de brochette et de séchoir de Food Drying (aucune entrée de menu en plus). Un aliment frais donne un aliment séché aux mêmes valeurs nutritives, qui se garde des mois.
 [/list]
 
-[h2]Chips maison[/h2]
-[list]
-[*][b]Préparer une plaque de chips maison[/b] : une plaque de cuisson, un couteau, du sel et 1 à 8 pommes de terre.
-[*]Faites-la cuire au four, puis [b]Vider la plaque de chips maison[/b] : une portion de chips par pomme de terre, avec ses valeurs nutritives.
-[*][b]Mettre des chips maison en sachet[/b] (sac en papier vide) : le sachet les garde fraîches deux fois plus longtemps, et vous récupérez le sac en papier une fois les chips mangées.
-[/list]
+[h2]Nouvelles recettes[/h2]
+[table]
+[tr][th]Recette[/th][th]Ingrédients[/th][th]Résultat[/th][/tr]
+[tr][td][b]Préparer une plaque de chips maison[/b][/td][td]Plaque de cuisson, couteau, sel, 1 à 8 pommes de terre, patates douces, betteraves sucrières, courgettes ou choux frisés (mélangés)[/td][td]Plaque à cuire 40 min[/td][/tr]
+[tr][td][b]Préparer une plaque de chips à l'huile[/b][/td][td]Pareil, plus 8 doses d'huile[/td][td]Plaque à cuire 40 min ; chaque portion gagne +70 kcal, +8 g de lipides et remonte le moral[/td][/tr]
+[tr][td][b]Mettre des chips maison en sachet[/b][/td][td]1 portion de chips maison, 1 sac en papier vide[/td][td]Sachet de chips : frais deux fois plus longtemps (30 jours), sac rendu une fois mangé[/td][/tr]
+[tr][td][b]Préparer une plaque de cuir de fruits[/b][/td][td]Plaque de cuisson, fourchette ou cuillère, 4 fruits ou baies (mélangés)[/td][td]Plaque à cuire 2 h[/td][/tr]
+[tr][td][b]Préparer une plaque d'insectes à griller[/b][/td][td]Plaque de cuisson, 1 à 20 criquets, sauterelles, larves de tenthrède ou chenilles[/td][td]Plaque à griller 30 min[/td][/tr]
+[tr][td][b]Vider la plaque de cuisson[/b][/td][td]Une plaque de ce mod, sortie du four[/td][td]1 portion de chips par légume (14 jours), 4 rouleaux de cuir de fruits (moyenne des fruits, des mois) ou insectes grillés (6 mois) ; aliments crus rendus si la plaque n'a pas cuit[/td][/tr]
+[tr][td][b]Saler des fruits de mer[/b][/td][td]Crevette, calmar, écrevisse ou huîtres, 5 doses de sel[/td][td]Fruits de mer salés, puis séchés sur le séchoir comme le poisson salé (des mois)[/td][/tr]
+[tr][td][b]Sécher des plantes sauvages[/b][/td][td]Sur le séchoir à herbes : 1 à 20 plantes sauvages[/td][td]Plantes séchées au bout d'1 jour (gingembre, citronnelle et ginseng servent toujours pour les tisanes)[/td][/tr]
+[tr][td][b]Moudre en épice[/b][/td][td]Mortier et pilon, 4 herbes séchées : basilic, ciboulette, coriandre, origan, persil, romarin, sauge ou thym[/td][td]1 pot de l'épice correspondante[/td][/tr]
+[/table]
 
 [h2]Remarques[/h2]
 [list]
 [*]Nécessite Food Drying. Chargez ce mod après Food Drying (et après son patch VFE si vous l'utilisez).
-[*]Le fichier des recettes du séchoir de Food Drying est remplacé par une copie à jour (basée sur Food Drying 1.11) qui ajoute les nouveaux légumes.
-[*]Anglais et français inclus.
+[*]Le fichier des recettes du séchoir de Food Drying est remplacé par une copie à jour (basée sur Food Drying 1.11) qui ajoute les nouveaux aliments.
+[*]Langues : anglais, français, allemand, espagnol, portugais, portugais du Brésil, russe, chinois, japonais, coréen, turc.
 [/list]
 
 [h2]Discord[/h2]

@@ -5,6 +5,8 @@ module FoodDryingExtended
         Base,
     }
 
+    /* Dried vegetables (oven tray, skewer, drying rack of Food Drying) */
+
     item BrusselSproutsDried
     {
         DisplayCategory = Food,
@@ -131,6 +133,494 @@ module FoodDryingExtended
         Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
     }
 
+    item CabbageDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = Cabbage,
+        EvolvedRecipe = Soup:12;Stew:12;Stir fry:12;Sandwich:6;Burger:6;Hotdog:6;Salad:12;Taco:6;Burrito:6,
+        FoodType = Vegetables,
+        HungerChange = -24.0,
+        Calories = 180.0,
+        Carbohydrates = 41.0,
+        Lipids = 0.7,
+        Proteins = 9.0,
+        CustomEatSound = EatingCrispy,
+        StaticModel = Cabbage_Ground,
+        WorldStaticModel = Cabbage_Ground,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item SugarBeetDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = SugarBeets,
+        FoodType = Vegetables,
+        HungerChange = -9.0,
+        Calories = 24.0,
+        Carbohydrates = 3.0,
+        Lipids = 0.0,
+        Proteins = 4.0,
+        UnhappyChange = 10,
+        CustomEatSound = EatingCrispy,
+        StaticModel = SugarBeet_Ground,
+        WorldStaticModel = SugarBeet_Ground,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item GarlicDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = Garlic,
+        EvolvedRecipe = Pizza:1;Omelette:1;Soup:1;Stew:1;Pie:1;Stir fry:1;Sandwich:1;Burger:1;Salad:1;Rice:1;Pasta:1;Taco:1;Burrito:1;Toast:1;Bread:1,
+        FoodType = Herb,
+        HungerChange = -5.0,
+        Calories = 14.0,
+        Carbohydrates = 3.27,
+        Lipids = 0.035,
+        Proteins = 0.385,
+        Spice = true,
+        StaticModel = Garlic,
+        WorldStaticModel = Garlic,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item GreenOnionsDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = HerbChives,
+        EvolvedRecipe = Stir fry:1;Pizza:1;Omelette:1;Pasta:1;Salad:1;Sandwich:1;Soup:1;Stew:1;Bread:1;Toast:1;Burger:1,
+        FoodType = Herb,
+        HungerChange = -3.0,
+        Calories = 0.1,
+        Carbohydrates = 0.0,
+        Lipids = 0.0,
+        Proteins = 0.0,
+        Spice = true,
+        EatType = EatSmall,
+        WorldStaticModel = GreenOnions,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    /* Dried wild plants (oven tray, skewer, drying racks) */
+
+    item DandelionsDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = DriedHerbs_generic,
+        EvolvedRecipe = Pizza:5;HotDrink:2;Omelette:5;Sandwich:5;Salad:5;Soup:5;Burger:5,
+        FoodType = Greens,
+        HungerChange = -5.0,
+        Calories = 25.0,
+        Carbohydrates = 5.0,
+        Lipids = 0.5,
+        Proteins = 1.5,
+        WorldStaticModel = DriedHerbs_generic,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item GingerRootDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = RootGinger,
+        EvolvedRecipe = Salad:1;Sandwich:1;Soup:2;Stew:2;Stir fry:2;HotDrink:1,
+        FoodType = NoExplicit,
+        HungerChange = -5.0,
+        Calories = 46.0,
+        Carbohydrates = 0.44,
+        Lipids = 2.36,
+        Proteins = 5.1,
+        Spice = true,
+        WorldStaticModel = Ginger_Ground,
+        Tags = base:hideuncooked;base:hidecooked;base:herbaltea;fooddrying:driedvegetables,
+    }
+
+    item GrapeLeavesDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = DriedHerbs_generic,
+        EvolvedRecipe = Soup:4;Stew:4;Salad:4;Rice:4;Pie:4;Sandwich:4,
+        FoodType = Vegetables,
+        HungerChange = -4.0,
+        Calories = 73.0,
+        Carbohydrates = 11.0,
+        Lipids = 2.0,
+        Proteins = 4.0,
+        WorldStaticModel = DriedHerbs_generic,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item VioletsDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = DriedHerbs_generic,
+        EvolvedRecipe = Salad:2;HotDrink:2,
+        FoodType = NoExplicit,
+        HungerChange = -2.0,
+        Calories = 27.0,
+        Carbohydrates = 7.0,
+        Lipids = 0.0,
+        Proteins = 1.0,
+        Spice = true,
+        WorldStaticModel = DriedHerbs_generic,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item ThistleDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = DriedHerbs_generic,
+        EvolvedRecipe = Salad:2;HotDrink:2;Soup:2,
+        FoodType = Herb,
+        HungerChange = -4.0,
+        Calories = 45.0,
+        Carbohydrates = 18.0,
+        Lipids = 0.0,
+        Proteins = 3.0,
+        Spice = true,
+        WorldStaticModel = DriedHerbs_generic,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item NettlesDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = DriedHerbs_generic,
+        EvolvedRecipe = Salad:2;HotDrink:2;Soup:2,
+        FoodType = Herb,
+        HungerChange = -4.0,
+        Calories = 50.0,
+        Carbohydrates = 15.0,
+        Lipids = 0.0,
+        Proteins = 2.0,
+        Spice = true,
+        WorldStaticModel = DriedHerbs_generic,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item LemonGrassDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = DriedHerbs_generic,
+        EvolvedRecipe = Soup:1;Stew:1;Stir fry:1;Rice:1;HotDrink:1,
+        FoodType = Herb,
+        HungerChange = -1.0,
+        Calories = 0.1,
+        Carbohydrates = 0.0,
+        Lipids = 0.0,
+        Proteins = 0.0,
+        Spice = true,
+        WorldStaticModel = DriedHerbs_generic,
+        Tags = base:hideuncooked;base:hidecooked;base:herbaltea;fooddrying:driedvegetables,
+    }
+
+    item GinsengDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = Ginseng,
+        EvolvedRecipe = HotDrink:1,
+        FoodType = NoExplicit,
+        HungerChange = -1.0,
+        Calories = 0.1,
+        Carbohydrates = 0.0,
+        Lipids = 0.0,
+        Proteins = 0.0,
+        Spice = true,
+        WorldStaticModel = Ginseng,
+        Tags = base:hideuncooked;base:hidecooked;base:herbaltea;fooddrying:driedvegetables,
+    }
+
+    /* Dried fruit and berries */
+
+    item WatermelonDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = WatermelonSliced,
+        EvolvedRecipe = Salad:6;FruitSalad:6;Pancakes:6;Muffin:6,
+        FoodType = Fruits,
+        HungerChange = -6.0,
+        Calories = 135.5,
+        Carbohydrates = 34.11,
+        Lipids = 0.67,
+        Proteins = 2.75,
+        CustomEatSound = EatingFruit,
+        StaticModel = MelonSlice,
+        WorldStaticModel = WaterMelonSlice_Ground,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedfruit,
+    }
+
+    item RosehipsDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = Rosehips,
+        EvolvedRecipe = HotDrink:2;Salad:3;FruitSalad:3;Soup:6;PieSweet:6;Bread:6,
+        FoodType = Berry,
+        HungerChange = -6.0,
+        Calories = 81.0,
+        Carbohydrates = 19.0,
+        Lipids = 0.0,
+        Proteins = 2.0,
+        Spice = true,
+        StaticModel = RoseHips,
+        WorldStaticModel = RoseHips,
+        Tags = base:hideuncooked;base:hidecooked;base:herbaltea;fooddrying:driedberries,
+    }
+
+    /* Seafood: salted (Salt Seafood), then dried on the drying rack like salted fish */
+
+    item ShrimpSalted
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        Icon = Shrimp,
+        BadInMicrowave = true,
+        DangerousUncooked = true,
+        EvolvedRecipe = Pizza:10;Soup:10;Stew:10;Pie:10;Stir fry:10;Sandwich:10|Cooked;Burger:10|Cooked;Salad:10|Cooked;Rice:10;Pasta:10;Burrito:10|Cooked;Taco:5|Cooked,
+        FoodType = Seafood,
+        GoodHot = true,
+        IsCookable = true,
+        MinutesToCook = 20,
+        MinutesToBurn = 50,
+        DaysFresh = 4,
+        DaysTotallyRotten = 8,
+        HungerChange = -10.0,
+        ThirstChange = 10.0,
+        Calories = 80.0,
+        Carbohydrates = 0.0,
+        Lipids = 7.0,
+        Proteins = 10.0,
+        StaticModel = Shrimp_Ground,
+        WorldStaticModel = Shrimp_Ground,
+        Tags = fooddrying:saltedfish,
+        CookingSound = FryingFood,
+    }
+
+    item ShrimpDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 120,
+        DaysTotallyRotten = 270,
+        Icon = Shrimp,
+        BadInMicrowave = true,
+        EvolvedRecipe = Pizza:10;Soup:10;Stew:10;Pie:10;Stir fry:10;Sandwich:10|Cooked;Burger:10|Cooked;Salad:10|Cooked;Rice:10;Pasta:10;Burrito:10|Cooked;Taco:5|Cooked,
+        FoodType = Seafood,
+        HungerChange = -10.0,
+        Calories = 80.0,
+        Carbohydrates = 0.0,
+        Lipids = 7.0,
+        Proteins = 10.0,
+        StaticModel = Shrimp_Ground,
+        WorldStaticModel = Shrimp_Ground,
+        Tags = fooddrying:driedfish,
+    }
+
+    item SquidSalted
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.2,
+        Icon = Squid,
+        BadInMicrowave = true,
+        DangerousUncooked = true,
+        EvolvedRecipe = Pizza:15;Soup:15;Stew:15;Pie:15;Stir fry:15;Sandwich:5|Cooked;Burger:10|Cooked;Salad:10|Cooked;Rice:15;Pasta:15;Taco:5|Cooked;Burrito:10|Cooked,
+        FoodType = Seafood,
+        GoodHot = true,
+        IsCookable = true,
+        MinutesToCook = 20,
+        MinutesToBurn = 50,
+        DaysFresh = 4,
+        DaysTotallyRotten = 8,
+        HungerChange = -30.0,
+        ThirstChange = 30.0,
+        Calories = 205.0,
+        Carbohydrates = 1.0,
+        Lipids = 13.0,
+        Proteins = 32.52,
+        StaticModel = Squid_Ground,
+        WorldStaticModel = Squid_Ground,
+        Tags = fooddrying:saltedfish,
+        CookingSound = FryingFood,
+    }
+
+    item SquidDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 120,
+        DaysTotallyRotten = 270,
+        Icon = Squid,
+        BadInMicrowave = true,
+        EvolvedRecipe = Pizza:15;Soup:15;Stew:15;Pie:15;Stir fry:15;Sandwich:5|Cooked;Burger:10|Cooked;Salad:10|Cooked;Rice:15;Pasta:15;Taco:5|Cooked;Burrito:10|Cooked,
+        FoodType = Seafood,
+        HungerChange = -30.0,
+        Calories = 205.0,
+        Carbohydrates = 1.0,
+        Lipids = 13.0,
+        Proteins = 32.52,
+        StaticModel = Squid_Ground,
+        WorldStaticModel = Squid_Ground,
+        Tags = fooddrying:driedfish,
+    }
+
+    item CrayfishSalted
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.2,
+        Icon = Crayfish,
+        BadInMicrowave = true,
+        DangerousUncooked = true,
+        EvolvedRecipe = Pizza:10;Soup:10;Stew:10;Pie:10;Stir fry:10;Sandwich:10|Cooked;Burger:10|Cooked;Salad:10|Cooked;Rice:10;Pasta:10;Burrito:10|Cooked;Taco:10|Cooked,
+        FoodType = Seafood,
+        GoodHot = true,
+        IsCookable = true,
+        MinutesToCook = 20,
+        MinutesToBurn = 50,
+        DaysFresh = 4,
+        DaysTotallyRotten = 8,
+        HungerChange = -10.0,
+        ThirstChange = 10.0,
+        Calories = 40.0,
+        Carbohydrates = 0.0,
+        Lipids = 2.0,
+        Proteins = 8.0,
+        StaticModel = Crayfish_Ground,
+        WorldStaticModel = Crayfish_Ground,
+        Tags = fooddrying:saltedfish,
+        CookingSound = FryingFood,
+    }
+
+    item CrayfishDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 120,
+        DaysTotallyRotten = 270,
+        Icon = Crayfish,
+        BadInMicrowave = true,
+        EvolvedRecipe = Pizza:10;Soup:10;Stew:10;Pie:10;Stir fry:10;Sandwich:10|Cooked;Burger:10|Cooked;Salad:10|Cooked;Rice:10;Pasta:10;Burrito:10|Cooked;Taco:10|Cooked,
+        FoodType = Seafood,
+        HungerChange = -10.0,
+        Calories = 40.0,
+        Carbohydrates = 0.0,
+        Lipids = 2.0,
+        Proteins = 8.0,
+        StaticModel = Crayfish_Ground,
+        WorldStaticModel = Crayfish_Ground,
+        Tags = fooddrying:driedfish,
+    }
+
+    item OystersSalted
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        Icon = Oysters,
+        BadInMicrowave = true,
+        DangerousUncooked = true,
+        EvolvedRecipe = Pizza:5;Soup:5;Stew:5;Pie:5;Stir fry:5;Sandwich:5|Cooked;Burger:5|Cooked;Salad:5|Cooked;Rice:5;Pasta:5,
+        FoodType = Seafood,
+        GoodHot = true,
+        IsCookable = true,
+        MinutesToCook = 20,
+        MinutesToBurn = 50,
+        DaysFresh = 4,
+        DaysTotallyRotten = 8,
+        HungerChange = -5.0,
+        ThirstChange = 5.0,
+        Calories = 15.0,
+        Carbohydrates = 10.0,
+        Lipids = 4.0,
+        Proteins = 22.0,
+        StaticModel = Oysters_Ground,
+        WorldStaticModel = Oysters_Ground,
+        Tags = fooddrying:saltedfish,
+        CookingSound = FryingFood,
+    }
+
+    item OystersDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 120,
+        DaysTotallyRotten = 270,
+        Icon = Oysters,
+        BadInMicrowave = true,
+        EvolvedRecipe = Pizza:5;Soup:5;Stew:5;Pie:5;Stir fry:5;Sandwich:5|Cooked;Burger:5|Cooked;Salad:5|Cooked;Rice:5;Pasta:5,
+        FoodType = Seafood,
+        HungerChange = -5.0,
+        Calories = 15.0,
+        Carbohydrates = 10.0,
+        Lipids = 4.0,
+        Proteins = 22.0,
+        StaticModel = Oysters_Ground,
+        WorldStaticModel = Oysters_Ground,
+        Tags = fooddrying:driedfish,
+    }
+
+    /* Oven trays of this mod (filled and emptied by FoodDryingExtended.lua) */
+
     item BakingTrayCrisps
     {
         DisplayCategory = Food,
@@ -139,7 +629,7 @@ module FoodDryingExtended
         Icon = BakingTrayFruit,
         IsCookable = true,
         CantEat = true,
-        OnCooked = FoodDryingExtended.onCrispsTrayCooked,
+        OnCooked = FoodDryingExtended.onTrayCooked,
         MinutesToCook = 40,
         MinutesToBurn = 90,
         HungerChange = 0.0,
@@ -148,6 +638,62 @@ module FoodDryingExtended
         CookingSound = FryingFood,
         Tags = base:hideuncooked;base:hasmetal;base:spawncooked,
     }
+
+    item BakingTrayCrispsOil
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.5,
+        Icon = BakingTrayFruit,
+        IsCookable = true,
+        CantEat = true,
+        OnCooked = FoodDryingExtended.onTrayCooked,
+        MinutesToCook = 40,
+        MinutesToBurn = 90,
+        HungerChange = 0.0,
+        StaticModel = FoodDrying.BakingTrayVegetables,
+        WorldStaticModel = FoodDrying.BakingTrayVegetables,
+        CookingSound = FryingFood,
+        Tags = base:hideuncooked;base:hasmetal;base:spawncooked,
+    }
+
+    item BakingTrayFruitLeather
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.5,
+        Icon = BakingTrayFruit,
+        IsCookable = true,
+        CantEat = true,
+        OnCooked = FoodDryingExtended.onTrayCooked,
+        MinutesToCook = 120,
+        MinutesToBurn = 240,
+        HungerChange = 0.0,
+        StaticModel = FoodDrying.BakingTrayFruit,
+        WorldStaticModel = FoodDrying.BakingTrayFruit,
+        CookingSound = FryingFood,
+        Tags = base:hideuncooked;base:hasmetal;base:spawncooked,
+    }
+
+    item BakingTrayInsects
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.5,
+        Icon = BakingTrayFruit,
+        IsCookable = true,
+        CantEat = true,
+        OnCooked = FoodDryingExtended.onTrayCooked,
+        MinutesToCook = 30,
+        MinutesToBurn = 70,
+        HungerChange = 0.0,
+        StaticModel = FoodDrying.BakingTrayMushrooms,
+        WorldStaticModel = FoodDrying.BakingTrayMushrooms,
+        CookingSound = FryingFood,
+        Tags = base:hideuncooked;base:hasmetal;base:spawncooked,
+    }
+
+    /* Homemade crisps (one portion per vegetable, nutrition copied from it) */
 
     item HomemadeCrisps
     {
@@ -164,6 +710,82 @@ module FoodDryingExtended
         Carbohydrates = 15.0,
         Lipids = 0.15,
         Proteins = 3.0,
+        CustomEatSound = EatingCrispy,
+        Tags = base:hideuncooked;base:hidecooked,
+    }
+
+    item SweetPotatoCrisps
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        EatType = EatSmall,
+        Weight = 0.05,
+        DaysFresh = 14,
+        DaysTotallyRotten = 30,
+        Icon = TortillaChips,
+        FoodType = Vegetables,
+        HungerChange = -18.0,
+        Calories = 70.0,
+        Carbohydrates = 14.52,
+        Lipids = 0.15,
+        Proteins = 2.88,
+        CustomEatSound = EatingCrispy,
+        Tags = base:hideuncooked;base:hidecooked,
+    }
+
+    item SugarBeetCrisps
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        EatType = EatSmall,
+        Weight = 0.05,
+        DaysFresh = 14,
+        DaysTotallyRotten = 30,
+        Icon = TortillaChips,
+        FoodType = Vegetables,
+        HungerChange = -9.0,
+        Calories = 24.0,
+        Carbohydrates = 3.0,
+        Lipids = 0.0,
+        Proteins = 4.0,
+        CustomEatSound = EatingCrispy,
+        Tags = base:hideuncooked;base:hidecooked,
+    }
+
+    item ZucchiniCrisps
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        EatType = EatSmall,
+        Weight = 0.05,
+        DaysFresh = 14,
+        DaysTotallyRotten = 30,
+        Icon = TortillaChips,
+        FoodType = Vegetables,
+        HungerChange = -10.0,
+        Calories = 33.0,
+        Carbohydrates = 6.1,
+        Lipids = 0.63,
+        Proteins = 2.37,
+        CustomEatSound = EatingCrispy,
+        Tags = base:hideuncooked;base:hidecooked,
+    }
+
+    item KaleCrisps
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        EatType = EatSmall,
+        Weight = 0.05,
+        DaysFresh = 14,
+        DaysTotallyRotten = 30,
+        Icon = TortillaChips,
+        FoodType = Vegetables,
+        HungerChange = -16.0,
+        Calories = 178.0,
+        Carbohydrates = 41.41,
+        Lipids = 0.71,
+        Proteins = 9.14,
         CustomEatSound = EatingCrispy,
         Tags = base:hideuncooked;base:hidecooked,
     }
@@ -189,4 +811,114 @@ module FoodDryingExtended
         WorldStaticModel = Paperbag_Ground,
         Tags = base:hideuncooked;base:hidecooked,
     }
+
+    /* Fruit leather (average nutrition of the fruits used) */
+
+    item FruitLeather
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = DriedApricots,
+        FoodType = Fruits,
+        HungerChange = -12.0,
+        Calories = 90.0,
+        Carbohydrates = 22.0,
+        Lipids = 0.3,
+        Proteins = 1.0,
+        UnhappyChange = -10,
+        CustomEatSound = EatingFruit,
+        StaticModel = DriedApricot_Hand,
+        WorldStaticModel = DriedApricots,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedfruit,
+    }
+
+    /* Roasted insects (nutrition copied from the raw insect) */
+
+    item RoastedCricket
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = Cricket,
+        FoodType = Insect,
+        HungerChange = -1.0,
+        Calories = 20.0,
+        Carbohydrates = 1.34,
+        Lipids = 1.32,
+        Proteins = 3.6,
+        UnhappyChange = 20,
+        CustomEatSound = EatingCrispy,
+        StaticModel = Cricket_Ground,
+        WorldStaticModel = Cricket_Ground,
+        Tags = base:hideuncooked;base:hidecooked;base:nocookingxp,
+    }
+
+    item RoastedGrasshopper
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = Grasshopper,
+        FoodType = Insect,
+        HungerChange = -1.0,
+        Calories = 25.0,
+        Carbohydrates = 3.0,
+        Lipids = 0.24,
+        Proteins = 5.55,
+        UnhappyChange = 20,
+        CustomEatSound = EatingCrispy,
+        StaticModel = Grasshopper_Ground,
+        WorldStaticModel = Grasshopper_Ground,
+        Tags = base:hideuncooked;base:hidecooked;base:nocookingxp,
+    }
+
+    item RoastedSawflyLarva
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = Insect_SawflyLarva,
+        FoodType = Insect,
+        HungerChange = -1.0,
+        Calories = 27.0,
+        Carbohydrates = 3.0,
+        Lipids = 20.24,
+        Proteins = 27.55,
+        UnhappyChange = 20,
+        CustomEatSound = EatingCrispy,
+        StaticModel = SawflyLarva_Ground,
+        WorldStaticModel = SawflyLarva_Ground,
+        Tags = base:hideuncooked;base:hidecooked;base:nocookingxp,
+    }
+
+    item RoastedCaterpillar
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.05,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = Insect_AmericanLadyCaterpillar,
+        FoodType = Insect,
+        HungerChange = -1.0,
+        Calories = 27.0,
+        Carbohydrates = 3.0,
+        Lipids = 20.24,
+        Proteins = 27.55,
+        UnhappyChange = 20,
+        CustomEatSound = EatingCrispy,
+        StaticModel = AmericanLadyCaterpillar_Ground,
+        WorldStaticModel = AmericanLadyCaterpillar_Ground,
+        Tags = base:hideuncooked;base:hidecooked;base:nocookingxp,
+    }
+
 }
