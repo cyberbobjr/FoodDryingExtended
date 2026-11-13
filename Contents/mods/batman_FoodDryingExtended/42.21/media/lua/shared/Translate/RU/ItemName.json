@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "Сушёная брюссельская капуста",
   "FoodDryingExtended.CucumberDried": "Сушёный огурец",
-  "FoodDryingExtended.PumpkinDried": "Сушёная тыква",
+  "FoodDryingExtended.PumpkinSlicedDried": "Сушёные ломтики тыквы",
   "FoodDryingExtended.SweetPotatoDried": "Сушёный батат",
   "FoodDryingExtended.TurnipDried": "Сушёная репа",
   "FoodDryingExtended.ZucchiniDried": "Сушёные цуккини",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "Чертополох (сушёное)",
   "FoodDryingExtended.NettlesDried": "Крапива (сушёное)",
   "FoodDryingExtended.LemonGrassDried": "Лимонная трава (сушёное)",
-  "FoodDryingExtended.GinsengDried": "Женьшень (сушёное)"
+  "FoodDryingExtended.GinsengDried": "Женьшень (сушёное)",
+  "FoodDryingExtended.PineappleSlice": "Ломтик ананаса",
+  "FoodDryingExtended.MangoSlice": "Ломтик манго",
+  "FoodDryingExtended.GrapefruitSlice": "Ломтик грейпфрута",
+  "FoodDryingExtended.PineappleSliceDried": "Сушёный ломтик ананаса",
+  "FoodDryingExtended.MangoSliceDried": "Сушёный ломтик манго",
+  "FoodDryingExtended.GrapefruitSliceDried": "Сушёный ломтик грейпфрута"
 }

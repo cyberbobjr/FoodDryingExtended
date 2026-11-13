@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "乾燥メキャベツ",
   "FoodDryingExtended.CucumberDried": "乾燥キュウリ",
-  "FoodDryingExtended.PumpkinDried": "乾燥カボチャ",
+  "FoodDryingExtended.PumpkinSlicedDried": "乾燥カボチャのカット",
   "FoodDryingExtended.SweetPotatoDried": "干し芋",
   "FoodDryingExtended.TurnipDried": "乾燥カブ",
   "FoodDryingExtended.ZucchiniDried": "乾燥ズッキーニ",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "アザミ(乾燥)",
   "FoodDryingExtended.NettlesDried": "イラクサ(乾燥)",
   "FoodDryingExtended.LemonGrassDried": "レモングラス(乾燥)",
-  "FoodDryingExtended.GinsengDried": "朝鮮人参(乾燥)"
+  "FoodDryingExtended.GinsengDried": "朝鮮人参(乾燥)",
+  "FoodDryingExtended.PineappleSlice": "パイナップルのカット",
+  "FoodDryingExtended.MangoSlice": "マンゴーのカット",
+  "FoodDryingExtended.GrapefruitSlice": "グレープフルーツのカット",
+  "FoodDryingExtended.PineappleSliceDried": "乾燥パイナップルのカット",
+  "FoodDryingExtended.MangoSliceDried": "乾燥マンゴーのカット",
+  "FoodDryingExtended.GrapefruitSliceDried": "乾燥グレープフルーツのカット"
 }

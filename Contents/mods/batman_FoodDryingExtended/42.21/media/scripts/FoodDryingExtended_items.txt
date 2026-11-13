@@ -49,27 +49,6 @@ module FoodDryingExtended
         Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
     }
 
-    item PumpkinDried
-    {
-        DisplayCategory = Food,
-        ItemType = base:food,
-        Weight = 0.3,
-        DaysFresh = 150,
-        DaysTotallyRotten = 300,
-        Icon = Pumpkin,
-        EvolvedRecipe = PieSweet:20;Stew:20;Soup:20;Stir fry:20;Stir fry Griddle Pan:20,
-        FoodType = NoExplicit,
-        HungerChange = -40.0,
-        Calories = 404.0,
-        Carbohydrates = 20.45,
-        Lipids = 20.61,
-        Proteins = 34.53,
-        CustomEatSound = EatingCrispy,
-        StaticModel = Pumpkin_Ground,
-        WorldStaticModel = Pumpkin_Ground,
-        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
-    }
-
     item SweetPotatoDried
     {
         DisplayCategory = Food,
@@ -215,6 +194,155 @@ module FoodDryingExtended
         EatType = EatSmall,
         WorldStaticModel = GreenOnions,
         Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item PumpkinSlicedDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.03,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = Pumpkin_Slice,
+        EvolvedRecipe = PieSweet:4;Stew:4;Soup:4;Stir fry:4;Stir fry Griddle Pan:4,
+        FoodType = NoExplicit,
+        HungerChange = -4.0,
+        Calories = 40.0,
+        Carbohydrates = 2.04,
+        Lipids = 2.06,
+        Proteins = 3.45,
+        CustomEatSound = EatingCrispy,
+        StaticModel = PumpkinSlice,
+        WorldStaticModel = PumpkinSlice,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    /* Slices of large fruits (Slice Large Fruit) and their dried form */
+
+    item PineappleSlice
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 3,
+        DaysTotallyRotten = 5,
+        Icon = Pineapple,
+        EvolvedRecipe = Pizza:6;Cake:6;FruitSalad:6;Pancakes:6;Muffin:6;ConeIcecream:4;PieSweet:6;Oatmeal:4,
+        FoodType = Fruits,
+        HungerChange = -6.0,
+        Calories = 113.0,
+        Carbohydrates = 29.68,
+        Lipids = 0.27,
+        Proteins = 1.22,
+        CustomEatSound = EatingFruit,
+        StaticModel = Pineapple_Ground,
+        WorldStaticModel = Pineapple_Ground,
+        Tags = fooddrying:dryablefruit,
+    }
+
+    item PineappleSliceDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.03,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = Pineapple,
+        EvolvedRecipe = Pizza:6;Cake:6;FruitSalad:6;Pancakes:6;Muffin:6;ConeIcecream:4;PieSweet:6;Oatmeal:4,
+        FoodType = Fruits,
+        HungerChange = -6.0,
+        Calories = 113.0,
+        Carbohydrates = 29.68,
+        Lipids = 0.27,
+        Proteins = 1.22,
+        CustomEatSound = EatingFruit,
+        StaticModel = Pineapple_Ground,
+        WorldStaticModel = Pineapple_Ground,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedfruit,
+    }
+
+    item MangoSlice
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 3,
+        DaysTotallyRotten = 5,
+        Icon = Mango,
+        EvolvedRecipe = Cake:5;FruitSalad:5;Pancakes:5;Muffin:5;PieSweet:5;Oatmeal:5,
+        FoodType = Fruits,
+        HungerChange = -5.0,
+        Calories = 63.0,
+        Carbohydrates = 19.68,
+        Lipids = 0.27,
+        Proteins = 0.97,
+        CustomEatSound = EatingFruit,
+        StaticModel = Mango_Ground,
+        WorldStaticModel = Mango_Ground,
+        Tags = fooddrying:dryablefruit,
+    }
+
+    item MangoSliceDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.03,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = Mango,
+        EvolvedRecipe = Cake:5;FruitSalad:5;Pancakes:5;Muffin:5;PieSweet:5;Oatmeal:5,
+        FoodType = Fruits,
+        HungerChange = -5.0,
+        Calories = 63.0,
+        Carbohydrates = 19.68,
+        Lipids = 0.27,
+        Proteins = 0.97,
+        CustomEatSound = EatingFruit,
+        StaticModel = Mango_Ground,
+        WorldStaticModel = Mango_Ground,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedfruit,
+    }
+
+    item GrapefruitSlice
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 3,
+        DaysTotallyRotten = 5,
+        Icon = Grapefruit,
+        EvolvedRecipe = Salad:5;FruitSalad:5;Pancakes:5;Muffin:5,
+        FoodType = Fruits,
+        HungerChange = -5.0,
+        Calories = 3.8,
+        Carbohydrates = 25.28,
+        Lipids = 0.95,
+        Proteins = 4.39,
+        CustomEatSound = EatingFruit,
+        StaticModel = Grapefruit_Eat,
+        WorldStaticModel = Grapefruit_Ground,
+        Tags = fooddrying:dryablefruit,
+    }
+
+    item GrapefruitSliceDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.03,
+        DaysFresh = 180,
+        DaysTotallyRotten = 365,
+        Icon = Grapefruit,
+        EvolvedRecipe = Salad:5;FruitSalad:5;Pancakes:5;Muffin:5,
+        FoodType = Fruits,
+        HungerChange = -5.0,
+        Calories = 3.8,
+        Carbohydrates = 25.28,
+        Lipids = 0.95,
+        Proteins = 4.39,
+        CustomEatSound = EatingFruit,
+        StaticModel = Grapefruit_Eat,
+        WorldStaticModel = Grapefruit_Ground,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedfruit,
     }
 
     /* Dried wild plants (oven tray, skewer, drying racks) */

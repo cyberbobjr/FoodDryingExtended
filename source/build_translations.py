@@ -10,7 +10,7 @@ import os
 ROOT = os.path.join(os.path.dirname(__file__), "..", "Contents", "mods", "batman_FoodDryingExtended",
                     "42.21", "media", "lua", "shared", "Translate")
 
-ITEMS = ["BrusselSproutsDried", "CucumberDried", "PumpkinDried", "SweetPotatoDried", "TurnipDried", "ZucchiniDried",
+ITEMS = ["BrusselSproutsDried", "CucumberDried", "PumpkinSlicedDried", "SweetPotatoDried", "TurnipDried", "ZucchiniDried",
          "CabbageDried", "SugarBeetDried", "GarlicDried", "GreenOnionsDried", "WatermelonDried", "RosehipsDried",
          "ShrimpSalted", "ShrimpDried", "SquidSalted", "SquidDried", "CrayfishSalted", "CrayfishDried",
          "OystersSalted", "OystersDried",
@@ -23,7 +23,7 @@ RECIPES = ["PrepareHomemadeCrispsTray", "PrepareHomemadeCrispsTrayOil", "Prepare
 
 T = {
     "EN": (
-        ["Dried Brussels Sprouts", "Dried Cucumber", "Dried Pumpkin", "Dried Sweet Potato", "Dried Turnip", "Dried Zucchini",
+        ["Dried Brussels Sprouts", "Dried Cucumber", "Dried Pumpkin Slice", "Dried Sweet Potato", "Dried Turnip", "Dried Zucchini",
          "Dried Cabbage", "Dried Sugar Beet", "Dried Garlic", "Dried Green Onions", "Dried Watermelon", "Dried Rose Hips",
          "Salted Shrimp", "Dried Shrimp", "Salted Squid", "Dried Squid", "Salted Crayfish", "Dried Crayfish",
          "Salted Oysters", "Dried Oysters",
@@ -36,7 +36,7 @@ T = {
          "Prepare a Tray of Insects to Roast", "Empty the Baking Tray", "Put Homemade Crisps in a Paper Bag",
          "Salt Seafood"]),
     "FR": (
-        ["Choux de Bruxelles séchés", "Concombre séché", "Citrouille séchée", "Patate douce séchée", "Navet séché",
+        ["Choux de Bruxelles séchés", "Concombre séché", "Tranche de citrouille séchée", "Patate douce séchée", "Navet séché",
          "Courgette séchée", "Chou séché", "Betterave sucrière séchée", "Ail séché", "Cébettes séchées",
          "Pastèque séchée", "Églantier séché",
          "Crevette salée", "Crevette séchée", "Calmar salé", "Calmar séché", "Écrevisse salée", "Écrevisse séchée",
@@ -45,12 +45,12 @@ T = {
          "Plaque de cuisson avec purée de fruits", "Plaque de cuisson avec insectes",
          "Chips maison", "Chips de patate douce", "Chips de betterave", "Chips de courgette", "Chips de chou frisé",
          "Sachet de chips maison",
-         "Cuir de fruits", "Criquet grillé", "Sauterelle grillée", "Larve de tenthrède grillée", "Chenille grillée"],
+         "Roulé de fruits séchés", "Criquet grillé", "Sauterelle grillée", "Larve de tenthrède grillée", "Chenille grillée"],
         ["Préparer une plaque de chips maison", "Préparer une plaque de chips à l'huile",
-         "Préparer une plaque de cuir de fruits", "Préparer une plaque d'insectes à griller",
+         "Préparer une plaque de roulés de fruits", "Préparer une plaque d'insectes à griller",
          "Vider la plaque de cuisson", "Mettre des chips maison en sachet", "Saler des fruits de mer"]),
     "DE": (
-        ["Getrockneter Rosenkohl", "Getrocknete Gurke", "Getrockneter Kürbis", "Getrocknete Süßkartoffel",
+        ["Getrockneter Rosenkohl", "Getrocknete Gurke", "Getrocknete Kürbisscheibe", "Getrocknete Süßkartoffel",
          "Getrocknete Rübe", "Getrocknete Zucchini", "Getrockneter Kohlkopf", "Getrocknete Zuckerrübe",
          "Getrockneter Knoblauch", "Getrocknete grüne Zwiebeln", "Getrocknete Wassermelone", "Getrocknete Hagebutten",
          "Gesalzene Shrimps", "Getrocknete Shrimps", "Gesalzener Tintenfisch", "Getrockneter Tintenfisch",
@@ -64,7 +64,7 @@ T = {
          "Backblech mit Fruchtleder vorbereiten", "Backblech mit Insekten zum Rösten vorbereiten",
          "Backblech leeren", "Hausgemachte Chips in eine Papiertüte füllen", "Meeresfrüchte salzen"]),
     "ES": (
-        ["Coles de Bruselas secas", "Pepino seco", "Calabaza seca", "Boniato seco", "Nabo seco", "Calabacín seco",
+        ["Coles de Bruselas secas", "Pepino seco", "Calabaza cortada seca", "Boniato seco", "Nabo seco", "Calabacín seco",
          "Col seca", "Remolacha azucarera seca", "Ajo seco", "Cebollines secos", "Sandía seca", "Escaramujos secos",
          "Gamba salada", "Gamba seca", "Calamar salado", "Calamar seco", "Cangrejo de río salado",
          "Cangrejo de río seco", "Ostras saladas", "Ostras secas",
@@ -77,7 +77,7 @@ T = {
          "Preparar una bandeja de láminas de fruta", "Preparar una bandeja de insectos para tostar",
          "Vaciar la bandeja de horno", "Meter patatas fritas caseras en una bolsa de papel", "Salar marisco"]),
     "PT": (
-        ["Couves-de-bruxelas secas", "Pepino seco", "Abóbora seca", "Batata-doce seca", "Nabo seco", "Curgete seca",
+        ["Couves-de-bruxelas secas", "Pepino seco", "Fatia de Abóbora seca", "Batata-doce seca", "Nabo seco", "Curgete seca",
          "Couve seca", "Beterraba seca", "Alho seco", "Cebolinha seca", "Melancia seca", "Rosa mosqueta seca",
          "Camarão salgado", "Camarão seco", "Lula salgada", "Lula seca", "Lagostim salgado", "Lagostim seco",
          "Ostras salgadas", "Ostras secas",
@@ -90,7 +90,7 @@ T = {
          "Preparar um tabuleiro de rolos de fruta", "Preparar um tabuleiro de insetos para torrar",
          "Esvaziar o tabuleiro de forno", "Pôr batatas fritas caseiras num saco de papel", "Salgar marisco"]),
     "PTBR": (
-        ["Couve-de-Bruxelas Seca", "Pepino Seco", "Abóbora Seca", "Batata-doce Seca", "Nabo Seco", "Abobrinha Seca",
+        ["Couve-de-Bruxelas Seca", "Pepino Seco", "Fatia de Abóbora Seca", "Batata-doce Seca", "Nabo Seco", "Abobrinha Seca",
          "Repolho Seco", "Beterraba Doce Seca", "Alho Seco", "Cebolinha Verde Seca", "Melancia Seca",
          "Frutos de Rosa-mosqueta Secos",
          "Camarão Salgado", "Camarão Seco", "Lula Salgada", "Lula Seca", "Lagostim Salgado", "Lagostim Seco",
@@ -105,7 +105,7 @@ T = {
          "Preparar Assadeira de Rolinhos de Fruta", "Preparar Assadeira de Insetos para Torrar",
          "Esvaziar a Assadeira", "Colocar Chips Caseiros em um Saco de Papel", "Salgar Frutos do Mar"]),
     "RU": (
-        ["Сушёная брюссельская капуста", "Сушёный огурец", "Сушёная тыква", "Сушёный батат", "Сушёная репа",
+        ["Сушёная брюссельская капуста", "Сушёный огурец", "Сушёные ломтики тыквы", "Сушёный батат", "Сушёная репа",
          "Сушёные цуккини", "Сушёная капуста", "Сушёная сахарная свёкла", "Сушёный чеснок", "Сушёный зелёный лук",
          "Сушёный арбуз", "Сушёные плоды шиповника",
          "Солёная креветка", "Сушёная креветка", "Солёный кальмар", "Сушёный кальмар", "Солёный речной рак",
@@ -119,7 +119,7 @@ T = {
          "Приготовить противень фруктовой пастилы", "Приготовить противень насекомых для обжарки",
          "Освободить противень", "Положить домашние чипсы в бумажный пакет", "Засолить морепродукты"]),
     "CN": (
-        ["干孢子甘蓝", "干黄瓜", "南瓜干", "红薯干", "干芜菁", "西葫芦干", "干卷心菜", "甜菜干", "干大蒜", "干青葱",
+        ["干孢子甘蓝", "干黄瓜", "南瓜片干", "红薯干", "干芜菁", "西葫芦干", "干卷心菜", "甜菜干", "干大蒜", "干青葱",
          "西瓜干", "干玫瑰果",
          "咸虾", "虾干", "咸鱿鱼", "鱿鱼干", "咸小龙虾", "小龙虾干", "咸牡蛎", "牡蛎干",
          "放有蔬菜片的烘烤板", "放有油拌蔬菜片的烘烤板", "放有果泥的烘烤板", "放有昆虫的烘烤板",
@@ -128,7 +128,7 @@ T = {
         ["准备一板自制薯片", "准备一板油炸薯片", "准备一板果丹皮", "准备一板待烤昆虫", "清空烘烤板",
          "把自制薯片装进纸袋", "腌制海鲜"]),
     "JP": (
-        ["乾燥メキャベツ", "乾燥キュウリ", "乾燥カボチャ", "干し芋", "乾燥カブ", "乾燥ズッキーニ", "乾燥キャベツ",
+        ["乾燥メキャベツ", "乾燥キュウリ", "乾燥カボチャのカット", "干し芋", "乾燥カブ", "乾燥ズッキーニ", "乾燥キャベツ",
          "乾燥テンサイ", "乾燥ニンニク", "乾燥ネギ", "乾燥スイカ", "乾燥ローズヒップ",
          "塩漬けエビ", "干しエビ", "塩漬けイカ", "干しイカ", "塩漬けザリガニ", "干しザリガニ", "塩漬けカキ", "干しカキ",
          "スライス野菜のベーキングトレイ", "油をまぶしたスライス野菜のベーキングトレイ",
@@ -140,7 +140,7 @@ T = {
          "ロースト用の昆虫のトレイを準備", "ベーキングトレイを空にする", "自家製チップスを紙袋に入れる",
          "魚介類を塩漬けにする"]),
     "KO": (
-        ["말린 방울양배추", "말린 오이", "말린 호박", "말린 고구마", "말린 순무", "말린 애호박", "말린 양배추",
+        ["말린 방울양배추", "말린 오이", "말린 호박 조각", "말린 고구마", "말린 순무", "말린 애호박", "말린 양배추",
          "말린 사탕무", "말린 마늘", "말린 파", "말린 수박", "말린 로즈힙",
          "소금에 절인 새우", "말린 새우", "소금에 절인 오징어", "말린 오징어", "소금에 절인 가재", "말린 가재",
          "소금에 절인 굴", "말린 굴",
@@ -151,7 +151,7 @@ T = {
         ["수제 감자칩 쟁반 준비", "기름 감자칩 쟁반 준비", "과일 레더 쟁반 준비", "구울 곤충 쟁반 준비",
          "제빵 쟁반 비우기", "수제 감자칩을 종이 봉투에 담기", "해산물 소금에 절이기"]),
     "TR": (
-        ["Kurutulmuş Brüksel Lahanası", "Kurutulmuş Salatalık", "Kurutulmuş Balkabağı", "Kurutulmuş Tatlı Patates",
+        ["Kurutulmuş Brüksel Lahanası", "Kurutulmuş Salatalık", "Kurutulmuş Balkabağı Dilimi", "Kurutulmuş Tatlı Patates",
          "Kurutulmuş Şalgam", "Kurutulmuş Kabak", "Kurutulmuş Lahana", "Kurutulmuş Şeker Pancarı",
          "Kurutulmuş Sarımsak", "Kurutulmuş Taze Soğan", "Kurutulmuş Karpuz", "Kurutulmuş Kuşburnu",
          "Tuzlanmış Karides", "Kurutulmuş Karides", "Tuzlanmış Kalamar", "Kurutulmuş Kalamar", "Tuzlanmış Kerevit",
@@ -206,20 +206,55 @@ WILD_T = {
 }
 
 
+# Slices of large fruits: 3 fresh slices, 3 dried slices, then the slicing recipe.
+SLICE_ITEMS = ["PineappleSlice", "MangoSlice", "GrapefruitSlice",
+               "PineappleSliceDried", "MangoSliceDried", "GrapefruitSliceDried"]
+SLICE_T = {
+    "EN": (["Pineapple Slice", "Mango Slice", "Grapefruit Slice",
+            "Dried Pineapple Slice", "Dried Mango Slice", "Dried Grapefruit Slice"], "Slice Large Fruit"),
+    "FR": (["Tranche d'ananas", "Tranche de mangue", "Tranche de pamplemousse",
+            "Tranche d'ananas séchée", "Tranche de mangue séchée", "Tranche de pamplemousse séchée"],
+           "Couper un gros fruit en tranches"),
+    "DE": (["Scheibe Ananas", "Scheibe Mango", "Scheibe Grapefruit",
+            "Getrocknete Ananasscheibe", "Getrocknete Mangoscheibe", "Getrocknete Grapefruitscheibe"],
+           "Große Frucht schneiden"),
+    "ES": (["Rodaja de piña", "Rodaja de mango", "Rodaja de pomelo",
+            "Rodaja de piña seca", "Rodaja de mango seca", "Rodaja de pomelo seca"], "Cortar fruta grande"),
+    "PT": (["Fatia de ananás", "Fatia de manga", "Fatia de toranja",
+            "Fatia de ananás seca", "Fatia de manga seca", "Fatia de toranja seca"], "Fatiar fruta grande"),
+    "PTBR": (["Fatia de Abacaxi", "Fatia de Manga", "Fatia de Toranja",
+              "Fatia de Abacaxi Seca", "Fatia de Manga Seca", "Fatia de Toranja Seca"], "Fatiar Fruta Grande"),
+    "RU": (["Ломтик ананаса", "Ломтик манго", "Ломтик грейпфрута",
+            "Сушёный ломтик ананаса", "Сушёный ломтик манго", "Сушёный ломтик грейпфрута"],
+           "Нарезать крупный фрукт"),
+    "CN": (["菠萝片", "芒果片", "西柚片", "菠萝片干", "芒果片干", "西柚片干"], "大水果切片"),
+    "JP": (["パイナップルのカット", "マンゴーのカット", "グレープフルーツのカット",
+            "乾燥パイナップルのカット", "乾燥マンゴーのカット", "乾燥グレープフルーツのカット"],
+           "大きな果物をスライスする"),
+    "KO": (["파인애플 조각", "망고 조각", "자몽 조각", "말린 파인애플 조각", "말린 망고 조각", "말린 자몽 조각"],
+           "큰 과일 자르기"),
+    "TR": (["Ananas Dilimi", "Mango Dilimi", "Greyfurt Dilimi",
+            "Kurutulmuş Ananas Dilimi", "Kurutulmuş Mango Dilimi", "Kurutulmuş Greyfurt Dilimi"],
+           "Büyük Meyveyi Dilimle"),
+}
+
+
 def main():
     for lang, (items, recipes) in T.items():
         assert len(items) == len(ITEMS), (lang, len(items))
         assert len(recipes) == len(RECIPES), (lang, len(recipes))
         wild_items, dry_label, grind_label = WILD_T[lang]
         assert len(wild_items) == len(WILD_ITEMS), lang
-        items = items + wild_items
-        recipes = recipes + [dry_label] + [grind_label] * len(HERBS)
+        slice_items, slice_label = SLICE_T[lang]
+        assert len(slice_items) == len(SLICE_ITEMS), lang
+        items = items + wild_items + slice_items
+        recipes = recipes + [dry_label] + [grind_label] * len(HERBS) + [slice_label]
         folder = os.path.join(ROOT, lang)
         os.makedirs(folder, exist_ok=True)
-        names = {"FoodDryingExtended." + k: v for k, v in zip(ITEMS + WILD_ITEMS, items)}
+        names = {"FoodDryingExtended." + k: v for k, v in zip(ITEMS + WILD_ITEMS + SLICE_ITEMS, items)}
         with open(os.path.join(folder, "ItemName.json"), "w", encoding="utf-8", newline="\n") as fh:
             fh.write(json.dumps(names, ensure_ascii=False, indent=2) + "\n")
-        keys = RECIPES + ["DryWildPlants"] + ["Grind" + h + "Seasoning" for h in HERBS]
+        keys = RECIPES + ["DryWildPlants"] + ["Grind" + h + "Seasoning" for h in HERBS] + ["SliceLargeFruit"]
         with open(os.path.join(folder, "Recipes.json"), "w", encoding="utf-8", newline="\n") as fh:
             fh.write(json.dumps(dict(zip(keys, recipes)), ensure_ascii=False, indent=2) + "\n")
     print(len(T), "languages written")

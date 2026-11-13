@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "Couves-de-bruxelas secas",
   "FoodDryingExtended.CucumberDried": "Pepino seco",
-  "FoodDryingExtended.PumpkinDried": "Abóbora seca",
+  "FoodDryingExtended.PumpkinSlicedDried": "Fatia de Abóbora seca",
   "FoodDryingExtended.SweetPotatoDried": "Batata-doce seca",
   "FoodDryingExtended.TurnipDried": "Nabo seco",
   "FoodDryingExtended.ZucchiniDried": "Curgete seca",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "Cardos (Secos)",
   "FoodDryingExtended.NettlesDried": "Urtigas (Secas)",
   "FoodDryingExtended.LemonGrassDried": "Citronela (Seca)",
-  "FoodDryingExtended.GinsengDried": "Ginseng (Seco)"
+  "FoodDryingExtended.GinsengDried": "Ginseng (Seco)",
+  "FoodDryingExtended.PineappleSlice": "Fatia de ananás",
+  "FoodDryingExtended.MangoSlice": "Fatia de manga",
+  "FoodDryingExtended.GrapefruitSlice": "Fatia de toranja",
+  "FoodDryingExtended.PineappleSliceDried": "Fatia de ananás seca",
+  "FoodDryingExtended.MangoSliceDried": "Fatia de manga seca",
+  "FoodDryingExtended.GrapefruitSliceDried": "Fatia de toranja seca"
 }

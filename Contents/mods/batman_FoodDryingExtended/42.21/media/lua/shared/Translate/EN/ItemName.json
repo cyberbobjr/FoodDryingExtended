@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "Dried Brussels Sprouts",
   "FoodDryingExtended.CucumberDried": "Dried Cucumber",
-  "FoodDryingExtended.PumpkinDried": "Dried Pumpkin",
+  "FoodDryingExtended.PumpkinSlicedDried": "Dried Pumpkin Slice",
   "FoodDryingExtended.SweetPotatoDried": "Dried Sweet Potato",
   "FoodDryingExtended.TurnipDried": "Dried Turnip",
   "FoodDryingExtended.ZucchiniDried": "Dried Zucchini",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "Thistles (Dried)",
   "FoodDryingExtended.NettlesDried": "Nettles (Dried)",
   "FoodDryingExtended.LemonGrassDried": "Lemongrass (Dried)",
-  "FoodDryingExtended.GinsengDried": "Ginseng (Dried)"
+  "FoodDryingExtended.GinsengDried": "Ginseng (Dried)",
+  "FoodDryingExtended.PineappleSlice": "Pineapple Slice",
+  "FoodDryingExtended.MangoSlice": "Mango Slice",
+  "FoodDryingExtended.GrapefruitSlice": "Grapefruit Slice",
+  "FoodDryingExtended.PineappleSliceDried": "Dried Pineapple Slice",
+  "FoodDryingExtended.MangoSliceDried": "Dried Mango Slice",
+  "FoodDryingExtended.GrapefruitSliceDried": "Dried Grapefruit Slice"
 }

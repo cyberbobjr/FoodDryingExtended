@@ -49,7 +49,7 @@ local function near(a, b)
 end
 
 local TAGGED = {
-    ["fooddrying:dryablevegetable"] = { "BrusselSprouts", "Cucumber", "Pumpkin", "SweetPotato", "Turnip", "Zucchini",
+    ["fooddrying:dryablevegetable"] = { "BrusselSprouts", "Cucumber", "PumpkinSliced", "SweetPotato", "Turnip", "Zucchini",
         "Cabbage", "SugarBeet", "Garlic", "GreenOnions", "PepperJalapeno", "PepperHabanero",
         "Dandelions", "GingerRoot", "GrapeLeaves", "Violets", "Thistle", "Nettles", "LemonGrass", "Ginseng" },
     ["fooddrying:dryablefruit"] = { "WatermelonSliced" },
@@ -58,7 +58,7 @@ local TAGGED = {
 
 local DRIED = {
     BrusselSprouts = "FoodDryingExtended.BrusselSproutsDried", Cucumber = "FoodDryingExtended.CucumberDried",
-    Pumpkin = "FoodDryingExtended.PumpkinDried", SweetPotato = "FoodDryingExtended.SweetPotatoDried",
+    PumpkinSliced = "FoodDryingExtended.PumpkinSlicedDried", SweetPotato = "FoodDryingExtended.SweetPotatoDried",
     Turnip = "FoodDryingExtended.TurnipDried", Zucchini = "FoodDryingExtended.ZucchiniDried",
     Cabbage = "FoodDryingExtended.CabbageDried", SugarBeet = "FoodDryingExtended.SugarBeetDried",
     Garlic = "FoodDryingExtended.GarlicDried", GreenOnions = "FoodDryingExtended.GreenOnionsDried",
@@ -262,10 +262,10 @@ local function trayChecks()
     tray = fill("FoodDryingExtended.BakingTrayFruitLeather", fruits)
     tray:setCooked(true)
     got = empty(tray)
-    check("fruit leather: 4 portions with the average calories", function()
+    check("fruit leather: 5 rolls for 64 points of hunger, calories shared", function()
         local l = got["FoodDryingExtended.FruitLeather"]
-        return l ~= nil and #l == 4 and near(l[1]:getCalories(), total / 4),
-            l and (tostring(#l) .. " x " .. tostring(l[1]:getCalories()) .. " (expected " .. tostring(total / 4) .. ")")
+        return l ~= nil and #l == 5 and near(l[1]:getCalories(), total / 5),
+            l and (tostring(#l) .. " x " .. tostring(l[1]:getCalories()) .. " (expected " .. tostring(total / 5) .. ")")
     end)
 
     -- insects

@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 — 2026-11-13
+
+### Changed
+- Large fruits are sliced before drying: the new "Slice Large Fruit" recipe (knife) cuts a pineapple, mango or grapefruit into 4 slices, and the slices are dried. Whole pineapples, mangoes and grapefruits are no longer accepted on trays, skewers and drying racks.
+- Pumpkin is dried as pumpkin slices (the game's own slices) instead of a whole pumpkin.
+- Fruit leather follows the quantity of fruit: the tray takes 1 to 8 fruits or berries and gives one roll per 12 points of hunger (1 pineapple gives 2 rolls, 4 cherries give 1), with the nutrition shared between the rolls.
+- French: fruit leather is now called "Roulé de fruits séchés".
+
 ## 1.1.0 — 2026-11-13
 
 ### Added

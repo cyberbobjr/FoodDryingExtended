@@ -4,5 +4,5 @@ description=Extends Food Drying [B42] (Workshop 3747396551, by Corvus): more veg
 require=\FoodDrying
 loadModAfter=FoodDrying,FoodDrying_VFEPatch
 versionMin=42.21
-modversion=1.1.0
+modversion=1.2.0
 poster=poster.png

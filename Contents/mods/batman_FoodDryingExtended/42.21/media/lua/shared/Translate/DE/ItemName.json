@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "Getrockneter Rosenkohl",
   "FoodDryingExtended.CucumberDried": "Getrocknete Gurke",
-  "FoodDryingExtended.PumpkinDried": "Getrockneter Kürbis",
+  "FoodDryingExtended.PumpkinSlicedDried": "Getrocknete Kürbisscheibe",
   "FoodDryingExtended.SweetPotatoDried": "Getrocknete Süßkartoffel",
   "FoodDryingExtended.TurnipDried": "Getrocknete Rübe",
   "FoodDryingExtended.ZucchiniDried": "Getrocknete Zucchini",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "Distel (getrocknet)",
   "FoodDryingExtended.NettlesDried": "Brennnesseln (getrocknet)",
   "FoodDryingExtended.LemonGrassDried": "Zitronengras (getrocknet)",
-  "FoodDryingExtended.GinsengDried": "Ginseng (getrocknet)"
+  "FoodDryingExtended.GinsengDried": "Ginseng (getrocknet)",
+  "FoodDryingExtended.PineappleSlice": "Scheibe Ananas",
+  "FoodDryingExtended.MangoSlice": "Scheibe Mango",
+  "FoodDryingExtended.GrapefruitSlice": "Scheibe Grapefruit",
+  "FoodDryingExtended.PineappleSliceDried": "Getrocknete Ananasscheibe",
+  "FoodDryingExtended.MangoSliceDried": "Getrocknete Mangoscheibe",
+  "FoodDryingExtended.GrapefruitSliceDried": "Getrocknete Grapefruitscheibe"
 }

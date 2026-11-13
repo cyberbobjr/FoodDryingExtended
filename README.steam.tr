@@ -6,8 +6,8 @@ Corvus'un [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551
 
 [h2]Food Drying tariflerinde daha fazla yiyecek[/h2]
 [list]
-[*]Sebzeler: Brüksel lahanası, salatalık, balkabağı, tatlı patates, şalgam, kabak, lahana, şeker pancarı, sarımsak, taze soğan.
-[*]Meyveler: karpuz dilimleri, kuşburnu. Jalapeno ve habanero fırında ve şişte.
+[*]Sebzeler: Brüksel lahanası, salatalık, balkabağı dilimleri, tatlı patates, şalgam, kabak, lahana, şeker pancarı, sarımsak, taze soğan.
+[*]Meyveler: karpuz, ananas, mango ve greyfurt dilimleri, kuşburnu. Jalapeno ve habanero fırında ve şişte.
 [*]Yabani bitkiler: karahindiba, zencefil kökü, üzüm yaprağı, menekşe, devedikeni, ısırgan otu, limon otu, ginseng.
 [*]Food Drying'in tepsi, şiş ve kurutma rafı tariflerini kullanırlar (ek menü girdisi yok). Taze bir yiyecek, aynı besin değerinde kurutulmuş bir yiyecek verir ve aylarca dayanır.
 [/list]
@@ -15,12 +15,13 @@ Corvus'un [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551
 [h2]Yeni tarifler[/h2]
 [table]
 [tr][th]Tarif[/th][th]Malzemeler[/th][th]Sonuç[/th][/tr]
+[tr][td][b]Büyük Meyveyi Dilimle[/b][/td][td]Bıçak, 1 ananas, mango veya greyfurt[/td][td]4 dilim (besin değeri 4'e bölünür), kurutmaya hazır[/td][/tr]
 [tr][td][b]Bir Tepsi Ev Yapımı Cips Hazırla[/b][/td][td]Fırın tepsisi, bıçak, tuz, 1 ila 8 patates, tatlı patates, şeker pancarı, kabak veya kara lahana (karışık)[/td][td]40 dk pişecek tepsi[/td][/tr]
 [tr][td][b]Bir Tepsi Yağlı Cips Hazırla[/b][/td][td]Aynısı, artı 8 kullanım yağ[/td][td]40 dk pişecek tepsi; her porsiyon +70 kcal, +8 g yağ ve daha iyi moral[/td][/tr]
 [tr][td][b]Ev Yapımı Cipsi Kese Kağıdına Koy[/b][/td][td]1 porsiyon ev yapımı cips, 1 boş kese kağıdı[/td][td]Cips paketi: iki kat uzun taze (30 gün), yedikten sonra kese kağıdı geri gelir[/td][/tr]
-[tr][td][b]Bir Tepsi Meyve Pestili Hazırla[/b][/td][td]Fırın tepsisi, çatal veya kaşık, 4 meyve ya da orman meyvesi (karışık)[/td][td]2 saat pişecek tepsi[/td][/tr]
+[tr][td][b]Bir Tepsi Meyve Pestili Hazırla[/b][/td][td]Fırın tepsisi, çatal veya kaşık, 1 ila 8 meyve ya da orman meyvesi (karışık, bütün veya dilimli)[/td][td]2 saat pişecek tepsi[/td][/tr]
 [tr][td][b]Kavurmak İçin Bir Tepsi Böcek Hazırla[/b][/td][td]Fırın tepsisi, 1 ila 20 cırcır böceği, çekirge, testereli arı larvası veya tırtıl[/td][td]30 dk kavrulacak tepsi[/td][/tr]
-[tr][td][b]Fırın Tepsisini Boşalt[/b][/td][td]Bu modun fırından çıkmış bir tepsisi[/td][td]Sebze başına 1 porsiyon cips (14 gün), 4 rulo meyve pestili (meyvelerin ortalaması, aylar) veya kavrulmuş böcekler (6 ay); pişmediyse çiğ yiyecekler geri gelir[/td][/tr]
+[tr][td][b]Fırın Tepsisini Boşalt[/b][/td][td]Bu modun fırından çıkmış bir tepsisi[/td][td]Sebze başına 1 porsiyon cips (14 gün), meyve miktarına göre pestil ruloları (1 ananas 2, 4 kiraz 1 rulo verir; aylar) veya kavrulmuş böcekler (6 ay); pişmediyse çiğ yiyecekler geri gelir[/td][/tr]
 [tr][td][b]Deniz Ürünlerini Tuzla[/b][/td][td]Karides, kalamar, kerevit veya istiridye, 5 kullanım tuz[/td][td]Tuzlanmış deniz ürünleri, sonra tuzlu balık gibi kurutma rafında kurutulur (aylar)[/td][/tr]
 [tr][td][b]Yabani Bitkileri Kurut[/b][/td][td]Ot kurutma rafında: 1 ila 20 yabani bitki[/td][td]1 gün sonra kurutulmuş bitkiler (zencefil, limon otu ve ginseng çay için de kullanılır)[/td][/tr]
 [tr][td][b]Baharat Olarak Öğüt[/b][/td][td]Havan ve tokmak, 4 kurutulmuş ot: fesleğen, frenk soğanı, kişniş, kekik, maydanoz, biberiye, adaçayı veya dağ kekiği[/td][td]1 kavanoz ilgili baharat[/td][/tr]
@@ -29,7 +30,7 @@ Corvus'un [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551
 [h2]Notlar[/h2]
 [list]
 [*]Food Drying gerektirir. Bu modu Food Drying'den sonra (kullanıyorsanız VFE yamasından da sonra) yükleyin.
-[*]Food Drying'in kurutma rafı tarif dosyası, yeni yiyecekleri ekleyen güncel bir kopyayla (Food Drying 1.11 tabanlı) değiştirilir.
+[*]Büyük meyveler kurutulmadan önce dilimlenir: bütün ananas, mango ve greyfurt artık tepsi, şiş ve raflarda kabul edilmez. Food Drying'in iki dosyası güncel kopyalarla (Food Drying 1.11 tabanlı) değiştirilir: kurutma rafı tarifleri ve meyve etiketleri.
 [*]Diller: İngilizce, Fransızca, Almanca, İspanyolca, Portekizce, Brezilya Portekizcesi, Rusça, Çince, Japonca, Korece, Türkçe.
 [/list]
 

@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "干孢子甘蓝",
   "FoodDryingExtended.CucumberDried": "干黄瓜",
-  "FoodDryingExtended.PumpkinDried": "南瓜干",
+  "FoodDryingExtended.PumpkinSlicedDried": "南瓜片干",
   "FoodDryingExtended.SweetPotatoDried": "红薯干",
   "FoodDryingExtended.TurnipDried": "干芜菁",
   "FoodDryingExtended.ZucchiniDried": "西葫芦干",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "洋蓟 (干燥)",
   "FoodDryingExtended.NettlesDried": "荨麻 (干燥)",
   "FoodDryingExtended.LemonGrassDried": "柠檬草 (干燥)",
-  "FoodDryingExtended.GinsengDried": "人参 (干燥)"
+  "FoodDryingExtended.GinsengDried": "人参 (干燥)",
+  "FoodDryingExtended.PineappleSlice": "菠萝片",
+  "FoodDryingExtended.MangoSlice": "芒果片",
+  "FoodDryingExtended.GrapefruitSlice": "西柚片",
+  "FoodDryingExtended.PineappleSliceDried": "菠萝片干",
+  "FoodDryingExtended.MangoSliceDried": "芒果片干",
+  "FoodDryingExtended.GrapefruitSliceDried": "西柚片干"
 }

@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "말린 방울양배추",
   "FoodDryingExtended.CucumberDried": "말린 오이",
-  "FoodDryingExtended.PumpkinDried": "말린 호박",
+  "FoodDryingExtended.PumpkinSlicedDried": "말린 호박 조각",
   "FoodDryingExtended.SweetPotatoDried": "말린 고구마",
   "FoodDryingExtended.TurnipDried": "말린 순무",
   "FoodDryingExtended.ZucchiniDried": "말린 애호박",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "엉겅퀴 [마름]",
   "FoodDryingExtended.NettlesDried": "쐐기풀 [마름]",
   "FoodDryingExtended.LemonGrassDried": "레몬그라스 [마름]",
-  "FoodDryingExtended.GinsengDried": "인삼 [마름]"
+  "FoodDryingExtended.GinsengDried": "인삼 [마름]",
+  "FoodDryingExtended.PineappleSlice": "파인애플 조각",
+  "FoodDryingExtended.MangoSlice": "망고 조각",
+  "FoodDryingExtended.GrapefruitSlice": "자몽 조각",
+  "FoodDryingExtended.PineappleSliceDried": "말린 파인애플 조각",
+  "FoodDryingExtended.MangoSliceDried": "말린 망고 조각",
+  "FoodDryingExtended.GrapefruitSliceDried": "말린 자몽 조각"
 }

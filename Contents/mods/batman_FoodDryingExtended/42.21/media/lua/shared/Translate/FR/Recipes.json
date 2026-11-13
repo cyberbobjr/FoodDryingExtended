@@ -1,7 +1,7 @@
 {
   "PrepareHomemadeCrispsTray": "Préparer une plaque de chips maison",
   "PrepareHomemadeCrispsTrayOil": "Préparer une plaque de chips à l'huile",
-  "PrepareFruitLeatherTray": "Préparer une plaque de cuir de fruits",
+  "PrepareFruitLeatherTray": "Préparer une plaque de roulés de fruits",
   "PrepareRoastedInsectsTray": "Préparer une plaque d'insectes à griller",
   "EmptyExtendedTray": "Vider la plaque de cuisson",
   "BagHomemadeCrisps": "Mettre des chips maison en sachet",
@@ -14,5 +14,6 @@
   "GrindParsleySeasoning": "Moudre en épice",
   "GrindRosemarySeasoning": "Moudre en épice",
   "GrindSageSeasoning": "Moudre en épice",
-  "GrindThymeSeasoning": "Moudre en épice"
+  "GrindThymeSeasoning": "Moudre en épice",
+  "SliceLargeFruit": "Couper un gros fruit en tranches"
 }

@@ -10,7 +10,7 @@ module Base
         Tags = fooddrying:dryablevegetable,
     }
 
-    item Pumpkin
+    item PumpkinSliced
     {
         Tags = fooddrying:dryablevegetable,
     }

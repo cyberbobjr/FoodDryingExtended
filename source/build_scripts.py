@@ -48,11 +48,18 @@ def dried(name, icon, smodel, wmodel, h, c, cb, l, p, evo, ft, w, tag, fresh, ro
 VEG = [
     ("BrusselSprouts", "BrusselSprouts", "BrusselSprouts", -20, 119, 20.45, 0.85, 7.95, "Stir fry:9;Pie:9;Salad:9|Cooked", "Vegetables", 0.15),
     ("Cucumber", "Cucumber", "Cucumber", -10, 33, 6.1, 0.63, 2.37, "Soup:10;Stir fry:10;Salad:10;Sandwich:5", "Vegetables", 0.1),
-    ("Pumpkin", "Pumpkin", "Pumpkin_Ground", -40, 404, 20.45, 20.61, 34.53, "PieSweet:20;Stew:20;Soup:20;Stir fry:20;Stir fry Griddle Pan:20", "NoExplicit", 0.3),
     ("SweetPotato", "SweetPotato", "SweetPotato_Ground", -18, 70, 14.52, 0.15, 2.88, "Soup:18;Stew:18;Pie:18;Stir fry:18;Salad:9|Cooked", "Vegetables", 0.1),
     ("Turnip", "Turnip", "Turnip", -18, 70, 14.52, 0.15, 2.88, "Soup:18;Stew:18;Pie:18;Stir fry:18;Salad:9", "Vegetables", 0.1),
     ("Zucchini", "Zucchini", "Zucchini_Ground", -10, 33, 6.1, 0.63, 2.37, "Pizza:10;Soup:10;Stew:10;Pie:10;Stir fry:10;Salad:10;Rice:10;Pasta:10;Sandwich:5;Omelette:5", "Vegetables", 0.1),
     ("Cabbage", "Cabbage", "Cabbage_Ground", -24, 180, 41.0, 0.7, 9.0, "Soup:12;Stew:12;Stir fry:12;Sandwich:6;Burger:6;Hotdog:6;Salad:12;Taco:6;Burrito:6", "Vegetables", 0.05),
+]
+
+# Large fruits are sliced first (Slice Large Fruit, 4 slices each): name, icon, hand model, world model,
+# nutrition of ONE slice (a quarter of the vanilla fruit), evolved recipes.
+SLICES = [
+    ("Pineapple", "Pineapple", "Pineapple_Ground", "Pineapple_Ground", -6, 113.0, 29.68, 0.27, 1.22, "Pizza:6;Cake:6;FruitSalad:6;Pancakes:6;Muffin:6;ConeIcecream:4;PieSweet:6;Oatmeal:4"),
+    ("Mango", "Mango", "Mango_Ground", "Mango_Ground", -5, 63.0, 19.68, 0.27, 0.97, "Cake:5;FruitSalad:5;Pancakes:5;Muffin:5;PieSweet:5;Oatmeal:5"),
+    ("Grapefruit", "Grapefruit", "Grapefruit_Eat", "Grapefruit_Ground", -5, 3.75, 25.28, 0.95, 4.39, "Salad:5;FruitSalad:5;Pancakes:5;Muffin:5"),
 ]
 
 SEA = [
@@ -98,7 +105,7 @@ WILD = [
 ]
 
 TAGGED = [
-    ("fooddrying:dryablevegetable", ["BrusselSprouts", "Cucumber", "Pumpkin", "SweetPotato", "Turnip", "Zucchini",
+    ("fooddrying:dryablevegetable", ["BrusselSprouts", "Cucumber", "PumpkinSliced", "SweetPotato", "Turnip", "Zucchini",
                                      "Cabbage", "SugarBeet", "Garlic", "GreenOnions", "PepperJalapeno", "PepperHabanero"]
      + [w[0] for w in WILD]),
     ("fooddrying:dryablefruit", ["WatermelonSliced"]),
@@ -120,6 +127,19 @@ def main():
     dried("GreenOnionsDried", "HerbChives", None, "GreenOnions", -3, 0.1, 0.0, 0.0, 0.0,
           "Stir fry:1;Pizza:1;Omelette:1;Pasta:1;Salad:1;Sandwich:1;Soup:1;Stew:1;Bread:1;Toast:1;Burger:1",
           "Herb", 0.05, "fooddrying:driedvegetables", 150, 300, [("Spice", "true"), ("EatType", "EatSmall")])
+
+    dried("PumpkinSlicedDried", "Pumpkin_Slice", "PumpkinSlice", "PumpkinSlice", -4, 40, 2.04, 2.06, 3.45,
+          "PieSweet:4;Stew:4;Soup:4;Stir fry:4;Stir fry Griddle Pan:4", "NoExplicit", 0.03,
+          "fooddrying:driedvegetables", 150, 300, [("CustomEatSound", "EatingCrispy")])
+
+    comment("Slices of large fruits (Slice Large Fruit) and their dried form")
+    for n, icon, smodel, wmodel, h, c, cb, l, p, evo in SLICES:
+        item(n + "Slice", [("DisplayCategory", "Food"), ("ItemType", "base:food"), ("Weight", "0.1"), ("DaysFresh", "3"),
+                           ("DaysTotallyRotten", "5"), ("Icon", icon), ("EvolvedRecipe", evo), ("FoodType", "Fruits")]
+             + nut(h, c, cb, l, p) + [("CustomEatSound", "EatingFruit"), ("StaticModel", smodel),
+                                      ("WorldStaticModel", wmodel), ("Tags", "fooddrying:dryablefruit")])
+        dried(n + "SliceDried", icon, smodel, wmodel, h, c, cb, l, p, evo, "Fruits", 0.03, "fooddrying:driedfruit",
+              180, 365, [("CustomEatSound", "EatingFruit")])
 
     comment("Dried wild plants (oven tray, skewer, drying racks)")
     for n, icon, model, h, c, cb, l, p, evo, ft, tags in WILD:

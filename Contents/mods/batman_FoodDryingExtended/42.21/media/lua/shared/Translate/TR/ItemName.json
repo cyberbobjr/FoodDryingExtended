@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "Kurutulmuş Brüksel Lahanası",
   "FoodDryingExtended.CucumberDried": "Kurutulmuş Salatalık",
-  "FoodDryingExtended.PumpkinDried": "Kurutulmuş Balkabağı",
+  "FoodDryingExtended.PumpkinSlicedDried": "Kurutulmuş Balkabağı Dilimi",
   "FoodDryingExtended.SweetPotatoDried": "Kurutulmuş Tatlı Patates",
   "FoodDryingExtended.TurnipDried": "Kurutulmuş Şalgam",
   "FoodDryingExtended.ZucchiniDried": "Kurutulmuş Kabak",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "Kurutulmuş Devedikeni",
   "FoodDryingExtended.NettlesDried": "Kurutulmuş Isırgan Otu",
   "FoodDryingExtended.LemonGrassDried": "Kurutulmuş Limon Otu",
-  "FoodDryingExtended.GinsengDried": "Kurutulmuş Ginseng"
+  "FoodDryingExtended.GinsengDried": "Kurutulmuş Ginseng",
+  "FoodDryingExtended.PineappleSlice": "Ananas Dilimi",
+  "FoodDryingExtended.MangoSlice": "Mango Dilimi",
+  "FoodDryingExtended.GrapefruitSlice": "Greyfurt Dilimi",
+  "FoodDryingExtended.PineappleSliceDried": "Kurutulmuş Ananas Dilimi",
+  "FoodDryingExtended.MangoSliceDried": "Kurutulmuş Mango Dilimi",
+  "FoodDryingExtended.GrapefruitSliceDried": "Kurutulmuş Greyfurt Dilimi"
 }

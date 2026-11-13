@@ -20,7 +20,10 @@ FoodDryingExtended = FoodDryingExtended or {}
 local rawToDried = {
     ["Base.BrusselSprouts"] = "FoodDryingExtended.BrusselSproutsDried",
     ["Base.Cucumber"] = "FoodDryingExtended.CucumberDried",
-    ["Base.Pumpkin"] = "FoodDryingExtended.PumpkinDried",
+    ["Base.PumpkinSliced"] = "FoodDryingExtended.PumpkinSlicedDried",
+    ["FoodDryingExtended.PineappleSlice"] = "FoodDryingExtended.PineappleSliceDried",
+    ["FoodDryingExtended.MangoSlice"] = "FoodDryingExtended.MangoSliceDried",
+    ["FoodDryingExtended.GrapefruitSlice"] = "FoodDryingExtended.GrapefruitSliceDried",
     ["Base.SweetPotato"] = "FoodDryingExtended.SweetPotatoDried",
     ["Base.Turnip"] = "FoodDryingExtended.TurnipDried",
     ["Base.Zucchini"] = "FoodDryingExtended.ZucchiniDried",
@@ -52,6 +55,15 @@ for rawType, driedType in pairs(rawToDried) do
     end
 end
 
+-- Large fruits are sliced before drying (SliceLargeFruit): the whole fruits lose
+-- Food Drying's dryable tag (copy of its VanillaFruitOverrides.txt) and its
+-- oven entries.
+if OvenDrying and OvenDrying.dryableTypes then
+    OvenDrying.dryableTypes["Base.Pineapple"] = nil
+    OvenDrying.dryableTypes["Base.Mango"] = nil
+    OvenDrying.dryableTypes["Base.Grapefruit"] = nil
+end
+
 -- Oil absorbed by one portion of crisps fried with oil. The recipe uses 8 uses
 -- of oil (8 % of a bottle, about 560 kcal of vegetable oil) for at most 8
 -- portions, so the bonus never exceeds the oil consumed.
@@ -78,32 +90,28 @@ local INSECTS = {
     ["Base.SwallowtailCaterpillar"] = "FoodDryingExtended.RoastedCaterpillar",
 }
 
-local FRUIT_TAGS = { "fooddrying:dryablefruit", "fooddrying:dryableberries" }
+-- Fruit leather: one roll per 12 points of hunger of fruit put in the tray
+-- (at least one), so the number of rolls follows the quantity of fruit, not the
+-- number of fruits.
+FoodDryingExtended.LEATHER_HUNGER_PER_ROLL = 12
 
 -- Tray type -> how its content is turned into food.
 --   map: raw type -> cooked type (one output per input)
---   pooled: every input becomes one portion of `pooled`, with the average nutrition
+--   pooled: the inputs are pooled into rolls of `pooled` (see LEATHER_HUNGER_PER_ROLL)
 --   oil: oil bonus added to each portion
 --   cookedModel: model shown once cooked
 FoodDryingExtended.TRAYS = {
     ["FoodDryingExtended.BakingTrayCrisps"] = { map = CRISPS, cookedModel = "FoodDrying.BakingTrayVegetablesDried" },
     ["FoodDryingExtended.BakingTrayCrispsOil"] = { map = CRISPS, oil = true, cookedModel = "FoodDrying.BakingTrayVegetablesDried" },
-    ["FoodDryingExtended.BakingTrayFruitLeather"] = { pooled = "FoodDryingExtended.FruitLeather", tags = FRUIT_TAGS, cookedModel = "FoodDrying.BakingTrayFruitDried" },
+    ["FoodDryingExtended.BakingTrayFruitLeather"] = { pooled = "FoodDryingExtended.FruitLeather", cookedModel = "FoodDrying.BakingTrayFruitDried" },
     ["FoodDryingExtended.BakingTrayInsects"] = { map = INSECTS, cookedModel = "FoodDrying.BakingTrayMushroomsDried" },
 }
-
-local function hasAnyTag(item, tagNames)
-    for _, name in ipairs(tagNames) do
-        local tag = ItemTag.get(ResourceLocation.of(name))
-        if tag and item:hasTag(tag) then return true end
-    end
-    return false
-end
 
 local function accepts(config, item)
     if not instanceof(item, "Food") then return false end
     if config.map then return config.map[item:getFullType()] ~= nil end
-    return config.tags ~= nil and hasAnyTag(item, config.tags)
+    -- pooled tray: the recipe only takes fruit, every food put in counts
+    return config.pooled ~= nil
 end
 
 local function findTray(items)
@@ -201,7 +209,7 @@ local function giveCooked(character, config, entry)
 end
 
 local function givePooled(character, config, entries)
-    local n = #entries
+    if #entries == 0 then return end
     local sum = { hunger = 0, calories = 0, carbohydrates = 0, lipids = 0, proteins = 0 }
     local poison, detection = 0, 0
     for _, e in ipairs(entries) do
@@ -210,6 +218,9 @@ local function givePooled(character, config, entries)
             poison, detection = e.poisonPower, e.poisonDetection or 0
         end
     end
+    -- hunger is stored as a negative fraction (-0.24 for 24 points)
+    local points = -sum.hunger * 100
+    local n = math.max(1, math.floor(points / FoodDryingExtended.LEATHER_HUNGER_PER_ROLL + 0.5))
     for _ = 1, n do
         local item = instanceItem(config.pooled)
         if item then

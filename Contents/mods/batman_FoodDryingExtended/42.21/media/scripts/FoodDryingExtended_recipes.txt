@@ -5,6 +5,31 @@ module FoodDryingExtended
         Base,
     }
 
+    /* Large fruits are sliced before drying (vanilla slicing pattern: the nutrition is split between the slices). */
+
+    craftRecipe SliceLargeFruit
+    {
+        timedAction = SliceFood_Surface,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[SharpnessCheck],
+            item 1 [Base.Pineapple;Base.Mango;Base.Grapefruit] flags[InheritFood;ItemCount] mappers[slices],
+        }
+        outputs
+        {
+            item 4 mapper:slices,
+        }
+        itemMapper slices
+        {
+            FoodDryingExtended.PineappleSlice = Base.Pineapple,
+            FoodDryingExtended.MangoSlice = Base.Mango,
+            FoodDryingExtended.GrapefruitSlice = Base.Grapefruit,
+        }
+    }
+
     /* Oven trays: filled by FoodDryingExtended.onTrayFilled, emptied by onTrayEmptied. */
 
     craftRecipe PrepareHomemadeCrispsTray
@@ -62,7 +87,7 @@ module FoodDryingExtended
         {
             item 1 tags[base:fork;base:mixingutensil;base:spoon] mode:keep flags[MayDegradeVeryLight],
             item 1 [Base.BakingTray] mode:destroy flags[IsEmpty],
-            item 4 tags[fooddrying:dryablefruit;fooddrying:dryableberries] flags[ItemCount] mode:destroy,
+            item variable[1:8] [Base.Apple;Base.Banana;Base.Cherry;Base.Grapefruit;Base.Grapes;Base.Lemon;Base.Lime;Base.Mango;Base.Orange;Base.Peach;Base.Pear;Base.Pineapple;Base.WatermelonSliced;Base.BeautyBerry;Base.BerryBlack;Base.BerryBlue;Base.BerryGeneric1;Base.BerryGeneric2;Base.BerryGeneric3;Base.BerryGeneric4;Base.BerryGeneric5;Base.HollyBerry;Base.Strewberrie;Base.WinterBerry;Base.Rosehips;FoodDryingExtended.PineappleSlice;FoodDryingExtended.MangoSlice;FoodDryingExtended.GrapefruitSlice] flags[ItemCount] mode:destroy,
         }
         outputs
         {

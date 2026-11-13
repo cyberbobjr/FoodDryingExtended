@@ -6,8 +6,8 @@ Fügt [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Foo
 
 [h2]Mehr Lebensmittel in den Rezepten von Food Drying[/h2]
 [list]
-[*]Gemüse: Rosenkohl, Gurke, Kürbis, Süßkartoffel, Rübe, Zucchini, Kohlkopf, Zuckerrübe, Knoblauch, grüne Zwiebeln.
-[*]Obst: Wassermelonenscheiben, Hagebutten. Jalapeño und Habanero im Ofen und am Spieß.
+[*]Gemüse: Rosenkohl, Gurke, Kürbisscheiben, Süßkartoffel, Rübe, Zucchini, Kohlkopf, Zuckerrübe, Knoblauch, grüne Zwiebeln.
+[*]Obst: Scheiben von Wassermelone, Ananas, Mango und Grapefruit, Hagebutten. Jalapeño und Habanero im Ofen und am Spieß.
 [*]Wildpflanzen: Löwenzahn, Ingwer, Weinblätter, Veilchen, Disteln, Brennnesseln, Zitronengras, Ginseng.
 [*]Sie laufen über die Backblech-, Spieß- und Trockengestell-Rezepte von Food Drying (kein zusätzlicher Menüeintrag). Ein frisches Lebensmittel ergibt ein getrocknetes mit denselben Nährwerten, das monatelang hält.
 [/list]
@@ -15,12 +15,13 @@ Fügt [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Foo
 [h2]Neue Rezepte[/h2]
 [table]
 [tr][th]Rezept[/th][th]Zutaten[/th][th]Ergebnis[/th][/tr]
+[tr][td][b]Große Frucht schneiden[/b][/td][td]Messer, 1 Ananas, Mango oder Grapefruit[/td][td]4 Scheiben (Nährwerte durch 4 geteilt), bereit zum Trocknen[/td][/tr]
 [tr][td][b]Backblech mit hausgemachten Chips vorbereiten[/b][/td][td]Backblech, Messer, Salz, 1 bis 8 Kartoffeln, Süßkartoffeln, Zuckerrüben, Zucchini oder Grünkohl (gemischt)[/td][td]Blech, 40 Min. backen[/td][/tr]
 [tr][td][b]Backblech mit Chips in Öl vorbereiten[/b][/td][td]Dasselbe plus 8 Portionen Öl[/td][td]Blech, 40 Min. backen; jede Portion +70 kcal, +8 g Fett und bessere Laune[/td][/tr]
 [tr][td][b]Hausgemachte Chips in eine Papiertüte füllen[/b][/td][td]1 Portion hausgemachter Chips, 1 leere Papiertüte[/td][td]Tüte Chips: doppelt so lange frisch (30 Tage), Tüte nach dem Essen zurück[/td][/tr]
-[tr][td][b]Backblech mit Fruchtleder vorbereiten[/b][/td][td]Backblech, Gabel oder Löffel, 4 Früchte oder Beeren (gemischt)[/td][td]Blech, 2 Std. backen[/td][/tr]
+[tr][td][b]Backblech mit Fruchtleder vorbereiten[/b][/td][td]Backblech, Gabel oder Löffel, 1 bis 8 Früchte oder Beeren (gemischt, ganz oder in Scheiben)[/td][td]Blech, 2 Std. backen[/td][/tr]
 [tr][td][b]Backblech mit Insekten zum Rösten vorbereiten[/b][/td][td]Backblech, 1 bis 20 Grillen, Grashüpfer, Blattwespen-Larven oder Raupen[/td][td]Blech, 30 Min. rösten[/td][/tr]
-[tr][td][b]Backblech leeren[/b][/td][td]Ein Blech dieses Mods, aus dem Ofen[/td][td]1 Portion Chips pro Gemüse (14 Tage), 4 Rollen Fruchtleder (Durchschnitt der Früchte, Monate) oder geröstete Insekten (6 Monate); rohe Lebensmittel zurück, wenn nicht gebacken[/td][/tr]
+[tr][td][b]Backblech leeren[/b][/td][td]Ein Blech dieses Mods, aus dem Ofen[/td][td]1 Portion Chips pro Gemüse (14 Tage), Rollen Fruchtleder je nach Fruchtmenge (1 Ananas ergibt 2, 4 Kirschen ergeben 1; Monate) oder geröstete Insekten (6 Monate); rohe Lebensmittel zurück, wenn nicht gebacken[/td][/tr]
 [tr][td][b]Meeresfrüchte salzen[/b][/td][td]Shrimps, Tintenfisch, Flusskrebs oder Austern, 5 Portionen Salz[/td][td]Gesalzene Meeresfrüchte, dann wie gesalzener Fisch auf dem Trockengestell getrocknet (Monate)[/td][/tr]
 [tr][td][b]Wildpflanzen trocknen[/b][/td][td]Auf dem Kräutertrockengestell: 1 bis 20 Wildpflanzen[/td][td]Getrocknete Wildpflanzen nach 1 Tag (Ingwer, Zitronengras und Ginseng ergeben weiterhin Tee)[/td][/tr]
 [tr][td][b]Zu Gewürz mahlen[/b][/td][td]Mörser und Stößel, 4 getrocknete Kräuter: Basilikum, Schnittlauch, Koriander, Oregano, Petersilie, Rosmarin, Salbei oder Thymian[/td][td]1 Glas des passenden Gewürzes[/td][/tr]
@@ -29,7 +30,7 @@ Fügt [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Foo
 [h2]Hinweise[/h2]
 [list]
 [*]Benötigt Food Drying. Lade diesen Mod nach Food Drying (und nach dessen VFE-Patch, falls verwendet).
-[*]Die Rezeptdatei des Trockengestells von Food Drying wird durch eine aktualisierte Kopie (Basis Food Drying 1.11) ersetzt, die die neuen Lebensmittel hinzufügt.
+[*]Große Früchte werden vor dem Trocknen geschnitten: ganze Ananas, Mangos und Grapefruits werden auf Blechen, Spießen und Gestellen nicht mehr angenommen. Zwei Dateien von Food Drying werden durch aktualisierte Kopien (Basis Food Drying 1.11) ersetzt: die Rezepte des Trockengestells und die Frucht-Tags.
 [*]Sprachen: Englisch, Französisch, Deutsch, Spanisch, Portugiesisch, brasilianisches Portugiesisch, Russisch, Chinesisch, Japanisch, Koreanisch, Türkisch.
 [/list]
 

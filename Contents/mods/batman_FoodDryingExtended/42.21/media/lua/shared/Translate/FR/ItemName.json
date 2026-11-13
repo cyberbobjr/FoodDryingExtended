@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "Choux de Bruxelles séchés",
   "FoodDryingExtended.CucumberDried": "Concombre séché",
-  "FoodDryingExtended.PumpkinDried": "Citrouille séchée",
+  "FoodDryingExtended.PumpkinSlicedDried": "Tranche de citrouille séchée",
   "FoodDryingExtended.SweetPotatoDried": "Patate douce séchée",
   "FoodDryingExtended.TurnipDried": "Navet séché",
   "FoodDryingExtended.ZucchiniDried": "Courgette séchée",
@@ -29,7 +29,7 @@
   "FoodDryingExtended.ZucchiniCrisps": "Chips de courgette",
   "FoodDryingExtended.KaleCrisps": "Chips de chou frisé",
   "FoodDryingExtended.HomemadeCrispsBag": "Sachet de chips maison",
-  "FoodDryingExtended.FruitLeather": "Cuir de fruits",
+  "FoodDryingExtended.FruitLeather": "Roulé de fruits séchés",
   "FoodDryingExtended.RoastedCricket": "Criquet grillé",
   "FoodDryingExtended.RoastedGrasshopper": "Sauterelle grillée",
   "FoodDryingExtended.RoastedSawflyLarva": "Larve de tenthrède grillée",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "Chardon (séché)",
   "FoodDryingExtended.NettlesDried": "Orties (séchées)",
   "FoodDryingExtended.LemonGrassDried": "Citronnelle (séchée)",
-  "FoodDryingExtended.GinsengDried": "Ginseng (séché)"
+  "FoodDryingExtended.GinsengDried": "Ginseng (séché)",
+  "FoodDryingExtended.PineappleSlice": "Tranche d'ananas",
+  "FoodDryingExtended.MangoSlice": "Tranche de mangue",
+  "FoodDryingExtended.GrapefruitSlice": "Tranche de pamplemousse",
+  "FoodDryingExtended.PineappleSliceDried": "Tranche d'ananas séchée",
+  "FoodDryingExtended.MangoSliceDried": "Tranche de mangue séchée",
+  "FoodDryingExtended.GrapefruitSliceDried": "Tranche de pamplemousse séchée"
 }

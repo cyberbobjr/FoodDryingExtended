@@ -1,0 +1,62 @@
+module Base
+{
+    item Apple
+    {
+        Tags = base:hidecooked;base:hideuncooked;fooddrying:dryablefruit,
+    }
+
+    item Banana
+    {
+        Tags = base:hidecooked;base:hideuncooked;fooddrying:dryablefruit,
+    }
+
+    item Cherry
+    {
+        Tags = base:hidecooked;base:hideuncooked;fooddrying:dryablefruit,
+    }
+
+    item Grapefruit
+    {
+        Tags = base:hidecooked;base:hideuncooked,
+    }
+
+    item Grapes
+    {
+        Tags = base:hidecooked;base:hideuncooked;fooddrying:dryablefruit,
+    }
+
+    item Lemon
+    {
+        Tags = base:hidecooked;base:hideuncooked;fooddrying:dryablefruit;base:herbaltea,
+    }
+
+    item Lime
+    {
+        Tags = base:hidecooked;base:hideuncooked;fooddrying:dryablefruit;base:herbaltea,
+    }
+
+    item Mango
+    {
+        Tags = base:hidecooked;base:hideuncooked,
+    }
+
+    item Orange
+    {
+        Tags = base:hidecooked;base:hideuncooked;fooddrying:dryablefruit,
+    }
+
+    item Peach
+    {
+        Tags = base:hidecooked;base:hideuncooked;fooddrying:dryablefruit,
+    }
+
+    item Pear
+    {
+        Tags = base:hidecooked;base:hideuncooked;fooddrying:dryablefruit,
+    }
+
+    item Pineapple
+    {
+        Tags = base:hidecooked;base:hideuncooked,
+    }
+}

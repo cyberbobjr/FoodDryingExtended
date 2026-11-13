@@ -1,7 +1,7 @@
 {
   "FoodDryingExtended.BrusselSproutsDried": "Coles de Bruselas secas",
   "FoodDryingExtended.CucumberDried": "Pepino seco",
-  "FoodDryingExtended.PumpkinDried": "Calabaza seca",
+  "FoodDryingExtended.PumpkinSlicedDried": "Calabaza cortada seca",
   "FoodDryingExtended.SweetPotatoDried": "Boniato seco",
   "FoodDryingExtended.TurnipDried": "Nabo seco",
   "FoodDryingExtended.ZucchiniDried": "Calabacín seco",
@@ -41,5 +41,11 @@
   "FoodDryingExtended.ThistleDried": "Cardos (Secos)",
   "FoodDryingExtended.NettlesDried": "Ortigas (Secas)",
   "FoodDryingExtended.LemonGrassDried": "Citronela (Seca)",
-  "FoodDryingExtended.GinsengDried": "Ginseng (Seco)"
+  "FoodDryingExtended.GinsengDried": "Ginseng (Seco)",
+  "FoodDryingExtended.PineappleSlice": "Rodaja de piña",
+  "FoodDryingExtended.MangoSlice": "Rodaja de mango",
+  "FoodDryingExtended.GrapefruitSlice": "Rodaja de pomelo",
+  "FoodDryingExtended.PineappleSliceDried": "Rodaja de piña seca",
+  "FoodDryingExtended.MangoSliceDried": "Rodaja de mango seca",
+  "FoodDryingExtended.GrapefruitSliceDried": "Rodaja de pomelo seca"
 }

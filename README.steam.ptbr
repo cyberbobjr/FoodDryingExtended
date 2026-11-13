@@ -6,8 +6,8 @@ Adiciona mais alimentos ao [url=https://steamcommunity.com/sharedfiles/filedetai
 
 [h2]Mais alimentos nas receitas do Food Drying[/h2]
 [list]
-[*]Legumes: couve-de-bruxelas, pepino, abóbora, batata-doce, nabo, abobrinha, repolho, beterraba doce, alho, cebolinha verde.
-[*]Frutas: fatias de melancia, frutos de rosa-mosqueta. Pimentas jalapeño e habanero no forno e no espeto.
+[*]Legumes: couve-de-bruxelas, pepino, fatias de abóbora, batata-doce, nabo, abobrinha, repolho, beterraba doce, alho, cebolinha verde.
+[*]Frutas: fatias de melancia, abacaxi, manga e toranja, frutos de rosa-mosqueta. Pimentas jalapeño e habanero no forno e no espeto.
 [*]Plantas silvestres: dentes-de-leão, gengibre, folhas de uva, violetas, cardos, urtigas, capim-limão, ginseng.
 [*]Usam as receitas de assadeira, espeto e secador do Food Drying (nenhuma entrada de menu extra). Um alimento fresco vira um alimento seco com os mesmos valores nutricionais, que dura meses.
 [/list]
@@ -15,12 +15,13 @@ Adiciona mais alimentos ao [url=https://steamcommunity.com/sharedfiles/filedetai
 [h2]Novas receitas[/h2]
 [table]
 [tr][th]Receita[/th][th]Ingredientes[/th][th]Resultado[/th][/tr]
+[tr][td][b]Fatiar Fruta Grande[/b][/td][td]Faca, 1 abacaxi, manga ou toranja[/td][td]4 fatias (valores divididos por 4), prontas para secar[/td][/tr]
 [tr][td][b]Preparar Assadeira de Batata Chips Caseira[/b][/td][td]Assadeira, faca, sal, de 1 a 8 batatas, batatas-doces, beterrabas doces, abobrinhas ou couves (misturadas)[/td][td]Assadeira para assar 40 min[/td][/tr]
 [tr][td][b]Preparar Assadeira de Chips com Óleo[/b][/td][td]O mesmo mais 8 usos de óleo[/td][td]Assadeira para assar 40 min; cada porção +70 kcal, +8 g de gordura e melhor humor[/td][/tr]
 [tr][td][b]Colocar Chips Caseiros em um Saco de Papel[/b][/td][td]1 porção de chips caseiros, 1 saco de papel vazio[/td][td]Saquinho de chips: frescos o dobro do tempo (30 dias), saco devolvido depois de comer[/td][/tr]
-[tr][td][b]Preparar Assadeira de Rolinhos de Fruta[/b][/td][td]Assadeira, garfo ou colher, 4 frutas ou frutinhas (misturadas)[/td][td]Assadeira para assar 2 h[/td][/tr]
+[tr][td][b]Preparar Assadeira de Rolinhos de Fruta[/b][/td][td]Assadeira, garfo ou colher, de 1 a 8 frutas ou frutinhas (misturadas, inteiras ou em fatias)[/td][td]Assadeira para assar 2 h[/td][/tr]
 [tr][td][b]Preparar Assadeira de Insetos para Torrar[/b][/td][td]Assadeira, de 1 a 20 grilos, gafanhotos, larvas de vespa-serra ou lagartas[/td][td]Assadeira para torrar 30 min[/td][/tr]
-[tr][td][b]Esvaziar a Assadeira[/b][/td][td]Uma assadeira deste mod, saída do forno[/td][td]1 porção de chips por legume (14 dias), 4 rolinhos de fruta (média das frutas, meses) ou insetos torrados (6 meses); alimentos crus devolvidos se não assou[/td][/tr]
+[tr][td][b]Esvaziar a Assadeira[/b][/td][td]Uma assadeira deste mod, saída do forno[/td][td]1 porção de chips por legume (14 dias), rolinhos de fruta conforme a quantidade de fruta (1 abacaxi rende 2, 4 cerejas rendem 1; meses) ou insetos torrados (6 meses); alimentos crus devolvidos se não assou[/td][/tr]
 [tr][td][b]Salgar Frutos do Mar[/b][/td][td]Camarão, lula, lagostim ou ostras, 5 usos de sal[/td][td]Frutos do mar salgados, depois secos no secador como o peixe salgado (meses)[/td][/tr]
 [tr][td][b]Secar Plantas Silvestres[/b][/td][td]No secador de ervas: de 1 a 20 plantas silvestres[/td][td]Plantas secas após 1 dia (gengibre, capim-limão e ginseng continuam servindo para chás)[/td][/tr]
 [tr][td][b]Moer como Tempero[/b][/td][td]Almofariz e pilão, 4 ervas secas: manjericão, cebolinha, coentro, orégano, salsa, alecrim, sálvia ou tomilho[/td][td]1 pote do tempero correspondente[/td][/tr]
@@ -29,7 +30,7 @@ Adiciona mais alimentos ao [url=https://steamcommunity.com/sharedfiles/filedetai
 [h2]Observações[/h2]
 [list]
 [*]Requer o Food Drying. Carregue este mod depois do Food Drying (e depois do patch VFE dele, se usar).
-[*]O arquivo de receitas do secador do Food Drying é substituído por uma cópia atualizada (baseada no Food Drying 1.11) que adiciona os novos alimentos.
+[*]As frutas grandes são fatiadas antes de secar: abacaxis, mangas e toranjas inteiros não são mais aceitos em assadeiras, espetos e secadores. Dois arquivos do Food Drying são substituídos por cópias atualizadas (baseadas no Food Drying 1.11): as receitas do secador e as etiquetas das frutas.
 [*]Idiomas: inglês, francês, alemão, espanhol, português, português do Brasil, russo, chinês, japonês, coreano, turco.
 [/list]
 
