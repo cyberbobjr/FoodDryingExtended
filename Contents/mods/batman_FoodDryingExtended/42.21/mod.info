@@ -1,0 +1,8 @@
+name=batman_Food Drying Extended
+id=batman_FoodDryingExtended
+description=Extends Food Drying [B42] (Workshop 3747396551, by Corvus): Brussels sprouts, cucumber, pumpkin, sweet potato, turnip and zucchini can be dried in the oven, on a skewer and on the drying rack, plus homemade crisps baked from potatoes and packed in paper bags.
+require=\FoodDrying
+loadModAfter=FoodDrying,FoodDrying_VFEPatch
+versionMin=42.21
+modversion=1.0.0
+poster=poster.png

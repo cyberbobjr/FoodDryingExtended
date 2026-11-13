@@ -1,0 +1,216 @@
+module FoodDrying
+{
+    craftRecipe DryMushrooms
+    {
+        time = 259200,
+        Tags = DryingRackFood,
+        category = Farming,
+        overlayStyle = Mushroom,
+        OnCreate = FoodDrying.DryingRack_OnCreate,
+        inputs
+        {
+            item variable[1:56] tags[fooddrying:dryablemushroom] flags[InheritFood;ItemCount] mappers[mushrooms],
+        }
+        outputs
+        {
+            item variable[1:56] mapper:mushrooms,
+        }
+        itemMapper mushrooms
+        {
+            FoodDrying.MushroomsButtonDried = Base.MushroomsButton,
+            FoodDrying.DriedMushroomsA = Base.MushroomGeneric1,
+            FoodDrying.DriedMushroomsA = Base.MushroomGeneric2,
+            FoodDrying.DriedMushroomsB = Base.MushroomGeneric3,
+            FoodDrying.DriedMushroomsA = Base.MushroomGeneric4,
+            FoodDrying.DriedMushroomsB = Base.MushroomGeneric5,
+            FoodDrying.DriedMushroomsA = Base.MushroomGeneric6,
+            FoodDrying.DriedMushroomsA = Base.MushroomGeneric7,
+        }
+    }
+
+    craftRecipe DryBerries
+    {
+        time = 604800,
+        Tags = DryingRackFood,
+        category = Farming,
+        overlayStyle = Berries,
+        OnCreate = FoodDrying.DryingRack_OnCreate,
+        inputs
+        {
+            item variable[1:68] tags[fooddrying:dryableberries] flags[InheritFood;ItemCount] mappers[berries],
+        }
+        outputs
+        {
+            item variable[1:68] mapper:berries,
+        }
+        itemMapper berries
+        {
+            FoodDrying.BeautyBerryDried = Base.BeautyBerry,
+            FoodDrying.BerryBlueDried = Base.BerryBlue,
+            FoodDrying.BerryBlackDried = Base.BerryBlack,
+            FoodDrying.WinterBerryDried = Base.WinterBerry,
+            FoodDrying.HollyBerryDried = Base.HollyBerry,
+            FoodDrying.BerryGeneric1Dried = Base.BerryGeneric1,
+            FoodDrying.BerryGeneric2Dried = Base.BerryGeneric2,
+            FoodDrying.BerryGeneric3Dried = Base.BerryGeneric3,
+            FoodDrying.BerryGeneric4Dried = Base.BerryGeneric4,
+            FoodDrying.BerryGeneric5Dried = Base.BerryGeneric5,
+            FoodDrying.BerryPoisonIvyDried = Base.BerryPoisonIvy,
+            FoodDrying.StrewberrieDried = Base.Strewberrie,
+        }
+    }
+
+    craftRecipe DryFruit
+    {
+        time = 432000,
+        Tags = DryingRackFood,
+        category = Farming,
+        overlayStyle = Fruit,
+        OnCreate = FoodDrying.DryingRack_OnCreate,
+        inputs
+        {
+            item variable[1:45] tags[fooddrying:dryablefruit] flags[InheritFood;ItemCount] mappers[fruit],
+        }
+        outputs
+        {
+            item variable[1:45] mapper:fruit,
+        }
+        itemMapper fruit
+        {
+            FoodDrying.AppleDried = Base.Apple,
+            FoodDrying.BananaDried = Base.Banana,
+            FoodDrying.CherryDried = Base.Cherry,
+            FoodDrying.GrapefruitDried = Base.Grapefruit,
+            FoodDrying.GrapesDried = Base.Grapes,
+            FoodDrying.LemonDried = Base.Lemon,
+            FoodDrying.LimeDried = Base.Lime,
+            FoodDrying.MangoDried = Base.Mango,
+            FoodDrying.OrangeDried = Base.Orange,
+            FoodDrying.PeachDried = Base.Peach,
+            FoodDrying.PearDried = Base.Pear,
+            FoodDrying.PineappleDried = Base.Pineapple,
+        }
+    }
+
+    craftRecipe DryFish
+    {
+        time = 1209600,
+        Tags = DryingRackFood,
+        category = Farming,
+        overlayStyle = Fish,
+        OnCreate = FoodDrying.DryingRack_OnCreate,
+        inputs
+        {
+            item variable[1:30] tags[fooddrying:saltedfish] flags[InheritFood;ItemCount] mappers[fish],
+        }
+        outputs
+        {
+            item variable[1:30] mapper:fish,
+        }
+        itemMapper fish
+        {
+            FoodDrying.FishFilletDried = FoodDrying.FishFilletSalted,
+            FoodDrying.SalmonDried = FoodDrying.SalmonSalted,
+            FoodDrying.LargemouthBassDried = FoodDrying.LargemouthBassSalted,
+            FoodDrying.SmallmouthBassDried = FoodDrying.SmallmouthBassSalted,
+            FoodDrying.SpottedBassDried = FoodDrying.SpottedBassSalted,
+            FoodDrying.StripedBassDried = FoodDrying.StripedBassSalted,
+            FoodDrying.WalleyeDried = FoodDrying.WalleyeSalted,
+            FoodDrying.SaugerDried = FoodDrying.SaugerSalted,
+            FoodDrying.BlackCrappieDried = FoodDrying.BlackCrappieSalted,
+            FoodDrying.WhiteCrappieDried = FoodDrying.WhiteCrappieSalted,
+            FoodDrying.BluegillDried = FoodDrying.BluegillSalted,
+            FoodDrying.RedearSunfishDried = FoodDrying.RedearSunfishSalted,
+            FoodDrying.GreenSunfishDried = FoodDrying.GreenSunfishSalted,
+            FoodDrying.BlueCatfishDried = FoodDrying.BlueCatfishSalted,
+            FoodDrying.ChannelCatfishDried = FoodDrying.ChannelCatfishSalted,
+            FoodDrying.FlatheadCatfishDried = FoodDrying.FlatheadCatfishSalted,
+            FoodDrying.MuskellungeDried = FoodDrying.MuskellungeSalted,
+            FoodDrying.WhiteBassDried = FoodDrying.WhiteBassSalted,
+            FoodDrying.YellowPerchDried = FoodDrying.YellowPerchSalted,
+            FoodDrying.FreshwaterDrumDried = FoodDrying.FreshwaterDrumSalted,
+            FoodDrying.AligatorGarDried = FoodDrying.AligatorGarSalted,
+            FoodDrying.PaddlefishDried = FoodDrying.PaddlefishSalted,
+        }
+    }
+
+    craftRecipe DryMeat
+    {
+        time = 1814400,
+        Tags = DryingRackFood,
+        category = Farming,
+        overlayStyle = Meat,
+        OnCreate = FoodDrying.DryingRack_OnCreate,
+        inputs
+        {
+            item variable[1:21] tags[fooddrying:saltedmeat] flags[InheritFood;ItemCount] mappers[meat],
+        }
+        outputs
+        {
+            item variable[1:21] mapper:meat,
+        }
+        itemMapper meat
+        {
+            FoodDrying.BaconDried = FoodDrying.BaconSalted,
+            FoodDrying.BaconRashersDried = FoodDrying.BaconRashersSalted,
+            FoodDrying.BaconBitsDried = FoodDrying.BaconBitsSalted,
+            FoodDrying.ChickenFilletDried = FoodDrying.ChickenFilletSalted,
+            FoodDrying.ChickenWingsDried = FoodDrying.ChickenWingsSalted,
+            FoodDrying.ChickenDried = FoodDrying.ChickenSalted,
+            FoodDrying.TurkeyFilletDried = FoodDrying.TurkeyFilletSalted,
+            FoodDrying.TurkeyLegsDried = FoodDrying.TurkeyLegsSalted,
+            FoodDrying.TurkeyWingsDried = FoodDrying.TurkeyWingsSalted,
+            FoodDrying.MuttonChopDried = FoodDrying.MuttonChopSalted,
+            FoodDrying.PorkChopDried = FoodDrying.PorkChopSalted,
+            FoodDrying.PorkDried = FoodDrying.PorkSalted,
+            FoodDrying.VenisonDried = FoodDrying.VenisonSalted,
+            FoodDrying.BeefDried = FoodDrying.BeefSalted,
+            FoodDrying.SteakDried = FoodDrying.SteakSalted,
+            FoodDrying.FrogMeatDried = FoodDrying.FrogMeatSalted,
+            FoodDrying.RabbitmeatDried = FoodDrying.RabbitmeatSalted,
+            FoodDrying.SmallanimalmeatDried = FoodDrying.SmallanimalmeatSalted,
+            FoodDrying.SmallbirdmeatDried = FoodDrying.SmallbirdmeatSalted,
+        }
+    }
+
+    craftRecipe DryVegetables
+    {
+        time = 604800,
+        Tags = DryingRackFood,
+        category = Farming,
+        overlayStyle = Vegetables,
+        OnCreate = FoodDrying.DryingRack_OnCreate,
+        inputs
+        {
+            item variable[1:40] tags[fooddrying:dryablevegetable] flags[InheritFood;ItemCount] mappers[vegetables],
+        }
+        outputs
+        {
+            item variable[1:40] mapper:vegetables,
+        }
+        itemMapper vegetables
+        {
+            FoodDrying.TomatoDried = Base.Tomato,
+            FoodDrying.BellPepperDried = Base.BellPepper,
+            FoodDrying.CarrotsDried = Base.Carrots,
+            FoodDrying.OnionDried = Base.Onion,
+            FoodDrying.CornDried = Base.Corn,
+            FoodDrying.RedRadishDried = Base.RedRadish,
+            FoodDrying.BroccoliDried = Base.Broccoli,
+            FoodDrying.CauliflowerDried = Base.Cauliflower,
+            FoodDrying.KaleDried = Base.Kale,
+            FoodDrying.LeekDried = Base.Leek,
+            FoodDrying.EggplantDried = Base.Eggplant,
+            FoodDrying.GreenpeasDried = Base.Greenpeas,
+            FoodDrying.DaikonDried = Base.Daikon,
+            FoodDrying.EdamameDried = Base.Edamame,
+            FoodDrying.SpinachDried = Base.Spinach,
+            FoodDryingExtended.BrusselSproutsDried = Base.BrusselSprouts,
+            FoodDryingExtended.CucumberDried = Base.Cucumber,
+            FoodDryingExtended.PumpkinDried = Base.Pumpkin,
+            FoodDryingExtended.SweetPotatoDried = Base.SweetPotato,
+            FoodDryingExtended.TurnipDried = Base.Turnip,
+            FoodDryingExtended.ZucchiniDried = Base.Zucchini,
+        }
+    }
+}

@@ -1,0 +1,63 @@
+module FoodDryingExtended
+{
+    imports
+    {
+        Base,
+    }
+
+    craftRecipe PrepareHomemadeCrispsTray
+    {
+        timedAction = SliceFood_Surface,
+        time = 50,
+        category = Cooking,
+        Tags = AnySurfaceCraft;Cooking,
+        OnCreate = OvenDrying.onContainerFilled,
+        OnTest = FoodDrying.OvenDryingTest,
+        inputs
+        {
+            item 1 tags[base:sharpknife;base:meatcleaver] mode:keep flags[MayDegradeLight;IsNotDull],
+            item 1 [Base.BakingTray] mode:destroy flags[IsEmpty],
+            item 1 [Base.Salt;Base.SeasoningSalt],
+            item variable[1:8] [Base.Potato] flags[ItemCount] mode:destroy,
+        }
+        outputs
+        {
+            item 1 FoodDryingExtended.BakingTrayCrisps,
+        }
+    }
+
+    craftRecipe EmptyHomemadeCrispsTray
+    {
+        timedAction = EmptyPan,
+        time = 10,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        OnCreate = OvenDrying.onContainerEmptied,
+        inputs
+        {
+            item 1 [FoodDryingExtended.BakingTrayCrisps] flags[AllowRottenItem] mode:destroy,
+        }
+        outputs
+        {
+            item 1 Base.BakingTray,
+        }
+    }
+
+    craftRecipe BagHomemadeCrisps
+    {
+        timedAction = Making,
+        time = 20,
+        Tags = InHandCraft;Cooking,
+        category = Cooking,
+        OnTest = FoodDryingExtended.isEmptyPaperBag,
+        inputs
+        {
+            item 1 [FoodDryingExtended.HomemadeCrisps] flags[InheritFood] mode:destroy,
+            item 1 [Base.PaperBag] mode:destroy,
+        }
+        outputs
+        {
+            item 1 FoodDryingExtended.HomemadeCrispsBag,
+        }
+    }
+}

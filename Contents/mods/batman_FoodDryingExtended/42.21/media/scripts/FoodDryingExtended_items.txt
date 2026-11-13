@@ -1,0 +1,192 @@
+module FoodDryingExtended
+{
+    imports
+    {
+        Base,
+    }
+
+    item BrusselSproutsDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.15,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = BrusselSprouts,
+        EvolvedRecipe = Stir fry:9;Pie:9;Salad:9|Cooked,
+        FoodType = Vegetables,
+        HungerChange = -20.0,
+        Calories = 119.0,
+        Carbohydrates = 20.45,
+        Lipids = 0.85,
+        Proteins = 7.95,
+        CustomEatSound = EatingCrispy,
+        StaticModel = BrusselSprouts,
+        WorldStaticModel = BrusselSprouts,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item CucumberDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = Cucumber,
+        EvolvedRecipe = Soup:10;Stir fry:10;Salad:10;Sandwich:5,
+        FoodType = Vegetables,
+        HungerChange = -10.0,
+        Calories = 33.0,
+        Carbohydrates = 6.1,
+        Lipids = 0.63,
+        Proteins = 2.37,
+        CustomEatSound = EatingCrispy,
+        StaticModel = Cucumber,
+        WorldStaticModel = Cucumber,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item PumpkinDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.3,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = Pumpkin,
+        EvolvedRecipe = PieSweet:20;Stew:20;Soup:20;Stir fry:20;Stir fry Griddle Pan:20,
+        FoodType = NoExplicit,
+        HungerChange = -40.0,
+        Calories = 404.0,
+        Carbohydrates = 20.45,
+        Lipids = 20.61,
+        Proteins = 34.53,
+        CustomEatSound = EatingCrispy,
+        StaticModel = Pumpkin_Ground,
+        WorldStaticModel = Pumpkin_Ground,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item SweetPotatoDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = SweetPotato,
+        EvolvedRecipe = Soup:18;Stew:18;Pie:18;Stir fry:18;Salad:9|Cooked,
+        FoodType = Vegetables,
+        HungerChange = -18.0,
+        Calories = 70.0,
+        Carbohydrates = 14.52,
+        Lipids = 0.15,
+        Proteins = 2.88,
+        CustomEatSound = EatingCrispy,
+        StaticModel = SweetPotato_Ground,
+        WorldStaticModel = SweetPotato_Ground,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item TurnipDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = Turnip,
+        EvolvedRecipe = Soup:18;Stew:18;Pie:18;Stir fry:18;Salad:9,
+        FoodType = Vegetables,
+        HungerChange = -18.0,
+        Calories = 70.0,
+        Carbohydrates = 14.52,
+        Lipids = 0.15,
+        Proteins = 2.88,
+        CustomEatSound = EatingCrispy,
+        StaticModel = Turnip,
+        WorldStaticModel = Turnip,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item ZucchiniDried
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.1,
+        DaysFresh = 150,
+        DaysTotallyRotten = 300,
+        Icon = Zucchini,
+        EvolvedRecipe = Pizza:10;Soup:10;Stew:10;Pie:10;Stir fry:10;Salad:10;Rice:10;Pasta:10;Sandwich:5;Omelette:5,
+        FoodType = Vegetables,
+        HungerChange = -10.0,
+        Calories = 33.0,
+        Carbohydrates = 6.1,
+        Lipids = 0.63,
+        Proteins = 2.37,
+        CustomEatSound = EatingCrispy,
+        StaticModel = Zucchini_Ground,
+        WorldStaticModel = Zucchini_Ground,
+        Tags = base:hideuncooked;base:hidecooked;fooddrying:driedvegetables,
+    }
+
+    item BakingTrayCrisps
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        Weight = 0.5,
+        Icon = BakingTrayFruit,
+        IsCookable = true,
+        CantEat = true,
+        OnCooked = FoodDryingExtended.onCrispsTrayCooked,
+        MinutesToCook = 40,
+        MinutesToBurn = 90,
+        HungerChange = 0.0,
+        StaticModel = FoodDrying.BakingTrayVegetables,
+        WorldStaticModel = FoodDrying.BakingTrayVegetables,
+        CookingSound = FryingFood,
+        Tags = base:hideuncooked;base:hasmetal;base:spawncooked,
+    }
+
+    item HomemadeCrisps
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        EatType = EatSmall,
+        Weight = 0.05,
+        DaysFresh = 14,
+        DaysTotallyRotten = 30,
+        Icon = TortillaChips,
+        FoodType = Vegetables,
+        HungerChange = -18.0,
+        Calories = 70.0,
+        Carbohydrates = 15.0,
+        Lipids = 0.15,
+        Proteins = 3.0,
+        CustomEatSound = EatingCrispy,
+        Tags = base:hideuncooked;base:hidecooked,
+    }
+
+    item HomemadeCrispsBag
+    {
+        DisplayCategory = Food,
+        ItemType = base:food,
+        EatType = EatBox,
+        Weight = 0.15,
+        DaysFresh = 30,
+        DaysTotallyRotten = 60,
+        Icon = Paperbag,
+        FoodType = Vegetables,
+        HungerChange = -18.0,
+        Calories = 70.0,
+        Carbohydrates = 15.0,
+        Lipids = 0.15,
+        Proteins = 3.0,
+        ReplaceOnUse = Base.PaperBag,
+        CustomEatSound = EatingCrispy,
+        StaticModel = Chips,
+        WorldStaticModel = Paperbag_Ground,
+        Tags = base:hideuncooked;base:hidecooked,
+    }
+}

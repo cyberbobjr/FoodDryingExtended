@@ -1,0 +1,23 @@
+// pzdev configuration of Food Drying Extended (PZDevKit/docs/wiki/fr/01-tests-automatiques.md):
+//   python PZDevKit/pzdev.py check FoodDryingExtended
+//   python PZDevKit/pzdev.py sp    FoodDryingExtended --wait-idle 3600
+{
+  "name": "FoodDryingExtended",
+  "gameVersion": "42.22",
+  // Load order: Food Drying (require=), only READ from the Steam Workshop folder 108600, then this mod.
+  "mods": [
+    {"workshop": "3747396551", "id": "FoodDrying"},
+    {"path": "Contents/mods/batman_FoodDryingExtended"}
+  ],
+  // Script checks (items, tags, rack mapper, recipes) and the crisps tray cycle with Food Drying's own
+  // OnCreate functions, on a single player client.
+  "hooks": "autotest/fdx_hooks.lua",
+  "params": {},
+  "sp": {
+    "save": "2026-10-17_17-50-04",
+    "gameMode": "Sandbox",
+    "saveMods": "replace",
+    "timeoutSec": 600,
+    "startDelaySec": 5
+  }
+}

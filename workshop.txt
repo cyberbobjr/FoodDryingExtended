@@ -1,0 +1,39 @@
+version=1
+title=Food Drying Extended
+description=[h1]Food Drying Extended[/h1]
+description=
+description=[b]Build 42.21 · Singleplayer & Multiplayer[/b]
+description=
+description=Adds more food to [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Food Drying [B42][/url] by Corvus, using its own trays, skewers and drying rack. No extra menu entry for vegetables: they go into the same "Fill Tray with Vegetables" and "Skewer Vegetables" recipes.
+description=
+description=[h2]New dried vegetables[/h2]
+description=[list]
+description=[*]Brussels sprouts, cucumber, pumpkin, sweet potato, turnip and zucchini.
+description=[*]Oven (baking tray), skewer and drying rack, like the other vegetables of Food Drying.
+description=[*]One fresh vegetable gives one dried vegetable with the same nutrition, and it keeps for months (Food Drying shelf life option applies).
+description=[/list]
+description=
+description=[h2]Homemade crisps[/h2]
+description=[list]
+description=[*][b]Prepare a Tray of Homemade Crisps[/b]: a baking tray, a knife, salt and 1 to 8 potatoes.
+description=[*]Bake it in the oven, then [b]Empty Tray of Homemade Crisps[/b]: one portion of crisps per potato, with the potato's nutrition.
+description=[*][b]Put Homemade Crisps in a Paper Bag[/b] (empty paper bag): the bag keeps them fresh twice as long, and you get the paper bag back once eaten.
+description=[/list]
+description=
+description=[h2]Notes[/h2]
+description=[list]
+description=[*]Requires Food Drying. Load this mod after Food Drying (and after its VFE patch if you use it).
+description=[*]The drying rack recipes file of Food Drying is replaced by an updated copy (based on Food Drying 1.11) that adds the new vegetables.
+description=[*]English and French included.
+description=[/list]
+description=
+description=[h2]Discord[/h2]
+description=
+description=Questions, bug reports or ideas? Join the Discord:
+description=[url=https://discord.gg/QEsBya7hUA]https://discord.gg/QEsBya7hUA[/url]
+description=
+description=[h2]Credits[/h2]
+description=Food Drying is made by Corvus. All rights to the original mod belong to its author. The poster is the original Food Drying artwork with a ribbon added.
+description=Source on [url=https://github.com/cyberbobjr/FoodDryingExtended]GitHub[/url].
+tags=Build 42;Food;Farming;Multiplayer
+visibility=private

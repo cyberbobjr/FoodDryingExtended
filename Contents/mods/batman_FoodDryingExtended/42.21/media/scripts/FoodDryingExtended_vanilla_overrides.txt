@@ -1,0 +1,33 @@
+module Base
+{
+    item BrusselSprouts
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Cucumber
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Pumpkin
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item SweetPotato
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Turnip
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+    item Zucchini
+    {
+        Tags = fooddrying:dryablevegetable,
+    }
+
+}

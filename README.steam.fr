@@ -1,0 +1,35 @@
+[h1]Food Drying Extended[/h1]
+
+[b]Build 42.21 · Solo et multijoueur[/b]
+
+Ajoute des aliments à [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Food Drying [B42][/url] de Corvus, avec ses plaques, ses brochettes et son séchoir. Aucune entrée de menu en plus pour les légumes : ils passent par les mêmes recettes de plaque et de brochette de légumes.
+
+[h2]Nouveaux légumes séchés[/h2]
+[list]
+[*]Choux de Bruxelles, concombre, citrouille, patate douce, navet et courgette.
+[*]Au four (plaque de cuisson), en brochette et sur le séchoir, comme les autres légumes de Food Drying.
+[*]Un légume frais donne un légume séché aux mêmes valeurs nutritives, qui se garde des mois (l'option de conservation de Food Drying s'applique).
+[/list]
+
+[h2]Chips maison[/h2]
+[list]
+[*][b]Préparer une plaque de chips maison[/b] : une plaque de cuisson, un couteau, du sel et 1 à 8 pommes de terre.
+[*]Faites-la cuire au four, puis [b]Vider la plaque de chips maison[/b] : une portion de chips par pomme de terre, avec ses valeurs nutritives.
+[*][b]Mettre des chips maison en sachet[/b] (sac en papier vide) : le sachet les garde fraîches deux fois plus longtemps, et vous récupérez le sac en papier une fois les chips mangées.
+[/list]
+
+[h2]Remarques[/h2]
+[list]
+[*]Nécessite Food Drying. Chargez ce mod après Food Drying (et après son patch VFE si vous l'utilisez).
+[*]Le fichier des recettes du séchoir de Food Drying est remplacé par une copie à jour (basée sur Food Drying 1.11) qui ajoute les nouveaux légumes.
+[*]Anglais et français inclus.
+[/list]
+
+[h2]Discord[/h2]
+
+Questions, bugs ou idées ? Rejoignez le Discord :
+[url=https://discord.gg/QEsBya7hUA]https://discord.gg/QEsBya7hUA[/url]
+
+[h2]Crédits[/h2]
+Food Drying est créé par Corvus. Tous les droits sur le mod d'origine appartiennent à son auteur. Le poster est l'illustration originale de Food Drying, avec un bandeau ajouté.
+Sources sur [url=https://github.com/cyberbobjr/FoodDryingExtended]GitHub[/url].
