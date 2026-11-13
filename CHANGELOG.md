@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 — 2026-11-13
+
+### Improved
+- Pineapple, mango and grapefruit slices now look like slices: own inventory icons, and the game's watermelon slice shape in the colours of each fruit, in hand and on the ground.
+- Dried slices are darker and much thinner than fresh ones.
+
 ## 1.2.0 — 2026-11-13
 
 ### Changed

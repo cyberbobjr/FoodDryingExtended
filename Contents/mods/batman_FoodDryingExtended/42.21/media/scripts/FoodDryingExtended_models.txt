@@ -1,0 +1,111 @@
+module FoodDryingExtended
+{
+    model FDX_PineappleSlice
+    {
+        mesh = MelonSlice,
+        texture = FDX_PineappleSliceHand,
+        attachment Bip01_Prop2
+        {
+            offset = -0.0242 0.0042 -0.0151,
+            rotate = -2.8745 40.3273 1.789,
+            scale = 0.6787,
+        }
+    }
+
+    model FDX_PineappleSlice_Ground
+    {
+        mesh = WorldItems/WaterMelonSlice,
+        texture = WorldItems/FDX_PineappleSlice,
+        scale = 0.4,
+        attachment Bip01_Prop2
+        {
+            offset = -0.034 0.013 -0.028,
+            rotate = 93.0 -9.0 -33.0,
+        }
+    }
+
+    model FDX_PineappleSliceDried
+    {
+        mesh = WorldItems/FDX_FruitSliceDried,
+        texture = WorldItems/FDX_PineappleSliceDried,
+        scale = 0.4,
+        attachment Bip01_Prop2
+        {
+            offset = -0.034 0.013 -0.028,
+            rotate = 93.0 -9.0 -33.0,
+        }
+    }
+
+    model FDX_MangoSlice
+    {
+        mesh = MelonSlice,
+        texture = FDX_MangoSliceHand,
+        attachment Bip01_Prop2
+        {
+            offset = -0.0242 0.0042 -0.0151,
+            rotate = -2.8745 40.3273 1.789,
+            scale = 0.6787,
+        }
+    }
+
+    model FDX_MangoSlice_Ground
+    {
+        mesh = WorldItems/WaterMelonSlice,
+        texture = WorldItems/FDX_MangoSlice,
+        scale = 0.4,
+        attachment Bip01_Prop2
+        {
+            offset = -0.034 0.013 -0.028,
+            rotate = 93.0 -9.0 -33.0,
+        }
+    }
+
+    model FDX_MangoSliceDried
+    {
+        mesh = WorldItems/FDX_FruitSliceDried,
+        texture = WorldItems/FDX_MangoSliceDried,
+        scale = 0.4,
+        attachment Bip01_Prop2
+        {
+            offset = -0.034 0.013 -0.028,
+            rotate = 93.0 -9.0 -33.0,
+        }
+    }
+
+    model FDX_GrapefruitSlice
+    {
+        mesh = MelonSlice,
+        texture = FDX_GrapefruitSliceHand,
+        attachment Bip01_Prop2
+        {
+            offset = -0.0242 0.0042 -0.0151,
+            rotate = -2.8745 40.3273 1.789,
+            scale = 0.6787,
+        }
+    }
+
+    model FDX_GrapefruitSlice_Ground
+    {
+        mesh = WorldItems/WaterMelonSlice,
+        texture = WorldItems/FDX_GrapefruitSlice,
+        scale = 0.4,
+        attachment Bip01_Prop2
+        {
+            offset = -0.034 0.013 -0.028,
+            rotate = 93.0 -9.0 -33.0,
+        }
+    }
+
+    model FDX_GrapefruitSliceDried
+    {
+        mesh = WorldItems/FDX_FruitSliceDried,
+        texture = WorldItems/FDX_GrapefruitSliceDried,
+        scale = 0.4,
+        attachment Bip01_Prop2
+        {
+            offset = -0.034 0.013 -0.028,
+            rotate = 93.0 -9.0 -33.0,
+        }
+    }
+
+}

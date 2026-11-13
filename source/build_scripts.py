@@ -134,11 +134,16 @@ def main():
 
     comment("Slices of large fruits (Slice Large Fruit) and their dried form")
     for n, icon, smodel, wmodel, h, c, cb, l, p, evo in SLICES:
+        # own icons and models (source/slices): fresh = game slice shape, dried = thin copy of it
         item(n + "Slice", [("DisplayCategory", "Food"), ("ItemType", "base:food"), ("Weight", "0.1"), ("DaysFresh", "3"),
-                           ("DaysTotallyRotten", "5"), ("Icon", icon), ("EvolvedRecipe", evo), ("FoodType", "Fruits")]
-             + nut(h, c, cb, l, p) + [("CustomEatSound", "EatingFruit"), ("StaticModel", smodel),
-                                      ("WorldStaticModel", wmodel), ("Tags", "fooddrying:dryablefruit")])
-        dried(n + "SliceDried", icon, smodel, wmodel, h, c, cb, l, p, evo, "Fruits", 0.03, "fooddrying:driedfruit",
+                           ("DaysTotallyRotten", "5"), ("Icon", f"FDX_{n}Slice"), ("EvolvedRecipe", evo),
+                           ("FoodType", "Fruits")]
+             + nut(h, c, cb, l, p) + [("CustomEatSound", "EatingFruit"),
+                                      ("StaticModel", f"FoodDryingExtended.FDX_{n}Slice"),
+                                      ("WorldStaticModel", f"FoodDryingExtended.FDX_{n}Slice_Ground"),
+                                      ("Tags", "fooddrying:dryablefruit")])
+        dried(n + "SliceDried", f"FDX_{n}SliceDried", f"FoodDryingExtended.FDX_{n}SliceDried",
+              f"FoodDryingExtended.FDX_{n}SliceDried", h, c, cb, l, p, evo, "Fruits", 0.03, "fooddrying:driedfruit",
               180, 365, [("CustomEatSound", "EatingFruit")])
 
     comment("Dried wild plants (oven tray, skewer, drying racks)")
@@ -215,6 +220,30 @@ def main():
     with open(os.path.join(ROOT, "FoodDryingExtended_vanilla_overrides.txt"), "w", encoding="utf-8", newline="\n") as fh:
         fh.write("\n".join(ov))
     print(sum(1 for l in out if l.startswith("    item ")), "items written")
+    write_models()
+
+
+# Models of the fruit slices. Attachments copied from the game's MelonSlice (hand) and WaterMelonSlice_Ground
+# (world, also used in hand by the dried slices) in scripts/generated/models_food.txt.
+HAND = ["        attachment Bip01_Prop2", "        {", "            offset = -0.0242 0.0042 -0.0151,",
+        "            rotate = -2.8745 40.3273 1.789,", "            scale = 0.6787,", "        }"]
+WORLD = ["        attachment Bip01_Prop2", "        {", "            offset = -0.034 0.013 -0.028,",
+         "            rotate = 93.0 -9.0 -33.0,", "        }"]
+
+
+def write_models():
+    m = ["module FoodDryingExtended", "{"]
+    for n in [s[0] for s in SLICES]:
+        m += [f"    model FDX_{n}Slice", "    {", "        mesh = MelonSlice,", f"        texture = FDX_{n}SliceHand,"]
+        m += HAND + ["    }", ""]
+        m += [f"    model FDX_{n}Slice_Ground", "    {", "        mesh = WorldItems/WaterMelonSlice,",
+              f"        texture = WorldItems/FDX_{n}Slice,", "        scale = 0.4,"] + WORLD + ["    }", ""]
+        m += [f"    model FDX_{n}SliceDried", "    {", "        mesh = WorldItems/FDX_FruitSliceDried,",
+              f"        texture = WorldItems/FDX_{n}SliceDried,", "        scale = 0.4,"] + WORLD + ["    }", ""]
+    m += ["}", ""]
+    with open(os.path.join(ROOT, "FoodDryingExtended_models.txt"), "w", encoding="utf-8", newline="\n") as fh:
+        fh.write("\n".join(m))
+    print(len(SLICES) * 3, "models written")
 
 
 main()

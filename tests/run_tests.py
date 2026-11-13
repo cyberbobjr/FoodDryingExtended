@@ -46,7 +46,24 @@ def references():
     vanilla = items_of(os.path.join(VANILLA, "generated", "items"))
     food_drying = items_of(os.path.join(FOOD_DRYING, "scripts"))
     mine = set(re.findall(r"^\s*item (\w+)\s*$", read(os.path.join(MEDIA, "scripts", "FoodDryingExtended_items.txt")), re.M))
-    known = {"Base": vanilla, "FoodDrying": food_drying, "FoodDryingExtended": mine}
+    models_file = os.path.join(MEDIA, "scripts", "FoodDryingExtended_models.txt")
+    models = set(re.findall(r"^\s*model (\w+)\s*$", read(models_file), re.M))
+    known = {"Base": vanilla, "FoodDrying": food_drying, "FoodDryingExtended": mine | models}
+    # assets of the mod's own models and icons, exact case (the server runs on Linux)
+    assets = []
+    for mesh in re.findall(r"mesh = (WorldItems/FDX_\w+),", read(models_file)):
+        assets.append(os.path.join("models_X", *mesh.split("/")) + ".fbx")
+    for tex in re.findall(r"texture = ([\w/]*FDX_\w+),", read(models_file)):
+        assets.append(os.path.join("textures", *tex.split("/")) + ".png")
+    items_text = read(os.path.join(MEDIA, "scripts", "FoodDryingExtended_items.txt"))
+    for icon in re.findall(r"Icon = (FDX_\w+),", items_text):
+        assets.append(os.path.join("textures", "Item_" + icon + ".png"))
+    absent = []
+    for rel in assets:
+        folder, name = os.path.split(os.path.join(MEDIA, rel))
+        if not os.path.isdir(folder) or name not in os.listdir(folder):
+            absent.append(rel)
+    check(f"{len(assets)} model, texture and icon files exist with exact case", not absent and len(assets) == 18, absent)
     sources = glob.glob(os.path.join(MEDIA, "scripts", "**", "*.txt"), recursive=True)
     sources.append(os.path.join(MEDIA, "lua", "shared", "FoodDryingExtended.lua"))
     fd_lua = "".join(read(f) for f in glob.glob(os.path.join(FOOD_DRYING, "lua", "shared", "*.lua")))

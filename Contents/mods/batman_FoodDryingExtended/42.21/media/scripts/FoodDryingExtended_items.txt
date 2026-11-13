@@ -226,7 +226,7 @@ module FoodDryingExtended
         Weight = 0.1,
         DaysFresh = 3,
         DaysTotallyRotten = 5,
-        Icon = Pineapple,
+        Icon = FDX_PineappleSlice,
         EvolvedRecipe = Pizza:6;Cake:6;FruitSalad:6;Pancakes:6;Muffin:6;ConeIcecream:4;PieSweet:6;Oatmeal:4,
         FoodType = Fruits,
         HungerChange = -6.0,
@@ -235,8 +235,8 @@ module FoodDryingExtended
         Lipids = 0.27,
         Proteins = 1.22,
         CustomEatSound = EatingFruit,
-        StaticModel = Pineapple_Ground,
-        WorldStaticModel = Pineapple_Ground,
+        StaticModel = FoodDryingExtended.FDX_PineappleSlice,
+        WorldStaticModel = FoodDryingExtended.FDX_PineappleSlice_Ground,
         Tags = fooddrying:dryablefruit,
     }
 
@@ -247,7 +247,7 @@ module FoodDryingExtended
         Weight = 0.03,
         DaysFresh = 180,
         DaysTotallyRotten = 365,
-        Icon = Pineapple,
+        Icon = FDX_PineappleSliceDried,
         EvolvedRecipe = Pizza:6;Cake:6;FruitSalad:6;Pancakes:6;Muffin:6;ConeIcecream:4;PieSweet:6;Oatmeal:4,
         FoodType = Fruits,
         HungerChange = -6.0,
@@ -256,8 +256,8 @@ module FoodDryingExtended
         Lipids = 0.27,
         Proteins = 1.22,
         CustomEatSound = EatingFruit,
-        StaticModel = Pineapple_Ground,
-        WorldStaticModel = Pineapple_Ground,
+        StaticModel = FoodDryingExtended.FDX_PineappleSliceDried,
+        WorldStaticModel = FoodDryingExtended.FDX_PineappleSliceDried,
         Tags = base:hideuncooked;base:hidecooked;fooddrying:driedfruit,
     }
 
@@ -268,7 +268,7 @@ module FoodDryingExtended
         Weight = 0.1,
         DaysFresh = 3,
         DaysTotallyRotten = 5,
-        Icon = Mango,
+        Icon = FDX_MangoSlice,
         EvolvedRecipe = Cake:5;FruitSalad:5;Pancakes:5;Muffin:5;PieSweet:5;Oatmeal:5,
         FoodType = Fruits,
         HungerChange = -5.0,
@@ -277,8 +277,8 @@ module FoodDryingExtended
         Lipids = 0.27,
         Proteins = 0.97,
         CustomEatSound = EatingFruit,
-        StaticModel = Mango_Ground,
-        WorldStaticModel = Mango_Ground,
+        StaticModel = FoodDryingExtended.FDX_MangoSlice,
+        WorldStaticModel = FoodDryingExtended.FDX_MangoSlice_Ground,
         Tags = fooddrying:dryablefruit,
     }
 
@@ -289,7 +289,7 @@ module FoodDryingExtended
         Weight = 0.03,
         DaysFresh = 180,
         DaysTotallyRotten = 365,
-        Icon = Mango,
+        Icon = FDX_MangoSliceDried,
         EvolvedRecipe = Cake:5;FruitSalad:5;Pancakes:5;Muffin:5;PieSweet:5;Oatmeal:5,
         FoodType = Fruits,
         HungerChange = -5.0,
@@ -298,8 +298,8 @@ module FoodDryingExtended
         Lipids = 0.27,
         Proteins = 0.97,
         CustomEatSound = EatingFruit,
-        StaticModel = Mango_Ground,
-        WorldStaticModel = Mango_Ground,
+        StaticModel = FoodDryingExtended.FDX_MangoSliceDried,
+        WorldStaticModel = FoodDryingExtended.FDX_MangoSliceDried,
         Tags = base:hideuncooked;base:hidecooked;fooddrying:driedfruit,
     }
 
@@ -310,7 +310,7 @@ module FoodDryingExtended
         Weight = 0.1,
         DaysFresh = 3,
         DaysTotallyRotten = 5,
-        Icon = Grapefruit,
+        Icon = FDX_GrapefruitSlice,
         EvolvedRecipe = Salad:5;FruitSalad:5;Pancakes:5;Muffin:5,
         FoodType = Fruits,
         HungerChange = -5.0,
@@ -319,8 +319,8 @@ module FoodDryingExtended
         Lipids = 0.95,
         Proteins = 4.39,
         CustomEatSound = EatingFruit,
-        StaticModel = Grapefruit_Eat,
-        WorldStaticModel = Grapefruit_Ground,
+        StaticModel = FoodDryingExtended.FDX_GrapefruitSlice,
+        WorldStaticModel = FoodDryingExtended.FDX_GrapefruitSlice_Ground,
         Tags = fooddrying:dryablefruit,
     }
 
@@ -331,7 +331,7 @@ module FoodDryingExtended
         Weight = 0.03,
         DaysFresh = 180,
         DaysTotallyRotten = 365,
-        Icon = Grapefruit,
+        Icon = FDX_GrapefruitSliceDried,
         EvolvedRecipe = Salad:5;FruitSalad:5;Pancakes:5;Muffin:5,
         FoodType = Fruits,
         HungerChange = -5.0,
@@ -340,8 +340,8 @@ module FoodDryingExtended
         Lipids = 0.95,
         Proteins = 4.39,
         CustomEatSound = EatingFruit,
-        StaticModel = Grapefruit_Eat,
-        WorldStaticModel = Grapefruit_Ground,
+        StaticModel = FoodDryingExtended.FDX_GrapefruitSliceDried,
+        WorldStaticModel = FoodDryingExtended.FDX_GrapefruitSliceDried,
         Tags = base:hideuncooked;base:hidecooked;fooddrying:driedfruit,
     }
 
