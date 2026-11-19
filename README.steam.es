@@ -1,6 +1,6 @@
 [h1]Food Drying Extended[/h1]
 
-[b]Build 42.21 · Un jugador y multijugador[/b]
+[b]Build 42.22 · Un jugador y multijugador[/b]
 
 Añade más alimentos a [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Food Drying [B42][/url] de Corvus, usando sus bandejas, brochetas y secadero.
 

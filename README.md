@@ -1,6 +1,6 @@
 # Food Drying Extended
 
-Extension of [Food Drying [B42]](https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551) by Corvus, for Project Zomboid Build 42.21.
+Extension of [Food Drying [B42]](https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551) by Corvus, for Project Zomboid Build 42.22.
 
 - Mod id: `batman_FoodDryingExtended` (requires `FoodDrying`, loads after `FoodDrying_VFEPatch` when present)
 - More food to dry (oven tray, skewer, drying rack): Brussels sprouts, cucumber, pumpkin slices, sweet potato, turnip, zucchini, cabbage, sugar beet, garlic, green onions, slices of watermelon, pineapple, mango and grapefruit (Slice Large Fruit recipe), rose hips; jalapeño and habanero in the oven and on skewers

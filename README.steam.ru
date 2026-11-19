@@ -1,6 +1,6 @@
 [h1]Food Drying Extended[/h1]
 
-[b]Build 42.21 · Одиночная и сетевая игра[/b]
+[b]Build 42.22 · Одиночная и сетевая игра[/b]
 
 Добавляет новые продукты в [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Food Drying [B42][/url] от Corvus, используя его противни, шампуры и сушилку.
 

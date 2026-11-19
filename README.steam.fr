@@ -1,6 +1,6 @@
 [h1]Food Drying Extended[/h1]
 
-[b]Build 42.21 · Solo et multijoueur[/b]
+[b]Build 42.22 · Solo et multijoueur[/b]
 
 Ajoute des aliments à [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3747396551]Food Drying [B42][/url] de Corvus, avec ses plaques, ses brochettes et son séchoir.
 
